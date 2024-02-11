@@ -6,7 +6,7 @@ public class Aceman {
      */
 
      static Scanner scan = new Scanner(System.in);
-     static String[][] users = new String[9][13];
+     static String[][] users = new String[16][13];
      static String[][] cin   = new String[5][7];
      static String[][] roles  = new String[5][4];
      static String[][] formations = new String[5][5];
@@ -94,7 +94,7 @@ public class Aceman {
                 scan.nextLine();
             }
 
-            int i = 8;
+            int i = 7;
             for (int j = 0; j < users.length; j++) {
                 users[i+1][1] = pssprt;
                 users[i+1][2] = cin;

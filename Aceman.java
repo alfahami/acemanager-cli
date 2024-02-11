@@ -35,7 +35,7 @@ public class Aceman {
             case 2:
                 // TO DO: add a new member
                 addMember();
-                System.out.println("\nHere are the updated member list: ");
+                System.out.println("\nHere are the updated member list: \n");
                 printTable(users);
                 break;
             case 3:
@@ -77,7 +77,15 @@ public class Aceman {
         String cin = scan.nextLine();
 
         System.out.print("\tMatricule AMCI - type 0 if no scholarship -: ");
-        String mat_amci = scan.nextLine();
+        String matAmci = scan.nextLine();
+
+        // check the city
+        System.out.print("City : ");
+        String cityName = scan.nextLine();
+        String idCity = getCityID(cityName); // Creating a link key between cities table
+
+        System.out.print("\tAdhesion Number: ");
+        String numAdhesion = scan.nextLine();
 
         System.out.print("\tBirth Date : ");
         String birth = scan.nextLine();
@@ -86,28 +94,34 @@ public class Aceman {
         String email = scan.nextLine();
 
         System.out.print("\tDo you have an adhesion -type YES or NO-: ");
-        String adhsion = scan.nextLine();
-        while (!adhsion.equalsIgnoreCase("YES") && !adhsion.equalsIgnoreCase("NO")) {
+        String statusAdhesion = scan.nextLine();
+        while (!statusAdhesion.equalsIgnoreCase("YES") && !statusAdhesion.equalsIgnoreCase("NO")) {
             System.out.print("\tPlease type \"YES\" or \"NO\" ");
-            adhsion = scan.nextLine().toUpperCase();
+            statusAdhesion = scan.nextLine().toUpperCase();
         }
+
+        
+        
 
         int i = 8;
 
         users[i + 1][1] = lname;
         users[i + 1][2] = fname;
         users[i + 1][3] = birth;
-        users[i + 1][7] = pssprt;
-        users[i + 1][8] = cin;
-        users[i + 1][9] = mat_amci;
+        users[i + 1][4] = pssprt;
+        users[i + 1][5] = cin;
+        users[i + 1][6] = matAmci;
+        users[i + 1][7] = numAdhesion;
+        users[i + 1][8] = idCity;
+       // users[i + 1][9] = id_frmtion;
         users[i + 1][10] = email;
-        users[i + 1][12] = adhsion;
-
-        // id adhesion condition
+       // users[i + 1][11] = role;
+        users[i + 1][12] = statusAdhesion;
 
         // id formation condition
 
         // City condition
+
     }
 
     public static void fillIDs(String[][] array) {
@@ -138,6 +152,22 @@ public class Aceman {
         System.out.println();
     }
 
+    // get the city ID
+    public static String getCityID(String cityName) {
+        //String city_name = scan.nextLine();
+        for (int i = 1; i < villes.length; i++) {
+            
+            while(!cityName.equalsIgnoreCase(villes[i][1])){
+                System.out.println("\t\tFES - MEKNES - OUJDA - KENITRA - RABAT - SALE are the cities managed by now, please choose one of them.");
+                cityName = scan.nextLine();
+            } 
+            // city found, break the loop
+            String id_city = villes[i][0]; 
+            return id_city;
+        }
+        return "";
+    }
+
     public static void fillIDs() {
         fillIDs(users);
         fillIDs(formations);
@@ -147,6 +177,7 @@ public class Aceman {
         fillIDs(roles);
     }
 
+    // all IDs have the first row
     public static void fillFactsInst() {
         fac_inst[1][0] = "1";
         fac_inst[1][1] = "FSDM";
@@ -241,17 +272,17 @@ public class Aceman {
     }
 
     public static void baseMembers() {
-        
+
         users[1][0] = "1";
         users[1][1] = "TOIHIR";
         users[1][2] = "AL FAHAMI";
         users[1][3] = "21/05/1992";
         users[1][4] = "NBE3457564";
-        users[1][5] = "C016745J"; 
+        users[1][5] = "C016745J";
         users[1][6] = "20111489";
-        users[1][7] = "14"; // id_adhesion
+        users[1][7] = "14";
         users[1][8] = "1"; // id_ville
-        users[1][9] =  "3"; // id_frmtion
+        users[1][9] = "3"; // id_frmtion
         users[1][10] = "altoihir@gmail.com";
         users[1][11] = "1";
         users[1][12] = "YES";
@@ -263,12 +294,12 @@ public class Aceman {
         users[2][4] = "NBE345678";
         users[2][5] = "C016745B";
         users[2][6] = "202478";
-        users[2][7] = "22";// id_adhesion
+        users[2][7] = "22";
         users[2][8] = "1"; // id_ville;
         users[2][9] = "4"; // id_frmtion
         users[2][10] = "haf@gmail.com";
         users[2][11] = "3"; // id_role
-        users[2][12] = "YES"; // status_adhesion
+        users[2][12] = "YES"; // statu
 
         users[3][0] = "3";
         users[3][1] = "CHARFIA";
@@ -277,12 +308,13 @@ public class Aceman {
         users[3][4] = "NBE345678";
         users[3][5] = "C016745B";
         users[3][6] = "202478";
-        users[3][7] = "22";// id_adhesion;
+        users[3][7] = "22";
+        ;
         users[3][8] = "4"; // id_city
         users[3][9] = "4"; // id_frmtion
         users[3][10] = "charf@gmail.com";
         users[3][11] = "3"; // id_role
-        users[3][12] = "YES"; // status_adhesion
+        users[3][12] = "YES"; // statu
 
         users[4][0] = "4";
         users[4][1] = "DAKOINE";
@@ -291,12 +323,12 @@ public class Aceman {
         users[4][4] = "NBE345678";
         users[4][5] = "C016745B";
         users[4][6] = "404478";
-        users[4][7] = "44";// id_adhesion
-        users[4][8] = "1"; //id_city
+        users[4][7] = "44";
+        users[4][8] = "1"; // id_city
         users[4][9] = "4"; // id_frmtion
         users[4][10] = "onedak@gmail.com";
         users[4][11] = "3"; // id_role
-        users[4][12] = "YES"; // status_adhesion
+        users[4][12] = "YES"; // statu
 
         users[5][0] = "5";
         users[5][1] = "ANDJOUZA";
@@ -305,26 +337,27 @@ public class Aceman {
         users[5][4] = "NBE545678";
         users[5][5] = "C016745B";
         users[5][6] = "202478";
-        users[5][7] = "22";// id_adhesion;
+        users[5][7] = "22";
+        ;
         users[5][8] = "1"; // id_ville;
         users[5][9] = "4"; // id_frmtion
         users[5][10] = "andjz@gmail.com";
         users[5][11] = "3"; // id_role
-        users[5][12] = "YES"; // status_adhesion
+        users[5][12] = "YES"; // statu
 
         users[6][0] = "6";
         users[6][1] = "DJAWAD";
         users[6][2] = "SIDI";
         users[6][3] = "22/06/2005";
-        users[6][4] = "NBE646678"; 
+        users[6][4] = "NBE646678";
         users[6][5] = "C016746B";
         users[6][6] = "202478";
-        users[6][7] = "26";// id_adhesion
+        users[6][7] = "26";
         users[6][8] = "1"; // id_ville
         users[6][9] = "5"; // id_frmtion;
         users[6][10] = "djaoid@gmail.com";
         users[6][11] = "3"; // id_role
-        users[6][12] = "YES"; // status_adhesion
+        users[6][12] = "YES"; // statu
 
         users[7][0] = "7";
         users[7][1] = "BEHRAM";
@@ -333,12 +366,13 @@ public class Aceman {
         users[7][4] = "NBE74778";
         users[7][5] = "C017747B";
         users[7][6] = "202478";
-        users[7][7] = "65";// id_adhesion;
+        users[7][7] = "65";
+        ;
         users[7][8] = "1"; // id_ville;
         users[7][9] = "1"; // id_frmtion
         users[7][10] = "benms@gmail.com";
         users[7][11] = "3"; // id_role
-        users[7][12] = "YES"; // status_adhesion
+        users[7][12] = "YES"; // statu
 
         users[8][0] = "8";
         users[8][1] = "ISSIHAKA";
@@ -347,12 +381,12 @@ public class Aceman {
         users[8][4] = "NBE8488";
         users[8][5] = "C018848B";
         users[8][6] = "202488";
-        users[8][7] = "65";// id_adhesion
+        users[8][7] = "65";
         users[8][8] = "1"; // id_ville
         users[8][9] = "1"; // id_frmtion
         users[8][10] = "ismoh@gmail.com";
         users[8][11] = "3"; // id_role
-        users[8][12] = "YES"; // status_adhesion
+        users[8][12] = "YES"; // statu
     }
 
 }

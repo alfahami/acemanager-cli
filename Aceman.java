@@ -149,19 +149,17 @@ public class Aceman {
 
     // get the city ID
     public static String getCityID(String cityName) {
-        // String city_name = scan.nextLine();
-        for (int i = 1; i < cities.length; i++) {
-
-            while (!cityName.equalsIgnoreCase(cities[i][1])) {
+            while (true) {
+                for (int j = 1; j < cities.length; j++) {
+                    if(cityName.equals(cities[j][1])){
+                        return cities[j][0];
+                    }
+                }
                 System.out.println(
-                        "\t\tFES - MEKNES - OUJDA - KENITRA - RABAT - SALE are the cities managed by now, please choose one of them.");
-                cityName = scan.nextLine();
-            }
-            // city found, break the loop
-            String id_city = cities[i][0];
-            return id_city;
+                "\t\tFES - MEKNES - OUJDA - KENITRA - RABAT - SALE are the cities managed by now, please choose one of them.");
+                cityName = scan.nextLine().toUpperCase();
         }
-        return "this should never execute! If it does, DEBUUUUUG!!!";
+       //return "this should never execute! If it does, DEBUUUUUG!!!";
     }
 
     public static void fillIDs() {

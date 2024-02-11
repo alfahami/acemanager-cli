@@ -6,12 +6,12 @@ public class Aceman {
      */
 
     static Scanner scan = new Scanner(System.in);
-    static String[][] users = new String[16][13];
-    static String[][] cin = new String[5][7];
-    static String[][] roles = new String[5][4];
-    static String[][] formations = new String[5][5];
-    static String[][] fac_inst = new String[4][4];
-    static String[][] villes = new String[7][3];
+    static String[][] users = new String[20][13];
+    static String[][] cin = new String[10][7];
+    static String[][] roles = new String[3][4];
+    static String[][] formations = new String[10][5];
+    static String[][] fac_inst = new String[10][4];
+    static String[][] villes = new String[10][3];
 
     public static void main(String[] args) {
 
@@ -35,7 +35,7 @@ public class Aceman {
             case 2:
                 // TO DO: add a new member
                 addMember();
-                System.out.println("Here are the updated member list: ");
+                System.out.println("\nHere are the updated member list: ");
                 printTable(users);
                 break;
             case 3:
@@ -64,31 +64,31 @@ public class Aceman {
         System.out.println("Enter thenew member details.\n");
         scan.nextLine(); // clear empty space
 
-        System.out.print("First name: ");
+        System.out.print("\tFirst name: ");
         String fname = scan.nextLine();
 
-        System.out.print("Last name: ");
+        System.out.print("\tLast name: ");
         String lname = scan.nextLine();
 
-        System.out.print("Passport : ");
+        System.out.print("\tPassport : ");
         String pssprt = scan.nextLine();
 
-        System.out.print("CIN : ");
+        System.out.print("\tCIN : ");
         String cin = scan.nextLine();
 
-        System.out.print("Matricule AMCI : ");
+        System.out.print("\tMatricule AMCI - type 0 if no scholarship -: ");
         String mat_amci = scan.nextLine();
 
-        System.out.print("Birth Date : ");
+        System.out.print("\tBirth Date : ");
         String birth = scan.nextLine();
 
-        System.out.print("Email : ");
+        System.out.print("\tEmail : ");
         String email = scan.nextLine();
 
-        System.out.print("Do you have an adhesion -type YES or NO-: ");
+        System.out.print("\tDo you have an adhesion -type YES or NO-: ");
         String adhsion = scan.nextLine();
         while (!adhsion.equalsIgnoreCase("YES") && !adhsion.equalsIgnoreCase("NO")) {
-            System.out.print("Please type \"YES\" or \"NO\" ");
+            System.out.print("\tPlease type \"YES\" or \"NO\" ");
             adhsion = scan.nextLine().toUpperCase();
         }
 

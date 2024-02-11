@@ -10,16 +10,16 @@ public class Aceman {
     static String[][] cin = new String[10][7];
     static String[][] roles = new String[3][4];
     static String[][] formations = new String[10][5];
-    static String[][] fac_inst = new String[10][4];
-    static String[][] villes = new String[10][3];
+    static String[][] facultiesInstitues = new String[10][4];
+    static String[][] cities = new String[10][3];
 
     public static void main(String[] args) {
 
         // Populate Base table
         fillHeaders();
         fillIDs();
-        fillVilles();
-        fillFactsInst();
+        fillCities();
+        fillFacsInsitutes();
         baseMembers();
 
         System.out.print(
@@ -82,7 +82,7 @@ public class Aceman {
         // check the city
         System.out.print("City : ");
         String cityName = scan.nextLine();
-        String idCity = getCityID(cityName); // Creating a link key between cities table
+        String idCity = getCityID(cityName); // Creating a link key between users-->cities table
 
         System.out.print("\tAdhesion Number: ");
         String numAdhesion = scan.nextLine();
@@ -100,9 +100,6 @@ public class Aceman {
             statusAdhesion = scan.nextLine().toUpperCase();
         }
 
-        
-        
-
         int i = 8;
 
         users[i + 1][1] = lname;
@@ -113,9 +110,9 @@ public class Aceman {
         users[i + 1][6] = matAmci;
         users[i + 1][7] = numAdhesion;
         users[i + 1][8] = idCity;
-       // users[i + 1][9] = id_frmtion;
+        // users[i + 1][9] = id_frmtion;
         users[i + 1][10] = email;
-       // users[i + 1][11] = role;
+        // users[i + 1][11] = role;
         users[i + 1][12] = statusAdhesion;
 
         // id formation condition
@@ -141,12 +138,10 @@ public class Aceman {
                     } else {
                         System.out.print("  " + array[i][j] + "   ");
                     }
-
                 }
             } else {
                 break;
             }
-
             System.out.println("\n");
         }
         System.out.println();
@@ -154,76 +149,77 @@ public class Aceman {
 
     // get the city ID
     public static String getCityID(String cityName) {
-        //String city_name = scan.nextLine();
-        for (int i = 1; i < villes.length; i++) {
-            
-            while(!cityName.equalsIgnoreCase(villes[i][1])){
-                System.out.println("\t\tFES - MEKNES - OUJDA - KENITRA - RABAT - SALE are the cities managed by now, please choose one of them.");
+        // String city_name = scan.nextLine();
+        for (int i = 1; i < cities.length; i++) {
+
+            while (!cityName.equalsIgnoreCase(cities[i][1])) {
+                System.out.println(
+                        "\t\tFES - MEKNES - OUJDA - KENITRA - RABAT - SALE are the cities managed by now, please choose one of them.");
                 cityName = scan.nextLine();
-            } 
+            }
             // city found, break the loop
-            String id_city = villes[i][0]; 
+            String id_city = cities[i][0];
             return id_city;
         }
-        return "";
+        return "this should never execute! If it does, DEBUUUUUG!!!";
     }
 
     public static void fillIDs() {
         fillIDs(users);
         fillIDs(formations);
-        fillIDs(fac_inst);
-        fillIDs(villes);
+        fillIDs(facultiesInstitues);
+        fillIDs(cities);
         fillIDs(cin);
         fillIDs(roles);
     }
 
     // all IDs have the first row
-    public static void fillFactsInst() {
-        fac_inst[1][0] = "1";
-        fac_inst[1][1] = "FSDM";
-        fac_inst[1][2] = "USMBA";
-        fac_inst[1][3] = "1";
+    public static void fillFacsInsitutes() {
+        facultiesInstitues[1][0] = "1";
+        facultiesInstitues[1][1] = "FSDM";
+        facultiesInstitues[1][2] = "USMBA";
+        facultiesInstitues[1][3] = "1";
 
-        fac_inst[2][0] = "2";
-        fac_inst[2][1] = "FS MI";
-        fac_inst[2][2] = "UMI";
-        fac_inst[2][3] = "2";
+        facultiesInstitues[2][0] = "2";
+        facultiesInstitues[2][1] = "FS MI";
+        facultiesInstitues[2][2] = "UMI";
+        facultiesInstitues[2][3] = "2";
 
-        fac_inst[3][0] = "3";
-        fac_inst[3][1] = "FS Oujda";
-        fac_inst[3][2] = "UMI";
-        fac_inst[3][3] = "3";
+        facultiesInstitues[3][0] = "3";
+        facultiesInstitues[3][1] = "FS Oujda";
+        facultiesInstitues[3][2] = "UMI";
+        facultiesInstitues[3][3] = "3";
 
-        fac_inst[3][0] = "4";
-        fac_inst[3][1] = "FSK";
-        fac_inst[3][2] = "UIT";
-        fac_inst[3][3] = "4";
+        facultiesInstitues[3][0] = "4";
+        facultiesInstitues[3][1] = "FSK";
+        facultiesInstitues[3][2] = "UIT";
+        facultiesInstitues[3][3] = "4";
     }
 
-    public static void fillVilles() {
-        villes[1][0] = "1";
-        villes[1][1] = "FES";
-        villes[1][2] = "Fes-Boulemane";
+    public static void fillCities() {
+        cities[1][0] = "1";
+        cities[1][1] = "FES";
+        cities[1][2] = "Fes-Boulemane";
 
-        villes[2][0] = "2";
-        villes[2][1] = "MEKNES";
-        villes[2][2] = "Fes-Boulemane";
+        cities[2][0] = "2";
+        cities[2][1] = "MEKNES";
+        cities[2][2] = "Fes-Boulemane";
 
-        villes[3][0] = "3";
-        villes[3][1] = "OUJDA";
-        villes[3][2] = "Fes-Boulemane";
+        cities[3][0] = "3";
+        cities[3][1] = "OUJDA";
+        cities[3][2] = "Fes-Boulemane";
 
-        villes[4][0] = "4";
-        villes[4][1] = "KENITRA";
-        villes[4][2] = "Rabat-Sale-Kenitra";
+        cities[4][0] = "4";
+        cities[4][1] = "KENITRA";
+        cities[4][2] = "Rabat-Sale-Kenitra";
 
-        villes[5][0] = "5";
-        villes[5][1] = "RABAT";
-        villes[5][2] = "Rabat-Sale-Kenitra";
+        cities[5][0] = "5";
+        cities[5][1] = "RABAT";
+        cities[5][2] = "Rabat-Sale-Kenitra";
 
-        villes[6][0] = "6";
-        villes[6][1] = "SALE";
-        villes[6][2] = "Rabat-Sale-Kenitra";
+        cities[6][0] = "6";
+        cities[6][1] = "SALE";
+        cities[6][2] = "Rabat-Sale-Kenitra";
     }
 
     public static void fillHeaders() {
@@ -261,14 +257,14 @@ public class Aceman {
         formations[0][3] = "DRTN_FRMT";
         formations[0][4] = "YR_RPT";
 
-        fac_inst[0][0] = "ID_FCT_INST";
-        fac_inst[0][1] = "UNIVERSITY";
-        fac_inst[0][2] = "NM_FAC_INST";
-        fac_inst[0][3] = "ID_CTY";
+        facultiesInstitues[0][0] = "ID_FCT_INST";
+        facultiesInstitues[0][1] = "UNIVERSITY";
+        facultiesInstitues[0][2] = "NM_facultiesInstitues";
+        facultiesInstitues[0][3] = "ID_CTY";
 
-        villes[0][0] = "ID_CTY";
-        villes[0][1] = "NM_CTY";
-        villes[0][2] = "NM_RGN";
+        cities[0][0] = "ID_CTY";
+        cities[0][1] = "NM_CTY";
+        cities[0][2] = "NM_RGN";
     }
 
     public static void baseMembers() {

@@ -65,33 +65,33 @@ public class Aceman {
         scan.nextLine(); // clear empty space
 
         System.out.print("\tFirst name: ");
-        String fname = scan.nextLine();
+        String fname = scan.nextLine().toUpperCase();
 
         System.out.print("\tLast name: ");
-        String lname = scan.nextLine();
+        String lname = scan.nextLine().toUpperCase();
+
+        System.out.print("\tBirth Date : ");
+        String birth = scan.nextLine();
 
         System.out.print("\tPassport : ");
-        String pssprt = scan.nextLine();
+        String pssprt = scan.nextLine().toUpperCase();
 
         System.out.print("\tCIN : ");
-        String cin = scan.nextLine();
+        String cin = scan.nextLine().toUpperCase();
 
         System.out.print("\tMatricule AMCI - type 0 if no scholarship -: ");
         String matAmci = scan.nextLine();
 
         // check the city
-        System.out.print("City : ");
-        String cityName = scan.nextLine();
+        System.out.print("\tCity : ");
+        String cityName = scan.nextLine().toUpperCase();
         String idCity = getCityID(cityName); // Creating a link key between users-->cities table
 
         System.out.print("\tAdhesion Number: ");
         String numAdhesion = scan.nextLine();
 
-        System.out.print("\tBirth Date : ");
-        String birth = scan.nextLine();
-
         System.out.print("\tEmail : ");
-        String email = scan.nextLine();
+        String email = scan.nextLine().toLowerCase();
 
         System.out.print("\tDo you have an adhesion -type YES or NO-: ");
         String statusAdhesion = scan.nextLine();
@@ -157,6 +157,7 @@ public class Aceman {
                 }
                 System.out.println(
                 "\t\tFES - MEKNES - OUJDA - KENITRA - RABAT - SALE are the cities managed by now, please choose one of them.");
+                System.out.print("\t");
                 cityName = scan.nextLine().toUpperCase();
         }
        //return "this should never execute! If it does, DEBUUUUUG!!!";

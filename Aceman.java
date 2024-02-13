@@ -22,6 +22,7 @@ public class Aceman {
         fillFacsInsitutes();
         baseMembers();
         fillFormations();
+        fillRoles();
 
         System.out.print(
                 "\n\n\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t4. Find a member by their name.\n\n Or\n \t5. Would you like me to generate different reports?\n\nPlease choose an option : ");
@@ -38,6 +39,12 @@ public class Aceman {
                 addMember();
                 System.out.println("\nHere are the updated member list: \n");
                 printTable(users);
+                System.out.print("Would you like to add another member? ");
+                String anwser = scan.nextLine();
+                while(anwser.equalsIgnoreCase("yes")){
+                    addMember();
+                    printTable(users);
+                }
                 break;
             case 3:
                 // TO DO: delete a member
@@ -89,21 +96,35 @@ public class Aceman {
         String idCity = getCityID(cityName); // Creating a link key between users-->cities table
 
         System.out.print("\tAdhesion Number: ");
-        String numAdhesion = scan.nextLine();
+        String numAdhesion = scan.nextLine().toUpperCase();
 
         System.out.print("\tEmail : ");
         String email = scan.nextLine().toLowerCase();
 
         System.out.print("\tDo you have an adhesion -type YES or NO-: ");
-        String statusAdhesion = scan.nextLine();
+        String statusAdhesion = scan.nextLine().toUpperCase();
         while (!statusAdhesion.equalsIgnoreCase("YES") && !statusAdhesion.equalsIgnoreCase("NO")) {
             System.out.print("\tPlease type \"YES\" or \"NO\" ");
             statusAdhesion = scan.nextLine().toUpperCase();
         }
 
         System.out.print("\tStudy Field : ");
-       String fieldName = scan.nextLine().toUpperCase();
+        String fieldName = scan.nextLine().toUpperCase();
         String fieldID = getFieldID(fieldName);
+
+        System.out.print("\tDo you want to be an admin of this app? ");
+        String answer = scan.nextLine();
+
+        switch (answer) {
+            case "cat":
+                answer = "1";
+            break;
+        
+            default:
+                answer = "2";
+            break;
+        }
+
         
 
         int i = 8;
@@ -116,15 +137,10 @@ public class Aceman {
         users[i + 1][6] = matAmci;
         users[i + 1][7] = numAdhesion;
         users[i + 1][8] = idCity;
-        // users[i + 1][9] = id_frmtion;
         users[i + 1][9] = fieldID;
         users[i + 1][10] = email;
-        // users[i + 1][11] = role;
+        users[i + 1][11] = answer;
         users[i + 1][12] = statusAdhesion;
-
-        // id formation condition
-        
-        // City condition
 
     }
 
@@ -144,8 +160,9 @@ public class Aceman {
                         System.out.print("  " + array[i][j] + "    ");
                     } else {
                         System.out.print("  " + array[i][j] + "   ");
-                    }
-                }
+                    } 
+                } 
+                
             } else {
                 break;
             }
@@ -171,16 +188,17 @@ public class Aceman {
     }
 
     public static String getFieldID(String fieldName){
-            for (int i = 1; i < formations.length; i++) {
-               String temp = formations[i][2];
-               if(fieldName.equals(formations[i][2])) {
-
-                    fieldName = formations[i][0]; //ID
-                    return fieldName;
-               } 
-               
-        }
-        return "";
+            
+                for (int i = 0; i < formations.length; i++) {
+                    if(fieldName.equals(formations[i][2])){
+                        return formations[i][0];
+                    }
+                }
+                System.out.println("Sorry ... We can't help you add your formation!");
+                System.exit(0);
+                return "";
+                // TO DO : implement a menu to add a new formation
+            
     }
 
     public static void fillIDs() {
@@ -193,6 +211,18 @@ public class Aceman {
     }
 
     // all IDs have the first row
+    public static void fillRoles(){
+        
+        roles[1][0] = "1";
+        roles[1][1] = "ADMIN";
+        roles[1][2] = "0:00";
+        roles[1][3] = "00:00";
+
+        roles[2][0] = "1";
+        roles[2][1] = "LAMBDA";
+        roles[2][2] = "NULL";
+        roles[2][3] = "NULL";
+    }
     public static void fillFormations(){
         formations[1][0] = "1";
         formations[1][1] = "1"; //id_facultes

@@ -21,6 +21,7 @@ public class Aceman {
         fillCities();
         fillFacsInsitutes();
         baseMembers();
+        fillFormations();
 
         System.out.print(
                 "\n\n\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t4. Find a member by their name.\n\n Or\n \t5. Would you like me to generate different reports?\n\nPlease choose an option : ");
@@ -61,7 +62,7 @@ public class Aceman {
      * TO DO: allow user to add members with its details
      */
     public static void addMember() {
-        System.out.println("Enter thenew member details.\n");
+        System.out.println("Enter the new member details.\n");
         scan.nextLine(); // clear empty space
 
         System.out.print("\tFirst name: ");
@@ -100,6 +101,11 @@ public class Aceman {
             statusAdhesion = scan.nextLine().toUpperCase();
         }
 
+        System.out.print("\tStudy Field : ");
+       String fieldName = scan.nextLine().toUpperCase();
+        String fieldID = getFieldID(fieldName);
+        
+
         int i = 8;
 
         users[i + 1][1] = lname;
@@ -111,12 +117,13 @@ public class Aceman {
         users[i + 1][7] = numAdhesion;
         users[i + 1][8] = idCity;
         // users[i + 1][9] = id_frmtion;
+        users[i + 1][9] = fieldID;
         users[i + 1][10] = email;
         // users[i + 1][11] = role;
         users[i + 1][12] = statusAdhesion;
 
         // id formation condition
-
+        
         // City condition
 
     }
@@ -163,6 +170,19 @@ public class Aceman {
        //return "this should never execute! If it does, DEBUUUUUG!!!";
     }
 
+    public static String getFieldID(String fieldName){
+            for (int i = 1; i < formations.length; i++) {
+               String temp = formations[i][2];
+               if(fieldName.equals(formations[i][2])) {
+
+                    fieldName = formations[i][0]; //ID
+                    return fieldName;
+               } 
+               
+        }
+        return "";
+    }
+
     public static void fillIDs() {
         fillIDs(users);
         fillIDs(formations);
@@ -173,6 +193,26 @@ public class Aceman {
     }
 
     // all IDs have the first row
+    public static void fillFormations(){
+        formations[1][0] = "1";
+        formations[1][1] = "1"; //id_facultes
+        formations[1][2] = "CHIMIE";
+        formations[1][3] = "3";
+        formations[1][4] = "Licence";
+
+        formations[2][0] = "2";
+        formations[2][1] = "2"; //id_facultes
+        formations[2][2] = "INFORMATIQUE";
+        formations[2][3] = "2";
+        formations[2][4] = "Master";
+
+        formations[3][0] = "3";
+        formations[3][1] = "1"; //id_facultes
+        formations[3][2] = "MATHEMATIQUES";
+        formations[3][3] = "3";
+        formations[3][4] = "Doctorat";
+
+    }
     public static void fillFacsInsitutes() {
         facultiesInstitues[1][0] = "1";
         facultiesInstitues[1][1] = "FSDM";
@@ -254,7 +294,7 @@ public class Aceman {
         formations[0][1] = "ID_FC_INST";
         formations[0][2] = "NM_FRMT";
         formations[0][3] = "DRTN_FRMT";
-        formations[0][4] = "YR_RPT";
+        formations[0][4] = "DIPLOME";
 
         facultiesInstitues[0][0] = "ID_FCT_INST";
         facultiesInstitues[0][1] = "UNIVERSITY";

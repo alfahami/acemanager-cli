@@ -5,6 +5,7 @@ public class Aceman {
      * Users shoudl have a menu and choose what he wants to do
      */
 
+
     static Scanner scan = new Scanner(System.in);
     static String[][] users = new String[20][13];
     static String[][] cin = new String[10][7];
@@ -25,17 +26,16 @@ public class Aceman {
         fillRoles();
 
         System.out.print(
-                "\n\n\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t4. Find a member by their name.\n\n Or\n \t5. Would you like me to generate different reports?\n\nPlease choose an option : ");
+                "\n\n\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t5. Find a member by their name.\n\n Or\n \t6. Would you like me to generate different reports?\n\nPlease choose an option : ");
         int choice = scan.nextInt();
 
         switch (choice) {
             case 1:
-                // TO DO: list members
+                //display existing members
                 printTable(users);
-
                 break;
             case 2:
-                // TO DO: add a new member
+                // TO DO: DONE
                 scan.nextLine(); // clear empty space
                 addMember();
                 System.out.println("\nHere are the updated member list: \n");
@@ -51,11 +51,10 @@ public class Aceman {
                          System.out.println("Thansk for using ACEMANAGER ... BYE!");
                     }
                 }
-               
                 break;
             case 3:
                 // TO DO: delete a member
-                System.out.print("Which member would you like to remove ?-The remove is irreversible- ");
+                System.out.print("Which member would you like to remove ? ");
                 scan.nextLine(); // removing white space
                 String memberName = scan.nextLine();
                 remove(memberName);
@@ -76,13 +75,36 @@ public class Aceman {
 
     }
 
+    // TO DO:  if two members have the same first name and last name
     public static void remove(String memberName) {
+        boolean bool = true;
         for (int i = 0; i < users.length; i++) {
             if (memberName.equalsIgnoreCase(users[i][1]) || memberName.equalsIgnoreCase(users[i][2])) {
                 // TO DO: show the user the row to be deleted
-                for (int j = 1; j < users[i].length; j++) {
-                    users[i][j] = null;
+                System.out.print("\n");
+                printMember(i);
+                System.out.print("\n");
+                System.out.print("\nDeletion is irreversible ? Would you like to proceed ? ");
+                String answer = scan.nextLine();
+                if(answer.equalsIgnoreCase("yes")){
+                        for (int j = 1; j < users[i].length; j++) {
+                            users[i][j] = null;
+                        }
+                    } else if(answer.equalsIgnoreCase("no")){
+                        // TO DO: call the menu 
+                        System.out.println("\n\nThanks for using ACEMANAGER ... and GoodBye!\n");
+                        System.exit(0);
+                    }
+                    bool = false;
                 }
+        }
+        if(bool){
+            System.out.print("Sorry ... Member doesn't exist yet. Would you like to add him?");
+            String answer = scan.nextLine();
+            if(answer.equalsIgnoreCase("yes")){
+                addMember();
+            } else if(answer.equalsIgnoreCase("no")) {
+                System.out.println("\n\nThanks for using ACEMANAGER ... and GoodBye!\n");
             }
         }
     }
@@ -166,6 +188,13 @@ public class Aceman {
             }
         }
 
+    }
+
+    public static void printMember(int rownNumber){
+
+        for (int j = 0; j < users[rownNumber].length; j++) {
+            System.out.print("  " + users[rownNumber][j] + "    ");
+        }
     }
 
     public static void fillIDs(String[][] array) {
@@ -380,7 +409,7 @@ public class Aceman {
 
         users[2][0] = "2";
         users[2][1] = "HAFIDHOU";
-        users[2][2] = "HAFIDHOU";
+        users[2][2] = "MAOULIDA";
         users[2][3] = "22/05/2998";
         users[2][4] = "NBE345678";
         users[2][5] = "C016745B";
@@ -400,7 +429,6 @@ public class Aceman {
         users[3][5] = "C016745B";
         users[3][6] = "202478";
         users[3][7] = "22";
-        ;
         users[3][8] = "4"; // id_city
         users[3][9] = "4"; // id_frmtion
         users[3][10] = "charf@gmail.com";

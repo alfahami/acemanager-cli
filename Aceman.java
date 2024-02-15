@@ -30,7 +30,7 @@ public class Aceman {
 
         switch (choice) {
             case 1:
-                // display existing members
+                //display existing members
                 printTable(users);
                 break;
             case 2:
@@ -41,21 +41,20 @@ public class Aceman {
                 printTable(users);
                 System.out.print("Would you like to add another member? ");
                 String answer = scan.nextLine();
-                if (answer.equalsIgnoreCase("no")) {
-                    System.out.println("\n\n\tThanks for using ACEMANAGER ... and GoodBye!!!\n\n");
+                if(answer.equalsIgnoreCase("no")) {
+                    System.out.println("\n\nThanks for using ACEMANAGER ... and GoodBye!\n");
                 } else {
                     while (answer.equalsIgnoreCase("yes")) {
                         addMember();
                         printTable(users);
                         System.out.print("Would you like to add another member? ");
                         answer = scan.nextLine();
-                        if (answer.equalsIgnoreCase("no")) {
-                            System.out.println("\n\n\n\t\tThansk for using ACEMANAGER ... BYE!\n\n");
+                        if(answer.equalsIgnoreCase("no")){
+                             System.out.println("Thansk for using ACEMANAGER ... BYE!");
                         }
                     }
                 }
                 break;
-
             case 3:
                 // TO DO: delete a member
                 System.out.print("Which member would you like to remove ? ");
@@ -64,7 +63,6 @@ public class Aceman {
                 remove(memberName);
                 printTable(users);
                 break;
-
             case 4:
                 // TO DO: update a member by its name
                 // ask the name of the person
@@ -72,34 +70,33 @@ public class Aceman {
                 System.out.print("Which member do you want to upadate? ");
                 String updateName = scan.nextLine();
                 int line = searchByName(updateName);
-                if (line != -1) {
+                if(line != -1){
                     // Do the replacement
-                    if (users[line][1].equals(updateName)) {
+                    if(users[line][1].equals(updateName)){
                         System.out.print("Please enter the new first name: ");
                         String newLName = scan.nextLine();
                         users[line][1] = newLName;
-
+    
                     }
-                    if (users[line][2].equals(updateName)) {
+                    if(users[line][2].equals(updateName)){
                         System.out.print("Please enter the new last name: ");
                         String newFName = scan.nextLine();
                         users[line][2] = newFName;
-
+    
                     }
                     printTable(users);
 
                 } else {
                     System.out.println(updateName + " is not an existing member. Would you like to add him/her ? ");
                     String ans = scan.nextLine();
-                    if (ans.equalsIgnoreCase("yes")) {
+                    if(ans.equalsIgnoreCase("yes")){
                         addMember();
                     } else {
                         System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!");
                     }
                 }
-
-                break;
                 
+                break;
             case 5:
                 // TO DO: report menu
 
@@ -111,33 +108,36 @@ public class Aceman {
 
     }
 
-    // TO DO: if two members have the same first name and last name
+    // TO DO:  if two members have the same first name and last name
     public static void remove(String memberName) {
-        int row = searchByName(memberName);
-        if(row != -1){
-            // TO DO: show the user the row to be deleted
-            System.out.print("\n");
-            printMember(row);
-            System.out.print("\n");
-            System.out.print("\nDeletion is irreversible ? Would you like to proceed ? ");
-            String answer = scan.nextLine();
-            if (answer.equalsIgnoreCase("yes")) {
-                for (int j = 1; j < users[row].length; j++) {
-                    users[row][j] = null;
+        boolean bool = true;
+        for (int i = 0; i < users.length; i++) {
+            if (memberName.equalsIgnoreCase(users[i][1]) || memberName.equalsIgnoreCase(users[i][2])) {
+                // TO DO: show the user the row to be deleted
+                System.out.print("\n");
+                printMember(i);
+                System.out.print("\n");
+                System.out.print("\nDeletion is irreversible ? Would you like to proceed ? ");
+                String answer = scan.nextLine();
+                if(answer.equalsIgnoreCase("yes")){
+                        for (int j = 1; j < users[i].length; j++) {
+                            users[i][j] = null;
+                        }
+                    } else if(answer.equalsIgnoreCase("no")){
+                        // TO DO: call the menu 
+                        System.out.println("\n\nThanks for using ACEMANAGER ... and GoodBye!\n");
+                        System.exit(0);
+                    }
+                    bool = false;
                 }
-            } else if (answer.equalsIgnoreCase("no")) {
-                // TO DO: call the menu
-                System.out.println("\n\n\n\tThanks for using ACEMANAGER ... and GOOD BYE!\n");
-                System.exit(0);
-            }
         }
-        else {
-            System.out.print("Sorry ... Member doesn't exist yet. Would you like to add him/her? ");
-            String resp = scan.nextLine();
-            if (resp.equalsIgnoreCase("yes")) {
+        if(bool){
+            System.out.print("Sorry ... Member doesn't exist yet. Would you like to add him?");
+            String answer = scan.nextLine();
+            if(answer.equalsIgnoreCase("yes")){
                 addMember();
-            } else if (resp.equalsIgnoreCase("no")) {
-                System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GoodBye!\n");
+            } else if(answer.equalsIgnoreCase("no")) {
+                System.out.println("\n\nThanks for using ACEMANAGER ... and GoodBye!\n");
             }
         }
     }
@@ -188,7 +188,6 @@ public class Aceman {
         String fieldName = scan.nextLine().toUpperCase();
         String fieldID = getFieldID(fieldName);
 
-        // Yasseem's LOGIC
         System.out.print("\tDo you want to be an admin of this app? ");
         String answer = scan.nextLine();
 
@@ -224,26 +223,30 @@ public class Aceman {
 
     }
 
-    // Helpers
-    // ZAKS LOGIC
-    public static int searchByName(String name) {
-        int row;
+    // Helpers 
+    public static int searchByName(String name){
+
+        int row = 0;
         for (int i = 0; i < users.length; i++) {
-            if (name.equalsIgnoreCase(users[i][1]) || name.equalsIgnoreCase(users[i][2])) {
+            if (name.equalsIgnoreCase(users[i][1]) || name.equalsIgnoreCase(users[i][2])){
                 row = i;
                 return row;
-            }
+            }   
         }
+
         return -1;
+                
     }
 
-    public static void printMember(int rownNumber) {
+    public static void printMember(int rownNumber){
+
         for (int j = 0; j < users[rownNumber].length; j++) {
             System.out.print("  " + users[rownNumber][j] + "    ");
         }
     }
 
     public static void fillIDs(String[][] array) {
+
         for (int i = 1; i < array.length; i++) {
             array[i][0] = Integer.toString(i);
         }
@@ -285,18 +288,17 @@ public class Aceman {
         // return "this should never execute! If it does, DEBUUUUUG!!!";
     }
 
-    // ANDJIB'S LOGIC
     public static String getFieldID(String fieldName) {
+
         for (int i = 0; i < formations.length; i++) {
             if (fieldName.equals(formations[i][2])) {
                 return formations[i][0];
             }
         }
-
-        System.out.println("\n\n\t\tSorry ... we only manage CHIMIE | INFORMATIQUE | MATHEMATIQUES");
-        System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GoodBye!\n");
-        
-        return "This should never be executed ... if so DEBUUUUUUG";
+        System.out.println("Sorry ... we only manage CHIMIE | INFORMATIQUE | MATHEMATIQUES");
+        System.exit(0);
+        return "";
+        // TO DO : implement a menu to add a new formation
 
     }
 

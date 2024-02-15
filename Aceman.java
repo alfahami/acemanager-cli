@@ -24,50 +24,32 @@ public class Aceman {
         fillFormations();
         fillRoles();
 
-        System.out.print(
-                "\n\n\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t5. Find a member by their name.\n\n Or\n \t6. Would you like me to generate different reports?\n\nPlease choose an option : ");
+        menu();
         int choice = scan.nextInt();
 
         switch (choice) {
             case 1:
-                // display existing members
                 printTable(users);
                 break;
+
             case 2:
-                // TO DO: DONE
                 scan.nextLine(); // clear empty space
                 addMember();
                 System.out.println("\nHere are the updated member list: \n");
                 printTable(users);
-                System.out.print("Would you like to add another member? ");
-                String answer = scan.nextLine();
-                if (answer.equalsIgnoreCase("no")) {
-                    System.out.println("\n\n\tThanks for using ACEMANAGER ... and GoodBye!!!\n\n");
-                } else {
-                    while (answer.equalsIgnoreCase("yes")) {
-                        addMember();
-                        printTable(users);
-                        System.out.print("Would you like to add another member? ");
-                        answer = scan.nextLine();
-                        if (answer.equalsIgnoreCase("no")) {
-                            System.out.println("\n\n\n\t\tThansk for using ACEMANAGER ... BYE!\n\n");
-                        }
-                    }
-                }
+                memberRequest();
                 break;
 
             case 3:
-                // TO DO: delete a member
                 System.out.print("Which member would you like to remove ? ");
                 scan.nextLine(); // removing white space
                 String memberName = scan.nextLine();
+                System.out.print("Would you like to add another member? ");
                 remove(memberName);
                 printTable(users);
                 break;
 
             case 4:
-                // TO DO: update a member by its name
-                // ask the name of the person
                 scan.nextLine(); // clear empty space
                 System.out.print("Which member do you want to upadate? ");
                 String updateName = scan.nextLine();
@@ -97,15 +79,35 @@ public class Aceman {
                         System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!");
                     }
                 }
-
                 break;
-                
+
             case 5:
-                // TO DO: report menu
+                scan.nextLine(); // removing empty space
+                System.out.print("Which member are you looking for: ");
+                String member = scan.nextLine();
+                int row = searchByName(member);
+                if(row != -1){
+                    System.out.print("\n\n");
+                    printMember(row);
+                    System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!\n");
 
+                } else {
+                    System.out.print("\n\n\t\tMember not FOUND!!!\n\nWould you like to add him/her as new member ?");
+                    memberRequest();
+                }
                 break;
-
+            // TO DO: report menu    
+            case 6:
+                System.out.println("To be implemented soon");
+                menu();
+            break;
+            
+            case 7:
+                System.exit(0);
+            break;
             default:
+                System.out.println("\t\t\t\tIt looks like you don't understand English! GET AWAY and get a LIFE!");
+                System.exit(0);
                 break;
         }
 
@@ -142,9 +144,6 @@ public class Aceman {
         }
     }
 
-    /*
-     * TO DO: allow user to add members with its details
-     */
     public static void addMember() {
         System.out.println("Enter the new member details.\n");
 
@@ -237,6 +236,23 @@ public class Aceman {
         return -1;
     }
 
+    public static void memberRequest(){
+        String answer = scan.nextLine();
+        if (answer.equalsIgnoreCase("no")) {
+            System.out.println("\n\n\tThanks for using ACEMANAGER ... and GoodBye!!!\n\n");
+        } else {
+            while (answer.equalsIgnoreCase("yes")) {
+                addMember();
+                printTable(users);
+                System.out.print("Would you like to add another member? ");
+                answer = scan.nextLine();
+                if (answer.equalsIgnoreCase("no")) {
+                    System.out.println("\n\n\n\t\tThansk for using ACEMANAGER ... BYE!\n\n");
+                }
+            }
+        }
+    }
+
     public static void printMember(int rownNumber) {
         for (int j = 0; j < users[rownNumber].length; j++) {
             System.out.print("  " + users[rownNumber][j] + "    ");
@@ -295,9 +311,14 @@ public class Aceman {
 
         System.out.println("\n\n\t\tSorry ... we only manage CHIMIE | INFORMATIQUE | MATHEMATIQUES");
         System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GoodBye!\n");
-        
+        System.exit(0);
         return "This should never be executed ... if so DEBUUUUUUG";
 
+    }
+
+    public static void menu(){
+        System.out.print(
+                "\n\n\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t5. Find a member by their name.\n\n Or\n \t6. Would you like me to generate different reports?\t7. QUIT\n\nPlease choose an option : ");
     }
 
     public static void fillIDs() {

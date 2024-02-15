@@ -5,7 +5,6 @@ public class Aceman {
      * Users shoudl have a menu and choose what he wants to do
      */
 
-
     static Scanner scan = new Scanner(System.in);
     static String[][] users = new String[20][13];
     static String[][] cin = new String[10][7];
@@ -42,13 +41,17 @@ public class Aceman {
                 printTable(users);
                 System.out.print("Would you like to add another member? ");
                 String answer = scan.nextLine();
-                while (answer.equalsIgnoreCase("yes")) {
-                    addMember();
-                    printTable(users);
-                    System.out.print("Would you like to add another member? ");
-                    answer = scan.nextLine();
-                    if(answer.equalsIgnoreCase("no")){
-                         System.out.println("Thansk for using ACEMANAGER ... BYE!");
+                if(answer.equalsIgnoreCase("no")) {
+                    System.out.println("\n\nThanks for using ACEMANAGER ... and GoodBye!\n");
+                } else {
+                    while (answer.equalsIgnoreCase("yes")) {
+                        addMember();
+                        printTable(users);
+                        System.out.print("Would you like to add another member? ");
+                        answer = scan.nextLine();
+                        if(answer.equalsIgnoreCase("no")){
+                             System.out.println("Thansk for using ACEMANAGER ... BYE!");
+                        }
                     }
                 }
                 break;
@@ -61,8 +64,38 @@ public class Aceman {
                 printTable(users);
                 break;
             case 4:
-                // TO DO: find a member by its name
+                // TO DO: update a member by its name
+                // ask the name of the person
+                scan.nextLine(); // clear empty space
+                System.out.print("Which member do you want to upadate? ");
+                String updateName = scan.nextLine();
+                int line = searchByName(updateName);
+                if(line != -1){
+                    // Do the replacement
+                    if(users[line][1].equals(updateName)){
+                        System.out.print("Please enter the new first name: ");
+                        String newLName = scan.nextLine();
+                        users[line][1] = newLName;
+    
+                    }
+                    if(users[line][2].equals(updateName)){
+                        System.out.print("Please enter the new last name: ");
+                        String newFName = scan.nextLine();
+                        users[line][2] = newFName;
+    
+                    }
+                    printTable(users);
 
+                } else {
+                    System.out.println(updateName + " is not an existing member. Would you like to add him/her ? ");
+                    String ans = scan.nextLine();
+                    if(ans.equalsIgnoreCase("yes")){
+                        addMember();
+                    } else {
+                        System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!");
+                    }
+                }
+                
                 break;
             case 5:
                 // TO DO: report menu
@@ -188,6 +221,21 @@ public class Aceman {
             }
         }
 
+    }
+
+    // Helpers 
+    public static int searchByName(String name){
+
+        int row = 0;
+        for (int i = 0; i < users.length; i++) {
+            if (name.equalsIgnoreCase(users[i][1]) || name.equalsIgnoreCase(users[i][2])){
+                row = i;
+                return row;
+            }   
+        }
+
+        return -1;
+                
     }
 
     public static void printMember(int rownNumber){

@@ -141,16 +141,7 @@ public class Aceman {
     public static void menu(){
         System.out.print(
             "\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t5. Find a member by their name.\n\n Or\n \t6. Would you like me to generate different reports?\n\t7. QUIT\n\nPlease choose an option : ");
-    
-        
-        int choice = 0;
-
-        
-        if(! scan.hasNextInt()) {
-            System.out.println("Please enter a valid option");
-            choice = scan.nextInt();
-        }
-            //scan.nextInt();
+        int choice = scan.nextInt();
 
         switch (choice) {
             case 1:

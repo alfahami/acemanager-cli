@@ -36,19 +36,30 @@ public class Aceman {
                 break;
             case 2:
                 // TO DO: add a new member
+                scan.nextLine(); // clear empty space
                 addMember();
                 System.out.println("\nHere are the updated member list: \n");
                 printTable(users);
                 System.out.print("Would you like to add another member? ");
-                String anwser = scan.nextLine();
-                while(anwser.equalsIgnoreCase("yes")){
+                String answer = scan.nextLine();
+                while (answer.equalsIgnoreCase("yes")) {
                     addMember();
                     printTable(users);
+                    System.out.print("Would you like to add another member? ");
+                    answer = scan.nextLine();
+                    if(answer.equalsIgnoreCase("no")){
+                         System.out.println("Thansk for using ACEMANAGER ... BYE!");
+                    }
                 }
+               
                 break;
             case 3:
                 // TO DO: delete a member
-
+                System.out.print("Which member would you like to remove ?-The remove is irreversible- ");
+                scan.nextLine(); // removing white space
+                String memberName = scan.nextLine();
+                remove(memberName);
+                printTable(users);
                 break;
             case 4:
                 // TO DO: find a member by its name
@@ -65,12 +76,22 @@ public class Aceman {
 
     }
 
+    public static void remove(String memberName) {
+        for (int i = 0; i < users.length; i++) {
+            if (memberName.equalsIgnoreCase(users[i][1]) || memberName.equalsIgnoreCase(users[i][2])) {
+                // TO DO: show the user the row to be deleted
+                for (int j = 1; j < users[i].length; j++) {
+                    users[i][j] = null;
+                }
+            }
+        }
+    }
+
     /*
      * TO DO: allow user to add members with its details
      */
     public static void addMember() {
         System.out.println("Enter the new member details.\n");
-        scan.nextLine(); // clear empty space
 
         System.out.print("\tFirst name: ");
         String fname = scan.nextLine().toUpperCase();
@@ -118,29 +139,32 @@ public class Aceman {
         switch (answer) {
             case "cat":
                 answer = "1";
-            break;
-        
+                break;
             default:
                 answer = "2";
-            break;
+                break;
         }
 
-        
+        // checks for empty line before adding the new user
+        for (int i = 0; i < users.length; i++) {
+            if (users[i][1] == null) {
 
-        int i = 8;
+                users[i][1] = lname;
+                users[i][2] = fname;
+                users[i][3] = birth;
+                users[i][4] = pssprt;
+                users[i][5] = cin;
+                users[i][6] = matAmci;
+                users[i][7] = numAdhesion;
+                users[i][8] = idCity;
+                users[i][9] = fieldID;
+                users[i][10] = email;
+                users[i][11] = answer;
+                users[i][12] = statusAdhesion;
 
-        users[i + 1][1] = lname;
-        users[i + 1][2] = fname;
-        users[i + 1][3] = birth;
-        users[i + 1][4] = pssprt;
-        users[i + 1][5] = cin;
-        users[i + 1][6] = matAmci;
-        users[i + 1][7] = numAdhesion;
-        users[i + 1][8] = idCity;
-        users[i + 1][9] = fieldID;
-        users[i + 1][10] = email;
-        users[i + 1][11] = answer;
-        users[i + 1][12] = statusAdhesion;
+                break;
+            }
+        }
 
     }
 
@@ -160,9 +184,9 @@ public class Aceman {
                         System.out.print("  " + array[i][j] + "    ");
                     } else {
                         System.out.print("  " + array[i][j] + "   ");
-                    } 
-                } 
-                
+                    }
+                }
+
             } else {
                 break;
             }
@@ -173,32 +197,32 @@ public class Aceman {
 
     // get the city ID
     public static String getCityID(String cityName) {
-            while (true) {
-                for (int j = 1; j < cities.length; j++) {
-                    if(cityName.equals(cities[j][1])){
-                        return cities[j][0];
-                    }
+        while (true) {
+            for (int j = 1; j < cities.length; j++) {
+                if (cityName.equals(cities[j][1])) {
+                    return cities[j][0];
                 }
-                System.out.println(
-                "\t\tFES - MEKNES - OUJDA - KENITRA - RABAT - SALE are the cities managed by now, please choose one of them.");
-                System.out.print("\t");
-                cityName = scan.nextLine().toUpperCase();
+            }
+            System.out.println(
+                    "\t\tFES - MEKNES - OUJDA - KENITRA - RABAT - SALE are the cities managed by now, please choose one of them.");
+            System.out.print("\t");
+            cityName = scan.nextLine().toUpperCase();
         }
-       //return "this should never execute! If it does, DEBUUUUUG!!!";
+        // return "this should never execute! If it does, DEBUUUUUG!!!";
     }
 
-    public static String getFieldID(String fieldName){
-            
-                for (int i = 0; i < formations.length; i++) {
-                    if(fieldName.equals(formations[i][2])){
-                        return formations[i][0];
-                    }
-                }
-                System.out.println("Sorry ... We can't help you add your formation!");
-                System.exit(0);
-                return "";
-                // TO DO : implement a menu to add a new formation
-            
+    public static String getFieldID(String fieldName) {
+
+        for (int i = 0; i < formations.length; i++) {
+            if (fieldName.equals(formations[i][2])) {
+                return formations[i][0];
+            }
+        }
+        System.out.println("Sorry ... we only manage CHIMIE | INFORMATIQUE | MATHEMATIQUES");
+        System.exit(0);
+        return "";
+        // TO DO : implement a menu to add a new formation
+
     }
 
     public static void fillIDs() {
@@ -211,8 +235,8 @@ public class Aceman {
     }
 
     // all IDs have the first row
-    public static void fillRoles(){
-        
+    public static void fillRoles() {
+
         roles[1][0] = "1";
         roles[1][1] = "ADMIN";
         roles[1][2] = "0:00";
@@ -223,26 +247,28 @@ public class Aceman {
         roles[2][2] = "NULL";
         roles[2][3] = "NULL";
     }
-    public static void fillFormations(){
+
+    public static void fillFormations() {
         formations[1][0] = "1";
-        formations[1][1] = "1"; //id_facultes
+        formations[1][1] = "1"; // id_facultes
         formations[1][2] = "CHIMIE";
         formations[1][3] = "3";
         formations[1][4] = "Licence";
 
         formations[2][0] = "2";
-        formations[2][1] = "2"; //id_facultes
+        formations[2][1] = "2"; // id_facultes
         formations[2][2] = "INFORMATIQUE";
         formations[2][3] = "2";
         formations[2][4] = "Master";
 
         formations[3][0] = "3";
-        formations[3][1] = "1"; //id_facultes
+        formations[3][1] = "1"; // id_facultes
         formations[3][2] = "MATHEMATIQUES";
         formations[3][3] = "3";
         formations[3][4] = "Doctorat";
 
     }
+
     public static void fillFacsInsitutes() {
         facultiesInstitues[1][0] = "1";
         facultiesInstitues[1][1] = "FSDM";

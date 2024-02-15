@@ -217,7 +217,7 @@ public class Aceman {
                 }
 
             } else {
-                break;
+                continue;
             }
             System.out.println("\n");
         }

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Aceman {
     /*
-     * Users shoudl have a menu and choose what he wants to do
+     * Users shoudl have a welcome and choose what he wants to do
      */
 
     static Scanner scan = new Scanner(System.in);
@@ -24,92 +24,9 @@ public class Aceman {
         fillFormations();
         fillRoles();
 
+        welcome();
         menu();
-        int choice = scan.nextInt();
-
-        switch (choice) {
-            case 1:
-                printTable(users);
-                break;
-
-            case 2:
-                scan.nextLine(); // clear empty space
-                addMember();
-                System.out.println("\nHere are the updated member list: \n");
-                printTable(users);
-                memberRequest();
-                break;
-
-            case 3:
-                System.out.print("Which member would you like to remove ? ");
-                scan.nextLine(); // removing white space
-                String memberName = scan.nextLine();
-                System.out.print("Would you like to add another member? ");
-                remove(memberName);
-                printTable(users);
-                break;
-
-            case 4:
-                scan.nextLine(); // clear empty space
-                System.out.print("Which member do you want to upadate? ");
-                String updateName = scan.nextLine();
-                int line = searchByName(updateName);
-                if (line != -1) {
-                    // Do the replacement
-                    if (users[line][1].equals(updateName)) {
-                        System.out.print("Please enter the new first name: ");
-                        String newLName = scan.nextLine();
-                        users[line][1] = newLName;
-
-                    }
-                    if (users[line][2].equals(updateName)) {
-                        System.out.print("Please enter the new last name: ");
-                        String newFName = scan.nextLine();
-                        users[line][2] = newFName;
-
-                    }
-                    printTable(users);
-
-                } else {
-                    System.out.println(updateName + " is not an existing member. Would you like to add him/her ? ");
-                    String ans = scan.nextLine();
-                    if (ans.equalsIgnoreCase("yes")) {
-                        addMember();
-                    } else {
-                        System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!");
-                    }
-                }
-                break;
-
-            case 5:
-                scan.nextLine(); // removing empty space
-                System.out.print("Which member are you looking for: ");
-                String member = scan.nextLine();
-                int row = searchByName(member);
-                if(row != -1){
-                    System.out.print("\n\n");
-                    printMember(row);
-                    System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!\n");
-
-                } else {
-                    System.out.print("\n\n\t\tMember not FOUND!!!\n\nWould you like to add him/her as new member ?");
-                    memberRequest();
-                }
-                break;
-            // TO DO: report menu    
-            case 6:
-                System.out.println("To be implemented soon");
-                menu();
-            break;
-            
-            case 7:
-                System.exit(0);
-            break;
-            default:
-                System.out.println("\t\t\t\tIt looks like you don't understand English! GET AWAY and get a LIFE!");
-                System.exit(0);
-                break;
-        }
+        
 
     }
 
@@ -118,19 +35,19 @@ public class Aceman {
         int row = searchByName(memberName);
         if(row != -1){
             // TO DO: show the user the row to be deleted
-            System.out.print("\n");
+            System.out.print("\n\n");
             printMember(row);
-            System.out.print("\n");
+            System.out.print("\n\n");
             System.out.print("\nDeletion is irreversible ? Would you like to proceed ? ");
             String answer = scan.nextLine();
             if (answer.equalsIgnoreCase("yes")) {
                 for (int j = 1; j < users[row].length; j++) {
                     users[row][j] = null;
                 }
+                printTable(users);
             } else if (answer.equalsIgnoreCase("no")) {
-                // TO DO: call the menu
-                System.out.println("\n\n\n\tThanks for using ACEMANAGER ... and GOOD BYE!\n");
-                System.exit(0);
+                // TO DO: call the welcome
+                menu();
             }
         }
         else {
@@ -139,7 +56,7 @@ public class Aceman {
             if (resp.equalsIgnoreCase("yes")) {
                 addMember();
             } else if (resp.equalsIgnoreCase("no")) {
-                System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GoodBye!\n");
+                menu();
             }
         }
     }
@@ -185,12 +102,11 @@ public class Aceman {
 
         System.out.print("\tStudy Field : ");
         String fieldName = scan.nextLine().toUpperCase();
-        String fieldID = getFieldID(fieldName);
+        String fieldID = getFieldID(fieldName); // Creating a link key between users-->formation table
 
         // Yasseem's LOGIC
         System.out.print("\tDo you want to be an admin of this app? ");
         String answer = scan.nextLine();
-
         switch (answer) {
             case "cat":
                 answer = "1";
@@ -200,7 +116,6 @@ public class Aceman {
                 break;
         }
 
-        // checks for empty line before adding the new user
         for (int i = 0; i < users.length; i++) {
             if (users[i][1] == null) {
 
@@ -223,7 +138,112 @@ public class Aceman {
 
     }
 
+    public static void menu(){
+        System.out.print(
+            "\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t5. Find a member by their name.\n\n Or\n \t6. Would you like me to generate different reports?\n\t7. QUIT\n\nPlease choose an option : ");
+    
+        
+        int choice = 0;
+
+        
+        if(! scan.hasNextInt()) {
+            System.out.println("Please enter a valid option");
+            choice = scan.nextInt();
+        }
+            //scan.nextInt();
+
+        switch (choice) {
+            case 1:
+                scan.nextLine(); // avoid nextLine trap
+                printTable(users);
+                pressAnyKey();
+                break;
+
+            case 2:
+                scan.nextLine(); // clear empty space
+                addMember();
+                System.out.println("\nHere are the updated member list: \n");
+                printTable(users);
+                System.out.print("Would you like to add another member ? ");
+                memberRequest();
+                break;
+
+            case 3:
+                System.out.print("Which member would you like to remove ? ");
+                scan.nextLine(); // removing white space
+                String memberName = scan.nextLine();
+                remove(memberName);
+                pressAnyKey();
+                break;
+
+            case 4:
+                scan.nextLine(); // clear empty space
+                System.out.print("Which member do you want to upadate? " );
+                String updateName = scan.nextLine();
+                int line = searchByName(updateName);
+                if (line != -1) {
+                    // Do the replacement
+                    if (users[line][1].equals(updateName)) {
+                        System.out.print("Please enter the new first name: ");
+                        String newLName = scan.nextLine();
+                        users[line][1] = newLName;
+                    }
+                    if (users[line][2].equals(updateName)) {
+                        System.out.print("Please enter the new last name: ");
+                        String newFName = scan.nextLine();
+                        users[line][2] = newFName;
+                    }
+                    printTable(users);
+                    pressAnyKey();
+
+                } else {
+                    System.out.println(updateName + " is not an existing member. Would you like to add him/her ? ");
+                    String ans = scan.nextLine();
+                    if (ans.equalsIgnoreCase("yes")) {
+                        addMember();
+                    } else {
+                        System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!");
+                    }
+                }
+                break;
+
+            case 5:
+                scan.nextLine(); // removing empty space
+                System.out.print("Which member are you looking for: ");
+                String member = scan.nextLine();
+                int row = searchByName(member);
+                if(row != -1){
+                    System.out.print("\n\n");
+                    printMember(row);
+                    pressAnyKey();
+
+                } else {
+                    System.out.print("\n\n\t\tMember not FOUND!!!\n\nWould you like to add him/her as new member ?");
+                    memberRequest();
+                }
+                break;
+            // TO DO: report welcome    
+            case 6:
+                System.out.println("\t\t\t\tTo be implemented soon\n\n\n");
+                pressAnyKey();
+            break;
+            
+            case 7:
+                goodBye();
+            break;
+            default:
+                System.out.println("\t\t\t\tIt looks like you don't understand English! GET AWAY and go get a LIFE!");
+                System.exit(0);
+                break;
+        }
+    }
+
     // Helpers
+    public static void pressAnyKey(){
+        System.out.print("Press any key to continue... ");
+        scan.nextLine();
+        menu();            
+    }
     // ZAKS LOGIC
     public static int searchByName(String name) {
         int row;
@@ -239,17 +259,15 @@ public class Aceman {
     public static void memberRequest(){
         String answer = scan.nextLine();
         if (answer.equalsIgnoreCase("no")) {
-            System.out.println("\n\n\tThanks for using ACEMANAGER ... and GoodBye!!!\n\n");
+            menu();
         } else {
             while (answer.equalsIgnoreCase("yes")) {
                 addMember();
                 printTable(users);
                 System.out.print("Would you like to add another member? ");
                 answer = scan.nextLine();
-                if (answer.equalsIgnoreCase("no")) {
-                    System.out.println("\n\n\n\t\tThansk for using ACEMANAGER ... BYE!\n\n");
-                }
             }
+            menu();
         }
     }
 
@@ -266,6 +284,7 @@ public class Aceman {
     }
 
     public static void printTable(String[][] array) {
+        System.out.print("\n");
         for (int i = 0; i < array.length; i++) {
             // if it's not an empty row
             if (array[i][1] != null) {
@@ -316,9 +335,13 @@ public class Aceman {
 
     }
 
-    public static void menu(){
-        System.out.print(
-                "\n\n\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t5. Find a member by their name.\n\n Or\n \t6. Would you like me to generate different reports?\t7. QUIT\n\nPlease choose an option : ");
+    public static void welcome(){
+       System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n\n");
+    }
+
+    public static void goodBye(){
+        System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!\n");
+        System.exit(0);
     }
 
     public static void fillIDs() {

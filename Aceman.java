@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
 public class Aceman {
-    /*
-     * Users should have a welcome and choose what he wants to do
-     */
 
     static Scanner scan = new Scanner(System.in);
     static String[][] users = new String[20][13];
@@ -12,6 +9,9 @@ public class Aceman {
     static String[][] formations = new String[10][5];
     static String[][] facultiesInstitues = new String[10][4];
     static String[][] cities = new String[10][3];
+
+
+
 
     public static void main(String[] args) {
 
@@ -30,7 +30,6 @@ public class Aceman {
     }
 
     // GENERAL FUNCTIONS
-
     public static void welcome() {
         System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n\n");
     }

@@ -50,7 +50,11 @@ public class Aceman {
         while(scan.hasNext()){
             if(scan.hasNextInt()){
                 choice = scan.nextInt();
-                break;
+                if(choice >= 1 && choice <= 7){
+                    break;
+                } else{
+                    System.out.print("Please enter a digit between 1 - 7: ");
+                }
             } else {
                 System.out.print("Please enter a digit between 1 - 7: ");
                 scan.next();
@@ -136,7 +140,7 @@ public class Aceman {
                 goodBye();
                 break;
             default:
-                //System.out.println("\t\t\t\tIt looks like you don't understand English! GET AWAY and go get a LIFE!");
+                System.out.println("\t\t\t\tIt looks like you don't understand English! GET AWAY and go get a LIFE!");
                 System.exit(0);
                 break;
         }
@@ -333,7 +337,7 @@ public class Aceman {
     }
 
     public static void pressAnyKey() {
-        System.out.print("Press any key to continue... ");
+        System.out.print("Press Enter key to continue... ");
         scan.nextLine();
         menu();
     }

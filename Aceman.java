@@ -35,7 +35,7 @@ public class Aceman {
     }
 
     public static void goodBye() {
-        System.out.println("\n\n\t\tThanks for using ACEMANAGER ... and GOOD BYE!!!\n");
+        System.out.println("\n\n\t\tTHANKS FOR USING ACEMANAGER ... GOOD BYE!!!\n");
         System.exit(0);
     }
 
@@ -87,7 +87,7 @@ public class Aceman {
             case 4:
                 scan.nextLine(); // nextLine trap
                 System.out.print("Which member do you want to upadate? ");
-                String updateName = scan.nextLine();
+                String updateName = scan.nextLine().toUpperCase();
                 int line = searchByName(updateName);
                 if (line != -1) {
                     // Do the replacement
@@ -110,7 +110,7 @@ public class Aceman {
                     if (ans.equalsIgnoreCase("yes")) {
                         addMember();
                     } else {
-                        goodBye();
+                        menu();
                     }
                 }
                 break;
@@ -123,10 +123,11 @@ public class Aceman {
                 if (row != -1) {
                     System.out.print("\n\n");
                     printMember(row);
+                    System.out.print("\n\n");
                     pressAnyKey();
 
                 } else {
-                    System.out.print("\n\n\t\tMember not FOUND!!!\n\nWould you like to add him/her as new member ?");
+                    System.out.print("\n\n\t\tMember not FOUND!!!\n\nWould you like to add him/her as new member ? ");
                     memberRequest();
                 }
                 break;
@@ -498,7 +499,7 @@ public class Aceman {
         users[1][7] = "14";
         users[1][8] = "1"; // id_ville
         users[1][9] = "3"; // id_frmtion
-        users[1][10] = "altoihir@gmail.com";
+        users[1][10] = "alt@gmail.com";
         users[1][11] = "1";
         users[1][12] = "YES";
 
@@ -526,7 +527,7 @@ public class Aceman {
         users[3][7] = "22";
         users[3][8] = "4"; // id_city
         users[3][9] = "4"; // id_frmtion
-        users[3][10] = "charf@gmail.com";
+        users[3][10] = "chaf@gmail.com";
         users[3][11] = "3"; // id_role
         users[3][12] = "YES"; // statu
 
@@ -540,7 +541,7 @@ public class Aceman {
         users[4][7] = "44";
         users[4][8] = "1"; // id_city
         users[4][9] = "4"; // id_frmtion
-        users[4][10] = "onedak@gmail.com";
+        users[4][10] = "dak1@gmail.com";
         users[4][11] = "3"; // id_role
         users[4][12] = "YES"; // statu
 
@@ -555,7 +556,7 @@ public class Aceman {
         ;
         users[5][8] = "1"; // id_ville;
         users[5][9] = "4"; // id_frmtion
-        users[5][10] = "andjz@gmail.com";
+        users[5][10] = "andj@gmail.com";
         users[5][11] = "3"; // id_role
         users[5][12] = "YES"; // statu
 
@@ -569,7 +570,7 @@ public class Aceman {
         users[6][7] = "26";
         users[6][8] = "1"; // id_ville
         users[6][9] = "5"; // id_frmtion;
-        users[6][10] = "djaoid@gmail.com";
+        users[6][10] = "djad@gmail.com";
         users[6][11] = "3"; // id_role
         users[6][12] = "YES"; // statu
 
@@ -584,7 +585,7 @@ public class Aceman {
         ;
         users[7][8] = "1"; // id_ville;
         users[7][9] = "1"; // id_frmtion
-        users[7][10] = "benms@gmail.com";
+        users[7][10] = "ben@gmail.com";
         users[7][11] = "3"; // id_role
         users[7][12] = "YES"; // statu
 
@@ -598,7 +599,7 @@ public class Aceman {
         users[8][7] = "65";
         users[8][8] = "1"; // id_ville
         users[8][9] = "1"; // id_frmtion
-        users[8][10] = "ismoh@gmail.com";
+        users[8][10] = "ism@gmail.com";
         users[8][11] = "3"; // id_role
         users[8][12] = "YES"; // statu
     }

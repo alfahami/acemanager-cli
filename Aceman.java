@@ -10,9 +10,6 @@ public class Aceman {
     static String[][] facultiesInstitues = new String[10][4];
     static String[][] cities = new String[10][3];
 
-
-
-
     public static void main(String[] args) {
 
         // Populate Base table
@@ -42,16 +39,17 @@ public class Aceman {
     public static void menu() {
         System.out.print(
                 "\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t5. Find a member by their name.\n\n Or\n \t6. Would you like me to generate different reports?\n\t7. QUIT\n\nPlease choose an option : ");
-        
-        //TO DO: Force user to type integer, either he types integer or he quits the app - Done
+
+        // TO DO: Force user to type integer, either he types integer or he quits the
+        // app - Done
 
         int choice = 0;
-        while(scan.hasNext()){
-            if(scan.hasNextInt()){
+        while (scan.hasNext()) {
+            if (scan.hasNextInt()) {
                 choice = scan.nextInt();
-                if(choice >= 1 && choice <= 7){
+                if (choice >= 1 && choice <= 7) {
                     break;
-                } else{
+                } else {
                     System.out.print("Please enter a digit between 1 - 7: ");
                     // No need for another scan.next() as the scan will alway wait, scan tricks ;)
                 }
@@ -514,8 +512,8 @@ public class Aceman {
         users[2][8] = "1"; // id_ville;
         users[2][9] = "4"; // id_frmtion
         users[2][10] = "haf@gmail.com";
-        users[2][11] = "3"; // id_role
-        users[2][12] = "YES"; // statu
+        users[2][11] = "2"; // id_role
+        users[2][12] = "YES";
 
         users[3][0] = "3";
         users[3][1] = "CHARFIA";
@@ -528,8 +526,8 @@ public class Aceman {
         users[3][8] = "4"; // id_city
         users[3][9] = "4"; // id_frmtion
         users[3][10] = "chaf@gmail.com";
-        users[3][11] = "3"; // id_role
-        users[3][12] = "YES"; // statu
+        users[3][11] = "2"; // id_role
+        users[3][12] = "YES";
 
         users[4][0] = "4";
         users[4][1] = "DAKOINE";
@@ -542,8 +540,8 @@ public class Aceman {
         users[4][8] = "1"; // id_city
         users[4][9] = "4"; // id_frmtion
         users[4][10] = "dak1@gmail.com";
-        users[4][11] = "3"; // id_role
-        users[4][12] = "YES"; // statu
+        users[4][11] = "2"; // id_role
+        users[4][12] = "YES";
 
         users[5][0] = "5";
         users[5][1] = "ANDJOUZA";
@@ -553,12 +551,11 @@ public class Aceman {
         users[5][5] = "C016745B";
         users[5][6] = "202478";
         users[5][7] = "22";
-        ;
         users[5][8] = "1"; // id_ville;
         users[5][9] = "4"; // id_frmtion
         users[5][10] = "andj@gmail.com";
-        users[5][11] = "3"; // id_role
-        users[5][12] = "YES"; // statu
+        users[5][11] = "2"; // id_role
+        users[5][12] = "YES";
 
         users[6][0] = "6";
         users[6][1] = "DJAWAD";
@@ -571,8 +568,8 @@ public class Aceman {
         users[6][8] = "1"; // id_ville
         users[6][9] = "5"; // id_frmtion;
         users[6][10] = "djad@gmail.com";
-        users[6][11] = "3"; // id_role
-        users[6][12] = "YES"; // statu
+        users[6][11] = "1"; // id_role
+        users[6][12] = "YES";
 
         users[7][0] = "7";
         users[7][1] = "BEHRAM";
@@ -582,12 +579,11 @@ public class Aceman {
         users[7][5] = "C017747B";
         users[7][6] = "202478";
         users[7][7] = "65";
-        ;
         users[7][8] = "1"; // id_ville;
         users[7][9] = "1"; // id_frmtion
         users[7][10] = "ben@gmail.com";
-        users[7][11] = "3"; // id_role
-        users[7][12] = "YES"; // statu
+        users[7][11] = "2"; // id_role
+        users[7][12] = "NO";
 
         users[8][0] = "8";
         users[8][1] = "ISSIHAKA";
@@ -600,8 +596,36 @@ public class Aceman {
         users[8][8] = "1"; // id_ville
         users[8][9] = "1"; // id_frmtion
         users[8][10] = "ism@gmail.com";
-        users[8][11] = "3"; // id_role
-        users[8][12] = "YES"; // statu
+        users[8][11] = "1"; // id_role
+        users[8][12] = "NO";
+
+        users[9][0] = "9";
+        users[9][1] = "ABDALLAH";
+        users[9][2] = "SAID";
+        users[9][3] = "20/06/1999";
+        users[9][4] = "NB38488";
+        users[9][5] = "C018832B";
+        users[9][6] = "202418";
+        users[9][7] = "61";
+        users[9][8] = "4"; // id_ville
+        users[9][9] = "1"; // id_frmtion
+        users[9][10] = "abd@gmail.com";
+        users[9][11] = "1"; // id_role
+        users[9][12] = "NO";
+
+        users[10][0] = "10";
+        users[10][1] = "ROUSHDAT";
+        users[10][2] = "TOIHIR";
+        users[10][3] = "20/09/1994";
+        users[10][4] = "NBE104501";
+        users[10][5] = "C018109B";
+        users[10][6] = "2024120";
+        users[10][7] = "70";
+        users[10][8] = "3"; // id_ville
+        users[10][9] = "1"; // id_frmtion
+        users[10][10] = "rou@gmail.com";
+        users[10][11] = "2"; // id_role
+        users[10][12] = "NO";
     }
 
 }

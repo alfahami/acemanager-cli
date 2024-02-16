@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Aceman {
 
+    // TO DO: in case two members have the same name (deletion, update)
     static Scanner scan = new Scanner(System.in);
     static String[][] users = new String[20][13];
     static String[][] cin = new String[10][7];

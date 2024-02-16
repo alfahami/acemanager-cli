@@ -44,8 +44,18 @@ public class Aceman {
         System.out.print(
                 "\n\n What would you like to manage ?\n\n \t1. List all members.\n\t2. Add a new member\n\t3. Remove a member.\n\t4. Update an exisiting member.\n\t5. Find a member by their name.\n\n Or\n \t6. Would you like me to generate different reports?\n\t7. QUIT\n\nPlease choose an option : ");
         
-        //TO DO: Force user to type integer, either he types integer or he quits the app
-        int choice = scan.nextInt();
+        //TO DO: Force user to type integer, either he types integer or he quits the app - Done
+
+        int choice = 0;
+        while(scan.hasNext()){
+            if(scan.hasNextInt()){
+                choice = scan.nextInt();
+                break;
+            } else {
+                System.out.print("Please enter a digit between 1 - 7: ");
+                scan.next();
+            }
+        }
         switch (choice) {
             case 1:
                 scan.nextLine(); // nextLine trap
@@ -118,6 +128,7 @@ public class Aceman {
                 break;
             // TO DO: reports generation welcome menu
             case 6:
+                scan.nextLine(); // nextLine trap
                 System.out.println("\t\t\t\tTo be implemented soon\n\n\n");
                 pressAnyKey();
                 break;
@@ -125,7 +136,7 @@ public class Aceman {
                 goodBye();
                 break;
             default:
-                System.out.println("\t\t\t\tIt looks like you don't understand English! GET AWAY and go get a LIFE!");
+                //System.out.println("\t\t\t\tIt looks like you don't understand English! GET AWAY and go get a LIFE!");
                 System.exit(0);
                 break;
         }

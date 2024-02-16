@@ -54,6 +54,7 @@ public class Aceman {
                     break;
                 } else{
                     System.out.print("Please enter a digit between 1 - 7: ");
+                    // No need for another scan.next() as the scan will alway wait, scan tricks ;)
                 }
             } else {
                 System.out.print("Please enter a digit between 1 - 7: ");

@@ -25,6 +25,8 @@ public class Aceman {
         welcome();
         menu();
 
+        scan.close();/*  */
+
     }
 
     // GENERAL FUNCTIONS
@@ -341,6 +343,8 @@ public class Aceman {
         scan.nextLine();
         menu();
     }
+
+    
 
     // POPULATE ID AND BASE VALUES
     public static void fillIDs(String[][] array) {

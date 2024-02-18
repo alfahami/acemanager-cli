@@ -18,14 +18,14 @@ public class Aceman {
         fillIDs();
         fillCities();
         fillFacsInsitutes();
-        baseMembers();
         fillFormations();
         fillRoles();
-
+        baseMembers();
+        
         welcome();
         menu();
 
-        scan.close();/*  */
+        scan.close();
 
     }
 
@@ -94,12 +94,12 @@ public class Aceman {
                     // Do the replacement
                     if (users[line][1].equals(updateName)) {
                         System.out.print("Please enter the new first name: ");
-                        String newLName = scan.nextLine();
+                        String newLName = scan.nextLine().toUpperCase();
                         users[line][1] = newLName;
                     }
                     if (users[line][2].equals(updateName)) {
                         System.out.print("Please enter the new last name: ");
-                        String newFName = scan.nextLine();
+                        String newFName = scan.nextLine().toLowerCase();
                         users[line][2] = newFName;
                     }
                     printTable(users);
@@ -632,5 +632,4 @@ public class Aceman {
         users[10][11] = "2"; // id_role
         users[10][12] = "NO";
     }
-
 }

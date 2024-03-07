@@ -30,7 +30,11 @@ public class Aceman {
 
     // GENERAL FUNCTIONS
     public static void welcome() {
+<<<<<<< HEAD
         System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application manager\n\n\n");
+=======
+        System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n\n");
+>>>>>>> 0203e6c (code rfctr)
     }
 
     public static void goodBye() {
@@ -632,3 +636,7 @@ public class Aceman {
         users[10][12] = "NO";
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0203e6c (code rfctr)

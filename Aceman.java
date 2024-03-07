@@ -24,7 +24,6 @@ public class Aceman {
         
         welcome();
         menu();
-
         scan.close();
 
     }

@@ -667,6 +667,7 @@ public class Aceman {
     // GENERAL FUNCTIONS
     public static void welcome() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application manager\n\n\n");
 =======
         System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n\n");

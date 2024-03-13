@@ -30,7 +30,7 @@ public class Aceman {
 
     // GENERAL FUNCTIONS
     public static void welcome() {
-        System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application\n\n\n");
+        System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application manager\n\n\n");
     }
 
     public static void goodBye() {

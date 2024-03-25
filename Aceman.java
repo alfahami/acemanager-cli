@@ -1951,6 +1951,8 @@ public class Aceman {
 
     // GENERAL FUNCTIONS
     public static void welcome() {
+=======
+>>>>>>> ce8235e (code rfctr)
 <<<<<<< HEAD
         System.out.println("\n\n\t\t\tWelcome to ACEMANAGER: an assocoiation membership application manager\n\n\n");
 =======

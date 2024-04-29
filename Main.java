@@ -17,8 +17,7 @@ public class Main {
         Acemanager admin = new Acemanager(cities, formations, facs, members,cards);
         int option = menu();
         
-        inputProcess(option, admin);
-        
+        inputProcess(option, admin); 
     }
 
     public static void inputProcess(int option, Acemanager admin){
@@ -57,21 +56,29 @@ public class Main {
                         // TO DO: UPDATE A MEMBER
                         System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport or CIN ? ");
                         String passportCIN = scan.nextLine().toUpperCase();
-                        
+                        int comp = 0;
                         for (int i = 0; i < admin.getMembers().length; i++) {
                             while(passportCIN.equals(admin.getMember(i).getPassport().toString())){
-                                admin.printMember(admin.getMember(i), i);
-                                //TODO: ASK FOR UPDATES
+                                Member retrievedMember = admin.getMember(i);
+                                admin.printMember(retrievedMember, i);
+                                System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter member firstname ");
+                                String fname = scan.nextLine();
+                                System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter member lastname ");
+                                String lname = scan.nextLine();
+                                retrievedMember.setFirstName(fname);
+                                retrievedMember.setLastName(lname);
+                                admin.setMember(retrievedMember, i);
+                                System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tMember updated successfully");
+                                admin.printAnyArrays(admin.getMembers());
+                                comp++;
                                 break;
                             }  
-                            if(i == admin.getMembers().length) {
+                            if(comp == 1) break;
+                            else {
                                 System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport or CIN");
                                 cls(admin);
                             }
-                        }
-                        
-                            
-                        
+                        } 
                         break;
                     case "2.4":
                     // TO DO: DELETE A MEMBER
@@ -89,7 +96,7 @@ public class Main {
                         break;
                     case "3.2":
                         //TODO ADD CARDS
-                        System.out.println("You can only add a card while adding a member. Try adding add member please");
+                        System.out.println("\n\t\t\t\t\t\t\t\t\t\tYou can only add a card while adding a member. Try adding add member please");
                         cls(admin);
                         break;
                     case "3.3":

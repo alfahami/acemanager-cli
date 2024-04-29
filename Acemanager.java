@@ -154,6 +154,7 @@ public class Acemanager {
         this.setMember(newMember, this.members.length - 1); 
         this.printAnyArrays(this.getMembers());
     }
+    
 
     public Member findMemberByName(String fullName){
         for (int i = 0; i < this.members.length; i++) {

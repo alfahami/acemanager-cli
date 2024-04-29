@@ -280,6 +280,31 @@ public class Acemanager {
         }
         return null;
     }
+
+    public void printMember(Member member, int i){
+                        System.out.print("\n  ID | \t   FULL NAME  \t  | AGE | PASSPORT  | MAT AMCI |   CIN    |   PATTERN   |    CITY    |      FORMATION       |   DIPLOMA   | FACULTY | ADHESION |       EMAIL       |\n ----|--------------------|-----|-----------|----------|----------|-------------|------------|----------------------|-------------|---------|----------|-------------------|\n");
+            
+                    /*#### HACK TO HAVE AN AWESOME DISPLAY OF THE ARRAY IN THE CONSOLE */
+            
+                            // we used ternary for displayind id in the same column no matter how many digits it holds
+                            String fullName = member.getFirstName() + " " + member.getLastName();
+            
+                            // THINK ABOUT USING STRINGBUILDER as it offers a set length, the idea would be to print all the Stringbuilder object and when no value found print space
+                            
+                    /*### HACK ENDS  */
+                        System.out.println( printId(i, member.getIdMember())+ " | " + formatString(fullName, 17) + "| " + member.getAge() + "  | " + member.getPassport() + " | "  + member.getMatriculeAmci() + " | " + 
+                        
+                        (getCardById(member.getIdCard()) != null ? getCardById(member.getIdCard()).getCardNum() : "No Card!") + " | " + 
+                        
+                        (getCardById(member.getIdCard()) != null ? formatString(getCardById(member.getIdCard()).getPattern(), 10) : formatString("No Card!", 10))
+                        
+                        + "| " + formatString(getCityName(member.getIdCity()), 9)  + "| " + formatString(getFormationMember(member.getIdFormation()).getName(), 19) 
+                        
+                        + "| " + formatString(getFormationMember(member.getIdFormation()).getFCertificate(), 10) + "| " + formatString(getMemberFaculty(member.getIdFacultyInstitute()).getNameFacInst(), 6) + 
+                        
+                        "| " + (member.isMember() == true ? (formatString("YES ", 6)) : (formatString("NO ", 6))) + " | " + formatString(getMember(i).getEmail(), 16) + "|");
+                        System.out.print(" ----|--------------------|-----|-----------|----------|----------|-------------|------------|----------------------|-------------|---------|----------|-------------------|\n");
+    }
     
     public void printAnyArrays(Object[] arrays){
         if(arrays != null){

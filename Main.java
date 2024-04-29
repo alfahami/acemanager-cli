@@ -55,6 +55,23 @@ public class Main {
                         break;
                     case "2.3":
                         // TO DO: UPDATE A MEMBER
+                        System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport or CIN ? ");
+                        String passportCIN = scan.nextLine().toUpperCase();
+                        
+                        for (int i = 0; i < admin.getMembers().length; i++) {
+                            while(passportCIN.equals(admin.getMember(i).getPassport().toString())){
+                                admin.printMember(admin.getMember(i), i);
+                                //TODO: ASK FOR UPDATES
+                                break;
+                            }  
+                            if(i == admin.getMembers().length) {
+                                System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport or CIN");
+                                cls(admin);
+                            }
+                        }
+                        
+                            
+                        
                         break;
                     case "2.4":
                     // TO DO: DELETE A MEMBER
@@ -72,7 +89,7 @@ public class Main {
                         break;
                     case "3.2":
                         //TODO ADD CARDS
-                        System.out.println("You can only add a card while adding a member. Check add member please");
+                        System.out.println("You can only add a card while adding a member. Try adding add member please");
                         cls(admin);
                         break;
                     case "3.3":
@@ -411,7 +428,7 @@ public class Main {
     }
 
     public static String xMenu(int x, String arrayName){
-        System.out.print("\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".1 " + arrayName + " List\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".2 Add a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".3 Delete a " + arrayName +"\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".4 Update a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".5 Back to principal menu\n\t\t\t\t\t\t\t\t\t\tPlease choose an option: ");
+        System.out.print("\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".1 " + arrayName + " List\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".2 Add a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".3 Update a " + arrayName +"\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".4 Delete a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".5 Back to principal menu\n\t\t\t\t\t\t\t\t\t\tPlease choose an option: ");
         scan.nextLine();
         String choice = scan.nextLine();
         return choice;

@@ -368,7 +368,7 @@ public class Main {
 
         Member std1 = new Member(2, 3, 2, 1, 10, "ALLAOUI", "ZAKARIA",  "NBE356347", "13/09/1998", 20209854, "alzak@gmail.com", true);
 
-        Member std2 = new Member(3, 2, 4, 2, 3,"ABOU", "BACAR",  "NBE45688", "03/06/1998", 20193476, "abou@gmail.com", false);
+        Member std2 = new Member(3, 2, 4, 2, 3,"ABOU", "BACAR",  "NBE456889", "03/06/1998", 20193476, "abou@gmail.com", false);
 
         Member std3 = new Member(4, 5, 3, 1, 5, "MCHINDA", "MAROUANE",  "NBE565897", "13/06/2000", 20204356, "mch@gmail.com", false);
 

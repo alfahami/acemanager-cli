@@ -61,8 +61,8 @@ public class Acemanager {
     }
 
     public void setMembers(Member[] members){
-        Member[] copy = new Member[members.length];
-        for (int i = 0; i < copy.length; i++) {
+        this.members = new Member[members.length]; // we use the new size, it will avoid us shrinking the array in case of delete
+        for (int i = 0; i < this.members.length; i++) {
             this.members[i] = new Member(members[i]);
             this.members[i].setIdMember(i+1);        
         }
@@ -115,6 +115,14 @@ public class Acemanager {
         return copyCards;
     }
 
+    public void setCards(Card[] newCards) {
+        this.cards = new Card[newCards.length]; // new card length, we don't need to shrink the array
+        for (int i = 0; i < this.cards.length; i++) {
+            this.cards[i] = new Card(newCards[i]);
+            this.cards[i].setIdCard(i+1);
+        }
+    }
+
     public City getCity(int i){
         return new City(this.cities[i]);
     }
@@ -162,21 +170,29 @@ public class Acemanager {
     }
 
     // after deleting we need to do a left shift of the rest of the records if the member is in the middle.
+
     public void deleteMember(Member member, int index){
-        
+            
             Member[] copyMembers = new Member[this.members.length - 1];
             for (int i = 0; i < copyMembers.length; i++) {
+                    
                     if(i >= index) {
                         copyMembers[i] = new Member(getMember(i+1));
                         copyMembers[i].setIdMember(i+1);
                     }
                     else {
-                        copyMembers[i] = new Member(getMember(i));
-                        copyMembers[i].setIdMember(i+1);   
+                        copyMembers[i] = new Member(getMember(i));  
                     }
             }
-            this.shrink(this.members);
+           // this.shrink(this.members);
             this.setMembers(copyMembers);
+
+            // Delete deleted member's card
+            this.deleteCard(member.getIdCard());
+
+            // update the card member id in cards, as the members id have been altered after the member deletion
+            updateMemberCardId(cards, copyMembers, index);
+
         
     }
 
@@ -191,6 +207,29 @@ public class Acemanager {
     public void addCard(Card newCard){
         this.grow(cards);
         this.setCard(newCard, this.cards.length - 1);
+    }
+
+    public void updateMemberCardId(Card[] cards, Member[] members, int index) {
+        for (int i = index; i < cards.length; i++) {
+            cards[i].setIdMember(cards[i].getIdMember() - 1);
+        }
+    }
+
+    public void deleteCard(int cardId) {
+        // Copy array to be shrinked
+        Card[] copyCards = new Card[this.cards.length - 1];
+        for (int i = 0; i < copyCards.length; i++) {
+            if(i >= cardId - 1) {
+                copyCards[i] = this.cards[i+1];
+                copyCards[i].setIdCard(i+1);
+                
+            }
+            else {
+                copyCards[i] = this.cards[i];
+            }
+        }
+        
+        this.setCards(copyCards);
     }
 
     public boolean addCity(City newCity){
@@ -470,14 +509,14 @@ public class Acemanager {
     }
 
     public Member getMemberCard(int idMember){
-        Member member = new Member();
-        for (int i = 0; i < this.members.length; i++) {
-            if(idMember == getMember(i).getIdMember()){
-                member = getMember(i);
-                return member;
+            Member member = new Member();
+            for (int i = 0; i < this.getMembers().length; i++) {
+                if(idMember == getMember(i).getIdMember()){
+                    member = getMember(i);  
+                }
             }
-        }
-        return null;
+            return member;
+           
     }
 
     public String formatString(String s, int i){

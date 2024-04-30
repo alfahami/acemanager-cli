@@ -155,6 +155,30 @@ public class Acemanager {
         this.printAnyArrays(this.getMembers());
     }
     
+    public void updateMember(Member retrievedMember, int index, String fname, String lname){
+        retrievedMember.setFirstName(fname);
+        retrievedMember.setLastName(lname);
+        this.setMember(retrievedMember, index);
+    }
+
+    // after deleting we need to do a left shift of the rest of the records if the member is in the middle.
+    public void deleteMember(Member member, int index){
+        
+            Member[] copyMembers = new Member[this.members.length - 1];
+            for (int i = 0; i < copyMembers.length; i++) {
+                    if(i >= index) {
+                        copyMembers[i] = new Member(getMember(i+1));
+                        copyMembers[i].setIdMember(i+1);
+                    }
+                    else {
+                        copyMembers[i] = new Member(getMember(i));
+                        copyMembers[i].setIdMember(i+1);   
+                    }
+            }
+            this.shrink(this.members);
+            this.setMembers(copyMembers);
+        
+    }
 
     public Member findMemberByName(String fullName){
         for (int i = 0; i < this.members.length; i++) {
@@ -203,6 +227,18 @@ public class Acemanager {
         this.grow(this.getFormations());
         this.setFormation(newFormation, this.formations.length - 1);
         this.printAnyArrays(this.getFormations());
+    }
+
+    public void shrink(Object[] array) {
+        String className = array.getClass().getCanonicalName();
+        switch (className) {
+            case "Member[]":
+                    this.members = new Member[this.members.length - 1];
+                break;
+        
+            default:
+                break;
+        }
     }
 
     public void grow(Object[] arrays){

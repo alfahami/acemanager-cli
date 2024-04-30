@@ -53,8 +53,7 @@ public class Main {
                         cls(admin);
                         break;
                     case "2.3":
-                        // TO DO: UPDATE A MEMBER
-                        System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport or CIN ? ");
+                        System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport ? ");
                         String passportCIN = scan.nextLine().toUpperCase();
                         int comp = 0;
                         for (int i = 0; i < admin.getMembers().length; i++) {
@@ -65,9 +64,7 @@ public class Main {
                                 String fname = scan.nextLine();
                                 System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter member lastname ");
                                 String lname = scan.nextLine();
-                                retrievedMember.setFirstName(fname);
-                                retrievedMember.setLastName(lname);
-                                admin.setMember(retrievedMember, i);
+                                admin.updateMember(retrievedMember, i, fname, lname);
                                 System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tMember updated successfully");
                                 admin.printAnyArrays(admin.getMembers());
                                 comp++;
@@ -81,7 +78,29 @@ public class Main {
                         } 
                         break;
                     case "2.4":
-                    // TO DO: DELETE A MEMBER
+                    System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport ? ");
+                    String passport = scan.nextLine().toUpperCase();
+                    int count = 0;
+                    for (int i = 0; i < admin.getMembers().length; i++) {
+                        if(passport.equals(admin.getMember(i).getPassport().toString())){
+                            Member retrievedMember = admin.getMember(i);
+                            admin.printMember(retrievedMember, i);
+                            count++;
+                            System.out.print("\n\t\t\t\t\t\t\t\t\t\tAre you sure you want to delete this member? - Yes | No- ");
+                            String response = scan.nextLine();
+                            if(response.equalsIgnoreCase("yes")){
+                            admin.deleteMember(retrievedMember, i);
+                            admin.printAnyArrays(admin.getMembers());
+                            cls(admin);
+                            }
+                            break;
+                        } 
+                    }
+                    if(count == 1) break;
+                    else {
+                        System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport number");
+                        cls(admin);
+                    } 
                     break;
                     default:
                         break;
@@ -347,23 +366,23 @@ public class Main {
         
         Member admin = new Member(1, 1, 1, 2, 9, "TOIHIR", "AL-FAHAMI",  "NBE388507", "19/03/1985", 20111473, "alf@gmail.com", true);
 
-        Member std1 = new Member(2, 3, 2, 1, 10, "ALLAOUI", "ZAKARIA",  "NBE356347M", "13/09/1998", 20209854, "alzak@gmail.com", true);
+        Member std1 = new Member(2, 3, 2, 1, 10, "ALLAOUI", "ZAKARIA",  "NBE356347", "13/09/1998", 20209854, "alzak@gmail.com", true);
 
-        Member std2 = new Member(3, 2, 4, 2, 3,"ABOU", "BACAR",  "NBE456880P", "03/06/1998", 20193476, "abou@gmail.com", false);
+        Member std2 = new Member(3, 2, 4, 2, 3,"ABOU", "BACAR",  "NBE45688", "03/06/1998", 20193476, "abou@gmail.com", false);
 
-        Member std3 = new Member(4, 5, 3, 1, 5, "MCHINDA", "MAROUANE",  "NBE565897K", "13/06/2000", 20204356, "mch@gmail.com", false);
+        Member std3 = new Member(4, 5, 3, 1, 5, "MCHINDA", "MAROUANE",  "NBE565897", "13/06/2000", 20204356, "mch@gmail.com", false);
 
-        Member std4 = new Member(5, 8, 2, 3, 6, "ROUSHDAT", "YOUSSEF",  "NBE3348990h", "19/04/1998", 20223456, "roush@gmail.com", false);
+        Member std4 = new Member(5, 8, 2, 3, 6, "ROUSHDAT", "YOUSSEF",  "NBE334899", "19/04/1998", 20223456, "roush@gmail.com", false);
 
-        Member std5 = new Member(6, 4, 2, 5, 1, "ANDJIB", "ADAM",  "NBE356980U", "17/02/1999", 20187643, "and@gmail.com", true);
+        Member std5 = new Member(6, 4, 2, 5, 1, "ANDJIB", "ADAM",  "NBE356980", "17/02/1999", 20187643, "and@gmail.com", true);
 
-        Member std6 = new Member(7, 9, 1, 6, 2, "FAROUK", "HAIDAR",  "NBE678990F", "09/05/2002", 20166690, "far@gmail.com", false);
+        Member std6 = new Member(7, 9, 1, 6, 2, "FAROUK", "HAIDAR",  "NBE678990", "09/05/2002", 20166690, "far@gmail.com", false);
 
-        Member std7 = new Member(8, 7, 9, 1, 4,"ABJAD", "AJMAL",  "NBE3568999N", "06/09/1999", 20204599, "abj@gmail.com", true);
+        Member std7 = new Member(8, 7, 9, 1, 4,"ABJAD", "AJMAL",  "NBE356899", "06/09/1999", 20204599, "abj@gmail.com", true);
         
-        Member std8 = new Member(9, 3, 6, 2, 8, "AKMAL", "HAKIM",  "NBE556897G", "02/01/2004", 20216798, "akm@gmail.com", true);
+        Member std8 = new Member(9, 3, 6, 2, 8, "AKMAL", "HAKIM",  "NBE556897", "02/01/2004", 20216798, "akm@gmail.com", true);
 
-        Member moderator = new Member(10, 4, 8, 4, 3, "ISSIHAKA", "MOHAMED",  "NBE789996B", "19/01/1995", 20174567, "ism@gmail.com", true);
+        Member moderator = new Member(10, 4, 8, 4, 3, "ISSIHAKA", "MOHAMED",  "NBE789996", "19/01/1995", 20174567, "ism@gmail.com", true);
 
         Member[] members = {admin, std1, std2, std3, std4, std5, std6, std7, std8, moderator};
 

@@ -24,7 +24,7 @@ public class City {
         for (int i = 0; i < facs.length; i++) {
             this.facs[i] = new FacultyInstitute(source.facs[i]);
             this.facs[i].setIdCity(i + 1);
-        } 
+        }
     }
 
     public int getIdCity() {
@@ -76,5 +76,4 @@ public class City {
                 "}";
     }
 
-    
 }

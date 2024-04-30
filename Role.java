@@ -4,7 +4,6 @@ public class Role {
     private String session_start;
     private String session_end;
 
-
     public Role(int idRole, String name, String session_start, String session_end) {
         this.idRole = idRole;
         this.name = name;
@@ -46,11 +45,11 @@ public class Role {
 
     public String toString() {
         return "{" +
-            " idRole='" + getIdRole() + "'" +
-            ", name='" + getName() + "'" +
-            ", session_start='" + getSession_start() + "'" +
-            ", session_end='" + getSession_end() + "'" +
-            "}";
+                " idRole='" + getIdRole() + "'" +
+                ", name='" + getName() + "'" +
+                ", session_start='" + getSession_start() + "'" +
+                ", session_end='" + getSession_end() + "'" +
+                "}";
     }
 
 }

@@ -9,7 +9,8 @@ public class Card {
     private String expirationDate;
     private int pin;
 
-    public Card(int idCard, int idMember, int idCity, String cardNum, String obtentionDate, String expirationDate, int pin, String pattern) {
+    public Card(int idCard, int idMember, int idCity, String cardNum, String obtentionDate, String expirationDate,
+            int pin, String pattern) {
         this.idCard = idCard;
         this.idMember = idMember;
         this.cardNum = cardNum;
@@ -19,7 +20,7 @@ public class Card {
         this.pattern = pattern;
     }
 
-    public Card(Card source){
+    public Card(Card source) {
         this.idCard = source.idCard;
         this.idMember = source.idMember;
         this.cardNum = source.cardNum;
@@ -100,7 +101,7 @@ public class Card {
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
-    
+
     public int getPin() {
         return this.pin;
     }
@@ -111,13 +112,13 @@ public class Card {
 
     public String toString() {
         return "{" +
-            " idCard='" + getIdCard() + "'" +
-            ", idMember='" + getIdMember() + "'" +
-            ", idCity='" + getIdCity() + "'" +
-            ", cardNum='" + getCardNum() + "'" +
-            ", obtentionDate='" + getobtentionDate() + "'" +
-            ", expirationDate='" + getExpirationYear() + "'" +
-            ", pin='" + getPin() + "'" +
-            "}";
+                " idCard='" + getIdCard() + "'" +
+                ", idMember='" + getIdMember() + "'" +
+                ", idCity='" + getIdCity() + "'" +
+                ", cardNum='" + getCardNum() + "'" +
+                ", obtentionDate='" + getobtentionDate() + "'" +
+                ", expirationDate='" + getExpirationYear() + "'" +
+                ", pin='" + getPin() + "'" +
+                "}";
     }
 }

@@ -6,8 +6,8 @@ public class Formation {
     private int duration;
     /* private droppedYear: coul be calculated */
 
-    public Formation(){
-        
+    public Formation() {
+
     }
 
     public Formation(int idFormation, int idCity, String name, int duration, String fCertificate) {
@@ -17,7 +17,7 @@ public class Formation {
         this.duration = duration;
     }
 
-    public Formation(Formation source){
+    public Formation(Formation source) {
         this.idFormation = source.idFormation;
         this.fCertificate = source.fCertificate;
         this.name = source.name;
@@ -66,10 +66,10 @@ public class Formation {
 
     public String toString() {
         return "{" +
-            " idFormation='" + getIdFormation() + "'" +
-            ", idFacultyInstitute='" + getidFacultyInstitute() + "'" +
-            ", name='" + getName() + "'" +
-            ", duration='" + getDuration() + "'" +
-            "}";
+                " idFormation='" + getIdFormation() + "'" +
+                ", idFacultyInstitute='" + getidFacultyInstitute() + "'" +
+                ", name='" + getName() + "'" +
+                ", duration='" + getDuration() + "'" +
+                "}";
     }
 }

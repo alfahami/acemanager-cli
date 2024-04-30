@@ -2,8 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
-        
+
         // Fill Cities
         Formation[] formations = fillFormations();
         FacultyInstitute[] facs = fillFacsInsts(formations, null);
@@ -12,16 +13,15 @@ public class Main {
         Card[] cards = fillStayCard();
         Member[] members = fillMembers();
 
-
         // The dude that manages ACEM
-        Acemanager admin = new Acemanager(cities, formations, facs, members,cards);
+        Acemanager admin = new Acemanager(cities, formations, facs, members, cards);
         int option = menu();
-        
-        inputProcess(option, admin); 
+
+        inputProcess(option, admin);
     }
 
-    public static void inputProcess(int option, Acemanager admin){
-        switch(option){
+    public static void inputProcess(int option, Acemanager admin) {
+        switch (option) {
             case 1:
                 scan.nextLine(); // next Line trap
                 admin.printAnyArrays(admin.getMembers());
@@ -43,8 +43,8 @@ public class Main {
                         admin.addMember(newMember);
                         String answer = "yes";
                         System.out.print("Would you like to add another member? -Type \"Yes\" or \"No\"- ");
-                            answer = scan.nextLine();
-                        while(answer.equalsIgnoreCase("yes")) { 
+                        answer = scan.nextLine();
+                        while (answer.equalsIgnoreCase("yes")) {
                             Member anotherMember = inputMemberDetails(admin);
                             admin.addMember(anotherMember);
                             System.out.print("Would you like to add another member? -Type \"Yes\" or \"No\"- ");
@@ -57,7 +57,7 @@ public class Main {
                         String passportCIN = scan.nextLine().toUpperCase();
                         int comp = 0;
                         for (int i = 0; i < admin.getMembers().length; i++) {
-                            while(passportCIN.equals(admin.getMember(i).getPassport().toString())){
+                            while (passportCIN.equals(admin.getMember(i).getPassport().toString())) {
                                 Member retrievedMember = admin.getMember(i);
                                 admin.printMember(retrievedMember, i);
                                 System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter member firstname ");
@@ -69,60 +69,64 @@ public class Main {
                                 admin.printAnyArrays(admin.getMembers());
                                 comp++;
                                 break;
-                            }  
-                            if(comp == 1) break;
+                            }
+                            if (comp == 1)
+                                break;
                             else {
                                 System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport or CIN");
                                 cls(admin);
                             }
-                        } 
+                        }
                         break;
                     case "2.4":
-                    System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport ? ");
-                    String passport = scan.nextLine().toUpperCase();
-                    int count = 0;
-                    for (int i = 0; i < admin.getMembers().length; i++) {
-                        if(passport.equals(admin.getMember(i).getPassport().toString())){
-                            Member retrievedMember = admin.getMember(i);
-                            admin.printMember(retrievedMember, i);
-                            count++;
-                            System.out.print("\n\t\t\t\t\t\t\t\t\t\tAre you sure you want to delete this member? - Yes | No- ");
-                            String response = scan.nextLine();
-                            if(response.equalsIgnoreCase("yes")){
-                            admin.deleteMember(retrievedMember, i);
-                            admin.printAnyArrays(admin.getMembers());
-                            cls(admin);
+                        System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport ? ");
+                        String passport = scan.nextLine().toUpperCase();
+                        int count = 0;
+                        for (int i = 0; i < admin.getMembers().length; i++) {
+                            if (passport.equals(admin.getMember(i).getPassport().toString())) {
+                                Member retrievedMember = admin.getMember(i);
+                                admin.printMember(retrievedMember, i);
+                                count++;
+                                System.out.print(
+                                        "\n\t\t\t\t\t\t\t\t\t\tAre you sure you want to delete this member? - Yes | No- ");
+                                String response = scan.nextLine();
+                                if (response.equalsIgnoreCase("yes")) {
+                                    admin.deleteMember(retrievedMember, i);
+                                    admin.printAnyArrays(admin.getMembers());
+                                    cls(admin);
+                                }
+                                break;
                             }
+                        }
+                        if (count == 1)
                             break;
-                        } 
-                    }
-                    if(count == 1) break;
-                    else {
-                        System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport number");
-                        cls(admin);
-                    } 
-                    break;
+                        else {
+                            System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport number");
+                            cls(admin);
+                        }
+                        break;
                     default:
                         break;
                 }
                 break;
             case 3:
                 String choice1 = xMenu(3, "Card");
-                switch(choice1){
+                switch (choice1) {
                     case "3.1":
                         admin.printAnyArrays(admin.getCards());
                         cls(admin);
                         break;
                     case "3.2":
-                        //TODO ADD CARDS
-                        System.out.println("\n\t\t\t\t\t\t\t\t\t\tYou can only add a card while adding a member. Try adding add member please");
+                        // TODO ADD CARDS
+                        System.out.println(
+                                "\n\t\t\t\t\t\t\t\t\t\tYou can only add a card while adding a member. Try adding add member please");
                         cls(admin);
                         break;
                     case "3.3":
-                        //TODO UPDATE A CARD
+                        // TODO UPDATE A CARD
                         break;
                     case "3.4":
-                        //TODO DELETE A CARD
+                        // TODO DELETE A CARD
                         break;
                     default:
                         break;
@@ -130,14 +134,14 @@ public class Main {
                 break;
             case 4:
                 String choice2 = xMenu(4, "City");
-                switch(choice2){
+                switch (choice2) {
                     case "4.1":
                         admin.printAnyArrays(admin.getCities());
                         cls(admin);
                         break;
                     case "4.2":
                         City newCity = inputCity(admin, admin.getFaculties());
-                        if(admin.addCity(newCity)){
+                        if (admin.addCity(newCity)) {
                             admin.printAnyArrays(admin.getCities());
                             cls(admin);
                         } else {
@@ -145,8 +149,8 @@ public class Main {
                             cls(admin);
                         }
                         break;
-                    case "4.3": 
-                        //TODO UPDATE A CITY
+                    case "4.3":
+                        // TODO UPDATE A CITY
                         break;
                     case "4.4":
                         // TODO DELETE A CITY
@@ -157,7 +161,7 @@ public class Main {
                 break;
             case 5:
                 String choice3 = xMenu(5, "Formations");
-                switch(choice3){
+                switch (choice3) {
                     case "5.1":
                         admin.printAnyArrays(admin.getFormations());
                         cls(admin);
@@ -168,19 +172,19 @@ public class Main {
                         // PRESS ANY KEY TO CONTINUE
                         cls(admin);
                         break;
-                    case "5.3": 
-                        //TODO UPDATE A FORMATION
+                    case "5.3":
+                        // TODO UPDATE A FORMATION
                         break;
                     case "5.4":
                         // TODO DELETE A FORMATION
                         break;
                     default:
-                    break;
+                        break;
                 }
                 break;
-            case 6: 
+            case 6:
                 String choice4 = xMenu(6, "Faculty");
-                switch(choice4){
+                switch (choice4) {
                     case "6.1":
                         admin.printAnyArrays(admin.getFaculties());
                         cls(admin);
@@ -188,34 +192,35 @@ public class Main {
                     case "6.2":
                         System.out.print("\n\t\t\t\t\t\t\t\t\t\tWhich city is the faculty/institue located ? ");
                         String city = scan.nextLine();
-                        FacultyInstitute newFac = inputFacultyInstitute(admin, admin.getFormations(), admin.getCities(), city);
+                        FacultyInstitute newFac = inputFacultyInstitute(admin, admin.getFormations(), admin.getCities(),
+                                city);
                         admin.addFaculty(newFac);
                         cls(admin);
                         break;
-                    case "6.3": 
-                        //TODO UPDATE A FAC
+                    case "6.3":
+                        // TODO UPDATE A FAC
                         break;
                     case "6.4":
                         // TODO DELETE A FAC
                         break;
                     default:
-                    break;
+                        break;
                 }
                 break;
             case 7:
                 // TODO : implements reports generation
                 break;
-            case 8: 
+            case 8:
                 bye();
                 break;
-            default:   
+            default:
                 bye();
                 break;
-        } 
+        }
     }
-    
-    public static Member inputMemberDetails(Acemanager admin){
-        //scan.nextLine();
+
+    public static Member inputMemberDetails(Acemanager admin) {
+        // scan.nextLine();
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member first name? ");
         String fname = scan.nextLine().toUpperCase();
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member last name? ");
@@ -223,8 +228,9 @@ public class Main {
 
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport? ");
         String passport = scan.nextLine().toUpperCase();
-        while(admin.checkPassport(passport)) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tPassport number already in use\n\t\t\t\t\t\t\t\t\t\tPlease enter the correct passport number: ");
+        while (admin.checkPassport(passport)) {
+            System.out.print(
+                    "\n\t\t\t\t\t\t\t\t\t\tPassport number already in use\n\t\t\t\t\t\t\t\t\t\tPlease enter the correct passport number: ");
             passport = scan.nextLine();
         }
 
@@ -232,7 +238,7 @@ public class Main {
         String cityName = scan.nextLine().toUpperCase();
         City cityMember = admin.checkCity(cityName);
         int idCity = 0;
-        if(cityMember != null){
+        if (cityMember != null) {
             idCity = cityMember.getIdCity();
         } else {
             System.out.println("\n\t\t\t\t\t\t\t\t\t\tCity not found! let's add it");
@@ -241,10 +247,11 @@ public class Main {
             idCity = city.getIdCity();
         }
 
-       System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's cin? ");
+        System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's cin? ");
         String cin = scan.nextLine().toUpperCase();
-        while(admin.checkCin(cin)) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\t\tCIN number already in use\n\t\t\t\t\t\t\t\t\t\tPlease enter the correct cin number: ");
+        while (admin.checkCin(cin)) {
+            System.out.print(
+                    "\n\t\t\t\t\t\t\t\t\t\t\tCIN number already in use\n\t\t\t\t\t\t\t\t\t\tPlease enter the correct cin number: ");
             cin = scan.nextLine();
         }
         System.out.println("\n\t\t\t\t\t\t\t\t\t\t\tCIN doesn't exist yet, let's add it ");
@@ -256,8 +263,9 @@ public class Main {
         String birthDate = scan.nextLine();
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter AMCI's registration number ");
         int regNumber = scan.nextInt();
-        while(admin.checkMatAMCI(regNumber)) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tMatricule already in use\n\t\t\t\t\t\t\t\t\t\tPlease enter the correct AMCI mat: ");
+        while (admin.checkMatAMCI(regNumber)) {
+            System.out.print(
+                    "\n\t\t\t\t\t\t\t\t\t\tMatricule already in use\n\t\t\t\t\t\t\t\t\t\tPlease enter the correct AMCI mat: ");
             regNumber = scan.nextInt();
         }
         scan.nextLine();
@@ -266,7 +274,8 @@ public class Main {
         String field = scan.nextLine().toUpperCase();
         Formation formation = admin.findFormationByName(field);
         int idFormation = 0;
-        if(formation != null) idFormation = formation.getIdFormation();
+        if (formation != null)
+            idFormation = formation.getIdFormation();
         else {
             System.out.println("\n\t\t\t\t\t\t\t\t\t\tFaculty does't exist,let's go ahead and add it");
             Formation newFormation = inputFormation(admin);
@@ -277,37 +286,40 @@ public class Main {
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tWhich Faculty does the member study? ");
         String fac = scan.nextLine();
         int idFaculty = 0;
-        if(admin.findFacultyByName(fac) != null)
+        if (admin.findFacultyByName(fac) != null)
             idFaculty = admin.findFacultyByName(fac).getIdFacultyInstitute();
         else {
             System.out.println("\n\t\t\t\t\t\t\t\t\t\tFaculty/Institute doesn't exist, let's add it");
-            FacultyInstitute newFaculty = inputFacultyInstitute(admin, admin.getFormations(), admin.getCities(), cityName);
+            FacultyInstitute newFaculty = inputFacultyInstitute(admin, admin.getFormations(), admin.getCities(),
+                    cityName);
             admin.addFaculty(newFaculty);
             idFaculty = newFaculty.getIdFacultyInstitute();
         }
-        
+
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's email ");
         String email = scan.nextLine().toLowerCase();
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tIs the member adhering? type \"true or false\" ");
         boolean mAdmission = scan.nextBoolean();
         scan.nextLine();
-        
-        return new Member(admin.getMembers().length + 1, idCard, idCity, idFaculty, idFormation, fname, lname, passport, birthDate, regNumber, email, mAdmission);
-    }  
 
-    public static FacultyInstitute inputFacultyInstitute(Acemanager admin, Formation[] formations, City[] cities, String cityName){
+        return new Member(admin.getMembers().length + 1, idCard, idCity, idFaculty, idFormation, fname, lname, passport,
+                birthDate, regNumber, email, mAdmission);
+    }
+
+    public static FacultyInstitute inputFacultyInstitute(Acemanager admin, Formation[] formations, City[] cities,
+            String cityName) {
         int idCity = 0;
-        if(admin.checkCity(cityName) != null){
+        if (admin.checkCity(cityName) != null) {
             idCity = admin.checkCity(cityName).getIdCity();
             System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter Faculty/Institue name? ");
             String facultyInstitute = scan.nextLine().toUpperCase();
             return new FacultyInstitute(admin.getFaculties().length + 1, facultyInstitute, formations, idCity);
-        
+
             // If the city is not found, it should be added
         } else {
             System.out.println("\n\t\t\t\t\t\t\t\t\t\t" + cityName + " is not added yet! Let's add it now\n\n");
             City newCity = inputCity(admin, admin.getFaculties());
-            newCity.setIdCity(admin.getCities().length+1);
+            newCity.setIdCity(admin.getCities().length + 1);
             admin.grow(cities);
             admin.setCity(newCity, admin.getCities().length - 1);
             admin.printAnyArrays(admin.getCities());
@@ -315,12 +327,12 @@ public class Main {
             String facultyInstitute = scan.nextLine().toUpperCase();
 
             return new FacultyInstitute(admin.getFaculties().length + 1, facultyInstitute, formations, idCity);
-        }     
+        }
     }
 
-    public static Card inputCard(Acemanager admin, int idCity){
+    public static Card inputCard(Acemanager admin, int idCity) {
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter card ID number: ");
-       
+
         String cardNum = scan.nextLine().toUpperCase();
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease fill in the obtention date: ");
         String obtentionDate = scan.nextLine();
@@ -328,26 +340,27 @@ public class Main {
         String expirationDate = scan.nextLine();
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter the pin ? ");
         int pin = scan.nextInt();
-        scan.nextLine(); //next Line trap
+        scan.nextLine(); // next Line trap
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter the reason of the residence permit?  ");
         String reason = scan.nextLine();
 
-        return new Card(admin.getCards().length + 1, admin.getMembers().length + 1, idCity, cardNum, obtentionDate, expirationDate, pin, reason);
+        return new Card(admin.getCards().length + 1, admin.getMembers().length + 1, idCity, cardNum, obtentionDate,
+                expirationDate, pin, reason);
     }
 
     public static City inputCity(Acemanager admin, FacultyInstitute[] facs) {
-        System.out.print("\n\t\t\t\t\t\t\t\t\t\tWhat's the city called ? " );    
+        System.out.print("\n\t\t\t\t\t\t\t\t\t\tWhat's the city called ? ");
         String name = scan.nextLine().toUpperCase();
-        while(admin.checkCity(name) == null){
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tWhich region is the city located? " );
+        while (admin.checkCity(name) == null) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tWhich region is the city located? ");
             String region = scan.nextLine().toUpperCase();
-    
+
             return new City(admin.getCities().length + 1, name, region, facs);
         }
         return null;
     }
 
-    public static Formation inputFormation(Acemanager admin){
+    public static Formation inputFormation(Acemanager admin) {
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tWhat's the name of the formation? ");
         String formationName = scan.nextLine().toUpperCase();
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tHow many years does the formation have? ");
@@ -356,40 +369,50 @@ public class Main {
         System.out.print("\n\t\t\t\t\t\t\t\t\t\tWhich certificate is provided by the program? ");
         String certificate = scan.nextLine().toUpperCase();
         int idCity = 0;
-        
+
         return new Formation(admin.getFormations().length + 1, idCity, formationName, duration, certificate);
     }
 
     // FILL BASE ARRAYS
 
-    public static Member[] fillMembers(){
-        
-        Member admin = new Member(1, 1, 1, 2, 9, "TOIHIR", "AL-FAHAMI",  "NBE388507", "19/03/1985", 20111473, "alf@gmail.com", true);
+    public static Member[] fillMembers() {
 
-        Member std1 = new Member(2, 3, 2, 1, 10, "ALLAOUI", "ZAKARIA",  "NBE356347", "13/09/1998", 20209854, "alzak@gmail.com", true);
+        Member admin = new Member(1, 1, 1, 2, 9, "TOIHIR", "AL-FAHAMI", "NBE388507", "19/03/1985", 20111473,
+                "alf@gmail.com", true);
 
-        Member std2 = new Member(3, 2, 4, 2, 3,"ABOU", "BACAR",  "NBE456889", "03/06/1998", 20193476, "abou@gmail.com", false);
+        Member std1 = new Member(2, 3, 2, 1, 10, "ALLAOUI", "ZAKARIA", "NBE356347", "13/09/1998", 20209854,
+                "alzak@gmail.com", true);
 
-        Member std3 = new Member(4, 5, 3, 1, 5, "MCHINDA", "MAROUANE",  "NBE565897", "13/06/2000", 20204356, "mch@gmail.com", false);
+        Member std2 = new Member(3, 2, 4, 2, 3, "ABOU", "BACAR", "NBE456889", "03/06/1998", 20193476, "abou@gmail.com",
+                false);
 
-        Member std4 = new Member(5, 8, 2, 3, 6, "ROUSHDAT", "YOUSSEF",  "NBE334899", "19/04/1998", 20223456, "roush@gmail.com", false);
+        Member std3 = new Member(4, 5, 3, 1, 5, "MCHINDA", "MAROUANE", "NBE565897", "13/06/2000", 20204356,
+                "mch@gmail.com", false);
 
-        Member std5 = new Member(6, 4, 2, 5, 1, "ANDJIB", "ADAM",  "NBE356980", "17/02/1999", 20187643, "and@gmail.com", true);
+        Member std4 = new Member(5, 8, 2, 3, 6, "ROUSHDAT", "YOUSSEF", "NBE334899", "19/04/1998", 20223456,
+                "roush@gmail.com", false);
 
-        Member std6 = new Member(7, 9, 1, 6, 2, "FAROUK", "HAIDAR",  "NBE678990", "09/05/2002", 20166690, "far@gmail.com", false);
+        Member std5 = new Member(6, 4, 2, 5, 1, "ANDJIB", "ADAM", "NBE356980", "17/02/1999", 20187643, "and@gmail.com",
+                true);
 
-        Member std7 = new Member(8, 7, 9, 1, 4,"ABJAD", "AJMAL",  "NBE356899", "06/09/1999", 20204599, "abj@gmail.com", true);
-        
-        Member std8 = new Member(9, 3, 6, 2, 8, "AKMAL", "HAKIM",  "NBE556897", "02/01/2004", 20216798, "akm@gmail.com", true);
+        Member std6 = new Member(7, 9, 1, 6, 2, "FAROUK", "HAIDAR", "NBE678990", "09/05/2002", 20166690,
+                "far@gmail.com", false);
 
-        Member moderator = new Member(10, 4, 8, 4, 3, "ISSIHAKA", "MOHAMED",  "NBE789996", "19/01/1995", 20174567, "ism@gmail.com", true);
+        Member std7 = new Member(8, 7, 9, 1, 4, "ABJAD", "AJMAL", "NBE356899", "06/09/1999", 20204599, "abj@gmail.com",
+                true);
 
-        Member[] members = {admin, std1, std2, std3, std4, std5, std6, std7, std8, moderator};
+        Member std8 = new Member(9, 3, 6, 2, 8, "AKMAL", "HAKIM", "NBE556897", "02/01/2004", 20216798, "akm@gmail.com",
+                true);
+
+        Member moderator = new Member(10, 4, 8, 4, 3, "ISSIHAKA", "MOHAMED", "NBE789996", "19/01/1995", 20174567,
+                "ism@gmail.com", true);
+
+        Member[] members = { admin, std1, std2, std3, std4, std5, std6, std7, std8, moderator };
 
         return members;
     }
 
-    public static Card[] fillStayCard(){
+    public static Card[] fillStayCard() {
         Card card1 = new Card(1, 1, 1, "C018507B", "23/09/2023", "23/09/2026", 234361, "Reg. Exc.");
         Card card2 = new Card(2, 3, 2, "C019879H", "21/05/2022", "21/05/2025", 234565, "Reg. Exc.");
         Card card3 = new Card(3, 2, 4, "C019561K", "19/02/2021", "19/02/2024", 212565, "Etudiant");
@@ -401,13 +424,13 @@ public class Main {
         Card card9 = new Card(9, 10, 7, "C023456C", "02/01/2023", "02/01/2026", 123565, "Etudiant");
         Card card10 = new Card(10, 8, 5, "C034567P", "14/09/2020", "14/09/2023", 203565, "Travail");
 
-        Card[] cards = {card1, card2, card3, card4, card5, card6, card7, card8, card9, card10};
+        Card[] cards = { card1, card2, card3, card4, card5, card6, card7, card8, card9, card10 };
 
         return cards;
 
     }
 
-    public static FacultyInstitute[] fillFacsInsts(Formation[] formations, String cityName){
+    public static FacultyInstitute[] fillFacsInsts(Formation[] formations, String cityName) {
         FacultyInstitute fs = new FacultyInstitute(1, "FS", formations, 1);
         FacultyInstitute fsjes = new FacultyInstitute(2, "FSJES", formations, 2);
         FacultyInstitute ensa = new FacultyInstitute(3, "ENSA", formations, 5);
@@ -415,13 +438,13 @@ public class Main {
         FacultyInstitute est = new FacultyInstitute(5, "EST", formations, 4);
         FacultyInstitute facMed = new FacultyInstitute(5, "F. MD", formations, 4);
 
-        FacultyInstitute[] facs = {fs, fsjes, ensa, encg, est, facMed};
+        FacultyInstitute[] facs = { fs, fsjes, ensa, encg, est, facMed };
         return facs;
     }
 
-    public static Formation[] fillFormations(){
+    public static Formation[] fillFormations() {
         Formation smi = new Formation(1, 3, "SMI", 3, "LICENCE F");
-        Formation smc = new Formation(2, 4,"SMC", 3, "LICENCE F");
+        Formation smc = new Formation(2, 4, "SMC", 3, "LICENCE F");
         Formation smp = new Formation(3, 3, "SMP", 4, "LICENCE P");
         Formation sma = new Formation(4, 8, "SMA", 4, "BACHELOR");
         Formation mip = new Formation(5, 9, "MIP", 3, "LICENCE F");
@@ -431,13 +454,13 @@ public class Main {
         Formation dctrInfo = new Formation(9, 7, "BLOCKCHAIN IN IOT", 2, "DOCTORAT");
         Formation dctrBio = new Formation(10, 3, "BIO DES SYSTEMES", 3, "DOCTORAT");
 
-        Formation[] formations = {smi, sma, smp, smc, mip, bigData, mp, algebre, dctrInfo, dctrBio};
+        Formation[] formations = { smi, sma, smp, smc, mip, bigData, mp, algebre, dctrInfo, dctrBio };
 
         return formations;
     }
 
-    public static City[] fillCities(){
-        City fes = new City(1, "FES","FES-BOULEMANE", fillFacsInsts(fillFormations(), null));
+    public static City[] fillCities() {
+        City fes = new City(1, "FES", "FES-BOULEMANE", fillFacsInsts(fillFormations(), null));
         City meknes = new City(2, "MEKNES", "FES-BOULEMANE", fillFacsInsts(fillFormations(), null));
         City oujda = new City(3, "OUJDA", "FES-BOULEMANE", fillFacsInsts(fillFormations(), null));
         City rabat = new City(4, "RABAT", "RABAT-SALE-KENITRA", fillFacsInsts(fillFormations(), null));
@@ -448,32 +471,38 @@ public class Main {
         City tanger = new City(9, "TANGER", "TANGER-TETOUAN-AL HOCEIMA", fillFacsInsts(fillFormations(), null));
         City tetouan = new City(10, "TETOUAN", "TANGER-TETOUAN-AL HOCEIMA", fillFacsInsts(fillFormations(), null));
 
-        City[] cities = {fes, meknes, oujda, rabat, kenitra, sale, grandCasablanca, casablanca, tanger, tetouan};
+        City[] cities = { fes, meknes, oujda, rabat, kenitra, sale, grandCasablanca, casablanca, tanger, tetouan };
 
-        return cities;  
+        return cities;
     }
 
-    public static String xMenu(int x, String arrayName){
-        System.out.print("\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".1 " + arrayName + " List\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".2 Add a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".3 Update a " + arrayName +"\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".4 Delete a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".5 Back to principal menu\n\t\t\t\t\t\t\t\t\t\tPlease choose an option: ");
+    public static String xMenu(int x, String arrayName) {
+        System.out.print("\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".1 " + arrayName
+                + " List\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x) + ".2 Add a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t"
+                + String.valueOf(x) + ".3 Update a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x)
+                + ".4 Delete a " + arrayName + "\n\t\t\t\t\t\t\t\t\t\t" + String.valueOf(x)
+                + ".5 Back to principal menu\n\t\t\t\t\t\t\t\t\t\tPlease choose an option: ");
         scan.nextLine();
         String choice = scan.nextLine();
         return choice;
     }
 
-    public static void cls(Acemanager admin){
+    public static void cls(Acemanager admin) {
         System.out.print("\n\n\t\t\t\t\t\t\t\t\t\tType ENTER to continue.. ");
         scan.nextLine();
         System.out.print("\033\143");
         int choice = menu();
         inputProcess(choice, admin);
-        
+
     }
 
-    public static int menu(){
+    public static int menu() {
         System.out.println("\n\t\t\t\t\t\t\t\t\t===========================\n\n" +
-        "\t\t\t\t\t\t\t\t\t\s  Welcome to ACEMANAGER\n" + "\t\t\t\t\t\t\t\t\s  An association membership management\n\n"+
-        "\t\t\t\t\t\t\t\t\t===========================\n");
-        System.out.print("\n\t\t\t\t\t\t\t\t\tWhat would you like to do?\n\n\t\t\t\t\t\t\t\t\t1. List all tables\n\t\t\t\t\t\t\t\t\t2. Manage Members\n\t\t\t\t\t\t\t\t\t3. Manage Stay cards\n\t\t\t\t\t\t\t\t\t4. Manage Cities\n\t\t\t\t\t\t\t\t\t5. Manage Formations\n\t\t\t\t\t\t\t\t\t6. Manage Faculties\n\t\t\t\t\t\t\t\t\t7. Generate different reports\n\t\t\t\t\t\t\t\t\t8. Exit\n\t\t\t\t\t\t\t\t\tPlease choose an option: ");
+                "\t\t\t\t\t\t\t\t\t\s  Welcome to ACEMANAGER\n"
+                + "\t\t\t\t\t\t\t\t\s  An association membership management\n\n" +
+                "\t\t\t\t\t\t\t\t\t===========================\n");
+        System.out.print(
+                "\n\t\t\t\t\t\t\t\t\tWhat would you like to do?\n\n\t\t\t\t\t\t\t\t\t1. List all tables\n\t\t\t\t\t\t\t\t\t2. Manage Members\n\t\t\t\t\t\t\t\t\t3. Manage Stay cards\n\t\t\t\t\t\t\t\t\t4. Manage Cities\n\t\t\t\t\t\t\t\t\t5. Manage Formations\n\t\t\t\t\t\t\t\t\t6. Manage Faculties\n\t\t\t\t\t\t\t\t\t7. Generate different reports\n\t\t\t\t\t\t\t\t\t8. Exit\n\t\t\t\t\t\t\t\t\tPlease choose an option: ");
         int option = 0;
         while (scan.hasNext()) {
             if (scan.hasNextInt()) {
@@ -492,11 +521,11 @@ public class Main {
         return option;
     }
 
-    public static void bye(){
+    public static void bye() {
         System.out.println("\n\t\t\t\t\t\t\t\t\t===========================\n\n" +
-        "\t\t\t\t\t\t\t\t\t\s   BYE BYE!!! CHEERS!!!\n" + "\t\t\t\t\t\t\t\t\s\s\s\s\s   Thanks for using ACEMANAGER\n\n"+
-        "\t\t\t\t\t\t\t\t\t===========================\n");
+                "\t\t\t\t\t\t\t\t\t\s   BYE BYE!!! CHEERS!!!\n"
+                + "\t\t\t\t\t\t\t\t\s\s\s\s\s   Thanks for using ACEMANAGER\n\n" +
+                "\t\t\t\t\t\t\t\t\t===========================\n");
     }
-
 
 }

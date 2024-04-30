@@ -4,7 +4,6 @@ public class FacultyInstitute {
     private String nameFacInst;
     private Formation[] formations;
 
-
     public FacultyInstitute(int idFacultyInstitute, String nameFacInst, Formation[] formations, int idCity) {
         this.idCity = idCity;
         this.idFacultyInstitute = idFacultyInstitute;
@@ -12,7 +11,7 @@ public class FacultyInstitute {
         this.formations = new Formation[formations.length];
         for (int i = 0; i < formations.length; i++) {
             this.formations[i] = formations[i];
-            this.formations[i].setIdFormation(i+1);
+            this.formations[i].setIdFormation(i + 1);
         }
     }
 
@@ -23,7 +22,7 @@ public class FacultyInstitute {
         this.formations = new Formation[source.formations.length];
         for (int i = 0; i < formations.length; i++) {
             this.formations[i] = source.formations[i];
-            this.formations[i].setIdFormation(i+1);
+            this.formations[i].setIdFormation(i + 1);
         }
     }
 
@@ -50,8 +49,8 @@ public class FacultyInstitute {
     public void setNameFacInst(String nameFacInst) {
         this.nameFacInst = nameFacInst;
     }
-    
-    public String[] getFormationNames(){
+
+    public String[] getFormationNames() {
         String[] names = new String[this.formations.length];
         for (int i = 0; i < names.length; i++) {
             names[i] = formations[i].getName();
@@ -61,10 +60,10 @@ public class FacultyInstitute {
 
     public String toString() {
         return "{" +
-            " idFacultyInstitute='" + getIdFacultyInstitute() + "'" +
-            ", idCity='" + getIdCity() + "'" +
-            ", nameFacInst='" + getNameFacInst() + "'" +
-            "}";
+                " idFacultyInstitute='" + getIdFacultyInstitute() + "'" +
+                ", idCity='" + getIdCity() + "'" +
+                ", nameFacInst='" + getNameFacInst() + "'" +
+                "}";
     }
-    
+
 }

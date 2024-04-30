@@ -13,7 +13,6 @@ public class Member {
     private int idFormation;
     private int role;
 
-
     private String firstName;
     private String lastName;
     private String birthDate;
@@ -21,17 +20,19 @@ public class Member {
     private String email;
     private boolean isMember;
 
-
-    public Member(){
+    public Member() {
 
     }
-    public Member(int idMember, int idCard, int idCity, int idFacultyInstitute, int idFormation, String firstName, String lastName, String passport, String birthDate, int matriculeAmci, String email, boolean isMember) {
+
+    public Member(int idMember, int idCard, int idCity, int idFacultyInstitute, int idFormation, String firstName,
+            String lastName, String passport, String birthDate, int matriculeAmci, String email, boolean isMember) {
         this.idMember = idMember;
         this.idCard = idCard;
         this.idCity = idCity;
         this.idFormation = idFormation;
         this.idFacultyInstitute = idFacultyInstitute;
-        this.passport = new StringBuilder(passport);;
+        this.passport = new StringBuilder(passport);
+        ;
         this.passport.setLength(9);
         this.matriculeAmci = matriculeAmci;
         this.firstName = firstName;
@@ -42,9 +43,7 @@ public class Member {
         this.isMember = isMember;
     }
 
-    
-
-    public Member(Member source){
+    public Member(Member source) {
         this.idMember = source.idMember;
         this.idCard = source.idCard;
         this.idCity = source.idCity;
@@ -101,7 +100,6 @@ public class Member {
         this.idCity = idCity;
     }
 
-
     public int getIdFacultyInstitute() {
         return this.idFacultyInstitute;
     }
@@ -113,10 +111,10 @@ public class Member {
     public boolean isIsMember() {
         return this.isMember;
     }
+
     public void setIsMember(boolean isMember) {
         this.isMember = isMember;
     }
-
 
     public int getIdFormation() {
         return this.idFormation;
@@ -153,7 +151,7 @@ public class Member {
     public String getBirthDate() {
         return this.birthDate;
     }
-    
+
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
         setAge(toAge(birthDate)); // update automatically member's age
@@ -184,18 +182,21 @@ public class Member {
         return this.isMember;
     }
 
-    public void setisMember(boolean isMember) { 
+    public void setisMember(boolean isMember) {
         this.isMember = isMember;
     }
 
     // this shouldn't be accessed out of this class
-    private int toAge(String birthDate){
-        // DateTimeFormatter is specifying the format of the date that will be used in setting memebrr birthdate
+    private int toAge(String birthDate) {
+        // DateTimeFormatter is specifying the format of the date that will be used in
+        // setting memebrr birthdate
 
-        return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now()).getYears();
+        return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now())
+                .getYears();
     }
 
     public String toString() {
-        return getLastName() + " " + getFirstName() + " | " + getAge() + " ans | " + getPassport() + " | " + getMatriculeAmci() + " | " + getEmail();
+        return getLastName() + " " + getFirstName() + " | " + getAge() + " ans | " + getPassport() + " | "
+                + getMatriculeAmci() + " | " + getEmail();
     }
 }

@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Objects;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
@@ -54,28 +55,32 @@ public class Main {
                         break;
                     case "2.3":
                         System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease, enter member's passport ? ");
-                        String passportCIN = scan.nextLine().toUpperCase();
+                        String psprt = scan.nextLine().toUpperCase();
                         int comp = 0;
                         for (int i = 0; i < admin.getMembers().length; i++) {
-                            while (passportCIN.equals(admin.getMember(i).getPassport().toString())) {
+                            if (psprt.equalsIgnoreCase(admin.getMember(i).getPassport().toString())) {
                                 Member retrievedMember = admin.getMember(i);
                                 admin.printMember(retrievedMember, i);
-                                System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter member firstname ");
-                                String fname = scan.nextLine();
-                                System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter member lastname ");
-                                String lname = scan.nextLine();
-                                admin.updateMember(retrievedMember, i, fname, lname);
-                                System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tMember updated successfully");
-                                admin.printAnyArrays(admin.getMembers());
-                                comp++;
-                                break;
+                                System.out.print("\n\t\t\t\t\t\t\t\t\t\tAre you sure you want to update this member's info ? -Yes | No ");
+                                String ans = scan.nextLine();
+                                if(ans.equalsIgnoreCase("Yes")) {
+                                    System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter member firstname ");
+                                    String fname = scan.nextLine();
+                                    System.out.print("\n\t\t\t\t\t\t\t\t\t\tPlease enter member lastname ");
+                                    String lname = scan.nextLine();
+                                    admin.updateMember(retrievedMember, i, fname, lname);
+                                    System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tMember updated successfully");
+                                    admin.printAnyArrays(admin.getMembers());
+                                    comp++;
+                                    cls(admin);
+                                } else {
+                                    cls(admin);
+                                }
                             }
-                            if (comp == 1)
-                                break;
-                            else {
-                                System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport or CIN");
-                                cls(admin);
-                            }
+                        }
+                        if (comp == 0) {
+                            System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport or CIN");
+                            cls(admin);
                         }
                         break;
                     case "2.4":
@@ -86,27 +91,23 @@ public class Main {
                             if (passport.equals(admin.getMember(i).getPassport().toString())) {
                                 Member retrievedMember = admin.getMember(i);
                                 admin.printMember(retrievedMember, i);
-                                count++;
                                 System.out.print(
-                                        "\n\t\t\t\t\t\t\t\t\t\tAre you sure you want to delete this member? - Yes | No- ");
-                                String response = scan.nextLine();
-                                if (response.equalsIgnoreCase("yes")) {
-                                    admin.deleteMember(retrievedMember, i);
-                                    admin.printAnyArrays(admin.getMembers());
+                                    "\n\t\t\t\t\t\t\t\t\t\tAre you sure you want to delete this member? - Yes | No- ");
+                                    String response = scan.nextLine();
+                                    if (response.equalsIgnoreCase("yes")) {
+                                        admin.deleteMember(retrievedMember, i);
+                                        admin.printAnyArrays(admin.getMembers());
+                                        count++;
+                                        cls(admin);
+                                } else {
                                     cls(admin);
                                 }
-                                break;
                             }
                         }
-                        if (count == 1)
-                            break;
-                        else {
+                        if (count == 0) {
                             System.out.println("\n\t\t\t\t\t\t\t\t\t\tMember not found! Check passport number");
                             cls(admin);
                         }
-                        break;
-                    default:
-                        break;
                 }
                 break;
             case 3:

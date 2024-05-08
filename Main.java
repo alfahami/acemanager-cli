@@ -9,6 +9,8 @@ public class Main {
 
 
         Member moderator = admin;
+        Member amed = new Member(moderator);
+        System.out.println(amed.toString());
         System.out.println(moderator==admin);
         System.out.println(admin==shakur);
         System.out.println(admin.toString());

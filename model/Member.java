@@ -1,10 +1,11 @@
 package model;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-import lib.Helpers;
+import static lib.Helpers.*;
 
 public class Member {
 
@@ -74,8 +75,10 @@ public class Member {
     }
 
     public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-        toAge(birthDate);
+        if(!validateDate(birthDate)) throw new IllegalArgumentException("Birth date must be in format dd/MM/yyyy and cannot be null or blank. ");
+        else {
+            this.birthDate = birthDate;
+        }  
     }
 
     public int getAge() {
@@ -91,7 +94,7 @@ public class Member {
     }
 
     public void setEmail(String email) {
-        if(!Helpers.validate(email)) throw new IllegalArgumentException("Email is not valid");
+        if(!validate(email)) throw new IllegalArgumentException("Email is not valid");
         this.email = email;
     }
 

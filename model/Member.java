@@ -138,6 +138,7 @@ public class Member {
     }
 
     public void setIsMember(boolean isMember) {
+        if(!(isMember == true || isMember == false)) throw new IllegalArgumentException("Member is either a member (true) or not(false)");
         this.isMember = isMember;
     }
 

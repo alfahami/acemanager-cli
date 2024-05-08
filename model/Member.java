@@ -7,12 +7,12 @@ import java.time.format.DateTimeFormatter;
 public class Member {
 
     private int idMember;
-    private String firstName;       // can't be blank or null
-    private String lastName;        // can't be blank or null
-    private String birthDate;       // can't be null or not a date, frmt: dd/MM/yyyy
-    private int age;                // Should do automatically calucated from birthdate
+    private String firstName;       
+    private String lastName;        
+    private String birthDate;  // can't be null or not in the format: dd/MM/yyyy
+    private int age;           // Should do automatically be calucated from birthdate
     private String email;   
-    private String passport; // NBE388510, MUST: 9 chars max
+    private String passport;   // NBE388510, MUST: 9 chars max
     private int idCard;
     private int matriculeAmci; // 20111473, MUST: 8 chars
     private int idCity;
@@ -151,7 +151,6 @@ public class Member {
     }
 
     public int toAge(String birthDate) {
-
         // Calculate the date using LocalDate and Period 
         return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now()).getYears();
         

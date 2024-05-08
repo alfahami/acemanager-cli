@@ -93,6 +93,8 @@ public class Member {
     }
 
     public void setMatriculeAmci(int matriculeAmci) {
+        // AMCI matricule MUST be 8 digits
+        if(matriculeAmci <= 0 || String.valueOf(matriculeAmci).length() != 8) throw new IllegalArgumentException("AMCI matricule must contain 8 digits");
         this.matriculeAmci = matriculeAmci;
     }
 
@@ -145,7 +147,7 @@ public class Member {
     }
 
     public int toAge(String birthDate) {
-        
+
         // Calculate the date using LocalDate and Period 
         return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now()).getYears();
         

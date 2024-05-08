@@ -27,6 +27,7 @@ public class Member {
     }
 
     public void setIdMember(int idMember) {
+        if(idMember < 0) throw new IllegalArgumentException("Member ID must be greater than 0");
         this.idMember = idMember;
     }
 
@@ -61,7 +62,7 @@ public class Member {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        this.age = toAge(this.birthDate);
     }
 
     public String getEmail() {
@@ -85,7 +86,7 @@ public class Member {
     }
 
     public void setIdCard(int idCard) {
-        if(idCard <= 0) throw new IllegalArgumentException("Card ID must be greater than 0");
+        if(idCard < 0) throw new IllegalArgumentException("Card ID must be greater than 0");
         this.idCard = idCard;
     }
 
@@ -104,7 +105,7 @@ public class Member {
     }
 
     public void setIdCity(int idCity) {
-        if(idCity <= 0) throw new IllegalArgumentException("City ID must be greater than 0");
+        if(idCity < 0) throw new IllegalArgumentException("City ID must be greater than 0");
         this.idCity = idCity;
     }
 
@@ -113,7 +114,7 @@ public class Member {
     }
 
     public void setIdFaculty(int idFaculty) {
-        if(idFaculty <= 0) throw new IllegalArgumentException("Faculty ID must be greater than 0");
+        if(idFaculty < 0) throw new IllegalArgumentException("Faculty ID must be greater than 0");
         this.idFaculty = idFaculty;
     }
 
@@ -122,7 +123,7 @@ public class Member {
     }
 
     public void setIdField(int idField) {
-        if(idField <= 0) throw new IllegalArgumentException("Field ID must be greater than 0");
+        if(idField < 0) throw new IllegalArgumentException("Field ID must be greater than 0");
         this.idField = idField;
     }
 

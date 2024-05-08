@@ -85,6 +85,7 @@ public class Member {
     }
 
     public void setIdCard(int idCard) {
+        if(idCard <= 0) throw new IllegalArgumentException("Card ID must be greater than 0");
         this.idCard = idCard;
     }
 

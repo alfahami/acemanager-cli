@@ -25,7 +25,7 @@ public class Member {
     private boolean isMember;
 
 
-    public Member(int idMember, String firstName, String lastName, String birthDate, String email, String passport, int idCard, int matriculeAmci, int idCity, int idFaculty, int idField, int role, boolean isMember) {
+    public Member(int idMember, String firstName, String lastName, String birthDate, String email, String passport, int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, int role, boolean isMember) {
         setIdMember(idMember);
         setFirstName(firstName); 
         setLastName(lastName);
@@ -57,7 +57,7 @@ public class Member {
     }
 
     public void setFirstName(String firstName) {
-        if(firstName.equals(null) || firstName.isBlank()) throw new IllegalArgumentException("First name cannot be null or blank");
+        if(firstName == null || firstName.isBlank()) throw new IllegalArgumentException("First name cannot be null or blank");
         this.firstName = firstName;
     }
 
@@ -66,7 +66,7 @@ public class Member {
     }
 
     public void setLastName(String lastName) {
-        if(lastName.equals(null) || lastName.isBlank()) throw new IllegalArgumentException("Last name cannot be blank or null");
+        if(lastName == null || lastName.isBlank()) throw new IllegalArgumentException("Last name cannot be blank or null");
         this.lastName = lastName;
     }
 
@@ -103,7 +103,7 @@ public class Member {
     }
 
     public void setPassport(String passport) {
-        if(passport.length() < 0 || passport.length() > 9) throw new IllegalArgumentException("Passport number must have 9 digits!");
+        if(passport == null || passport.isBlank() || passport.length() != 9 ) throw new IllegalArgumentException("Passport number must have 9 digits and can't be null nor blank!");
         this.passport = passport;
     }
 

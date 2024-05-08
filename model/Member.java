@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
+import lib.Helpers;
+
 public class Member {
 
     private int idMember;
@@ -71,6 +73,7 @@ public class Member {
     }
 
     public void setEmail(String email) {
+        if(!Helpers.validate(email)) throw new IllegalArgumentException("Email is not valid");
         this.email = email;
     }
 

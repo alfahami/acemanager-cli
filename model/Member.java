@@ -20,10 +20,28 @@ public class Member {
     private int idCity;
     private int idFaculty;
     private int idField;
-    private int role;
+    private int idRole;
     private boolean isMember;
 
 
+    public Member(int idMember, String firstName, String lastName, String birthDate, int age, String email, String passport, int idCard, int matriculeAmci, int idCity, int idFaculty, int idField, int role, boolean isMember) {
+        setIdMember(idMember);
+        setFirstName(firstName); 
+        setLastName(lastName);
+        setBirthDate(birthDate);
+        setAge(age);
+        setEmail(email);;
+        setPassport(passport);
+        setIdCard(idCard);
+        setMatriculeAmci(matriculeAmci);
+        setIdCity(idCity);
+        setIdFaculty(idFaculty);
+        setIdField(idField);
+        setIdRole(role);
+        setIsMember(isMember);
+    }
+
+    
     public int getIdMember() {
         return this.idMember;
     }
@@ -132,12 +150,12 @@ public class Member {
         this.idField = idField;
     }
 
-    public int getRole() {
-        return this.role;
+    public int getIdRole() {
+        return this.idRole;
     }
 
-    public void setRole(int role) {
-        this.role = role;
+    public void setIdRole(int role) {
+        this.idRole = role;
     }
 
     public boolean isIsMember() {

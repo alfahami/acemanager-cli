@@ -1,6 +1,8 @@
 package model;
 
-import lib.Helpers;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Member {
 
@@ -140,6 +142,13 @@ public class Member {
     public void setIsMember(boolean isMember) {
         if(!(isMember == true || isMember == false)) throw new IllegalArgumentException("Member is either a member (true) or not(false)");
         this.isMember = isMember;
+    }
+
+    public int toAge(String birthDate) {
+        
+        // Calculate the date using LocalDate and Period 
+        return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now()).getYears();
+        
     }
 
 }

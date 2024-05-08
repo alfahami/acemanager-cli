@@ -16,10 +16,17 @@ public class Helpers {
     }
 
     // check Java 8 Docs for Date and SimpleFormat
-    public static boolean validateDate(String date) throws ParseException {            
-                
+    public static boolean validateDate(String date) {
+        if(date == null || date.isBlank()) return false;
+        else {
+            try {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
                 sdf.parse(date);
                 return true;
+            } catch(ParseException exception) {
+                System.out.println(date + " is Invalid Format");
+                return false;
+            }
+        }
     }
 }

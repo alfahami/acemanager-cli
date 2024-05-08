@@ -1,6 +1,5 @@
 package model;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -26,7 +25,7 @@ public class Member {
     private boolean isMember;
 
 
-    public Member(int idMember, String firstName, String lastName, String birthDate, String email, String passport, int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, int role, boolean isMember) {
+    public Member(int idMember, String firstName, String lastName, String birthDate, String email, String passport, int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, int idRole, boolean isMember) {
         setIdMember(idMember);
         setFirstName(firstName); 
         setLastName(lastName);
@@ -39,8 +38,25 @@ public class Member {
         setIdCity(idCity);
         setIdFaculty(idFaculty);
         setIdField(idField);
-        setIdRole(role);
+        setIdRole(idRole);
         setIsMember(isMember);
+    }
+
+    public Member(Member source) {
+        setIdMember(source.idMember);
+        setFirstName(source.firstName); 
+        setLastName(source.lastName);
+        setBirthDate(source.birthDate);
+        setAge(source.age);
+        setEmail(source.email);;
+        setPassport(source.passport);
+        setIdCard(source.idCard);
+        setMatriculeAmci(source.matriculeAmci);
+        setIdCity(source.idCity);
+        setIdFaculty(source.idFaculty);
+        setIdField(source.idField);
+        setIdRole(source.idRole);
+        setIsMember(source.isMember);
     }
 
     

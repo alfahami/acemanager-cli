@@ -2,6 +2,8 @@ package lib;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,17 +18,17 @@ public class Helpers {
     }
 
     // check Java 8 Docs for Date and SimpleFormat
-    public static boolean validateDate(String date) {
-        if(date == null || date.isBlank()) return false;
-        else {
-            try {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
-                sdf.parse(date);
-                return true;
-            } catch(ParseException exception) {
-                System.out.println(date + " is Invalid Format");
-                return false;
+    public static boolean isValidDateFormat(String format, String value) {
+        Date date = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            date = sdf.parse(value);
+            if (!value.equals(sdf.format(date))) {
+                date = null;
             }
+        } catch (ParseException ex) {
+            ex.printStackTrace();
         }
+        return date != null;
     }
 }

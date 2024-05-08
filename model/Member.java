@@ -12,7 +12,7 @@ public class Member {
     private String birthDate;       // can't be null or not a date, frmt: dd/MM/yyyy
     private int age;                // Should do automatically calucated from birthdate
     private String email;   
-    private StringBuilder passport; // NBE388510, MUST: 9 chars max
+    private String passport; // NBE388510, MUST: 9 chars max
     private int idCard;
     private int matriculeAmci; // 20111473, MUST: 8 chars
     private int idCity;
@@ -55,6 +55,7 @@ public class Member {
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+        toAge(birthDate);
     }
 
     public int getAge() {
@@ -73,11 +74,12 @@ public class Member {
         this.email = email;
     }
 
-    public StringBuilder getPassport() {
+    public String getPassport() {
         return this.passport;
     }
 
-    public void setPassport(StringBuilder passport) {
+    public void setPassport(String passport) {
+        if(passport.length() < 0 || passport.length() > 9) throw new IllegalArgumentException("Passport number must have 9 digits!");
         this.passport = passport;
     }
 

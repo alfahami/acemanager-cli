@@ -6,6 +6,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 import static lib.Helpers.*;
+import java.util.Objects;
 
 public class Member {
 
@@ -178,5 +179,36 @@ public class Member {
         // Calculate the date using LocalDate and Period 
         return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now()).getYears();   
     }
+
+
+    @Override
+    public String toString() {
+        return "[" +
+            "Full Name='" + getFirstName() + " " + getLastName() + "'" +
+            "| age='" + getAge() + "'" +
+            "| Email='" + getEmail() + "'" +
+            "| Passport='" + getPassport() + "'" +
+            "| Amci='" + getMatriculeAmci() + "'" +
+            "| Member status='" + isIsMember() + "'" +
+            "]";
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Member)) {
+            return false;
+        }
+        Member member = (Member) o;
+        return idMember == member.idMember && Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(birthDate, member.birthDate) && age == member.age && Objects.equals(email, member.email) && Objects.equals(passport, member.passport) && idCard == member.idCard && matriculeAmci == member.matriculeAmci && idCity == member.idCity && idFaculty == member.idFaculty && idField == member.idField && idRole == member.idRole && isMember == member.isMember;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idMember, firstName, lastName, birthDate, age, email, passport, idCard, matriculeAmci, idCity, idFaculty, idField, idRole, isMember);
+    }
+    
 
 }

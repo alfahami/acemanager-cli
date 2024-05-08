@@ -25,7 +25,7 @@ public class Member {
     private boolean isMember;
 
 
-    public Member(int idMember, String firstName, String lastName, String birthDate, int age, String email, String passport, int idCard, int matriculeAmci, int idCity, int idFaculty, int idField, int role, boolean isMember) {
+    public Member(int idMember, String firstName, String lastName, String birthDate, String email, String passport, int idCard, int matriculeAmci, int idCity, int idFaculty, int idField, int role, boolean isMember) {
         setIdMember(idMember);
         setFirstName(firstName); 
         setLastName(lastName);
@@ -176,8 +176,7 @@ public class Member {
 
     public int toAge(String birthDate) {
         // Calculate the date using LocalDate and Period 
-        return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now()).getYears();
-        
+        return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now()).getYears();   
     }
 
 }

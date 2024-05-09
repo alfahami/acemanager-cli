@@ -65,9 +65,9 @@ public class City {
     @Override
     public String toString() {
         return "\n[" +
-            " ID='" + getid() + "'" +
-            ", Name='" + getName() + "'" +
-            ", Region='" + getRegion() + "'" +
+            " ID='" + id + "'" +
+            ", Name='" + name + "'" +
+            ", Region='" + region + "'" +
             "]";
     }
     

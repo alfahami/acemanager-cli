@@ -39,8 +39,8 @@ public class Faculty {
     @Override
     public String toString() {
         return "[" +
-                " ID='" + getId() + "'" +
-                ", Name='" + getName() + "'" +
+                " ID='" + id + "'" +
+                ", Name='" + name + "'" +
                 "]";
     }
 

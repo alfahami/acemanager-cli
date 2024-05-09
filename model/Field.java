@@ -78,11 +78,11 @@ public class Field {
     @Override
     public String toString() {
         return "[" +
-                " ID='" + getId() + "'" +
-                ", IDFac='" + getIdFac() + "'" +
-                ", Name='" + getName() + "'" +
-                ", Certificate='" + getCertificate() + "'" +
-                ", Duration='" + getDuration() + "'" +
+                " ID='" + id + "'" +
+                ", IDFac='" + idFac + "'" +
+                ", Name='" + name + "'" +
+                ", Certificate='" + certificate + "'" +
+                ", Duration='" + duration + "'" +
                 "]";
     }
 

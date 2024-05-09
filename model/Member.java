@@ -198,12 +198,12 @@ public class Member {
     @Override
     public String toString() {
         return "\n[" +
-            "Full Name='" + getFirstName() + " " + getLastName() + "'" +
-            ", age='" + getAge() + "'" +
-            ", Email='" + getEmail() + "'" +
-            ", Passport='" + getPassport() + "'" +
-            ", Amci='" + getMatriculeAmci() + "'" +
-            ", Member status='" + isIsMember() + "'" +
+            "Full Name='" + firstName + " " + lastName + "'" +
+            ", age='" + age + "'" +
+            ", Email='" + email + "'" +
+            ", Passport='" + passport + "'" +
+            ", Amci='" + matriculeAmci + "'" +
+            ", Member status='" + isMember + "'" +
             "]";
     }
 

@@ -22,7 +22,7 @@ public class Helpers {
             LocalDate.parse(value, DateTimeFormatter.ofPattern(format));
             return true;
         } catch ( DateTimeParseException ex) {
-            throw new IllegalArgumentException("Invalid date format");
+            throw new IllegalArgumentException("Invalid date format: date format must strictly follow \"dd/MM/yyyy\"");
         }
     }
 }

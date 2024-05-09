@@ -19,14 +19,17 @@ public class Main {
         facs.add(est);
         facs.add(ensa);
 
-        System.out.println(facs.toString());
+        System.out.println(facs.toString()+"\n\n\n");
 
         City fes = new City(1, "FES", "FES-BOULEMANE", facs);
         Faculty fm = new Faculty(6, "FM", "Faculty of Medecine");
         fes.addFaculty(fm);
 
         Faculty retrievedFaculty = fes.getFaculty(0);
-        System.out.println(retrievedFaculty.toString());
+        System.out.println(retrievedFaculty.toString()+"\n\n");
+        fes.deleteFaculty(0);
+
+        System.out.println("\n\n\n");
 
         System.out.println(fes.getFacs().toString());        
     }

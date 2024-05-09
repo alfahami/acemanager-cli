@@ -1,4 +1,5 @@
 package model;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class City {
@@ -6,11 +7,13 @@ public class City {
     private String name;
     private String region;
 
+    private ArrayList<Faculty> facs;
 
-    public City(int id, String name, String region) {
+    public City(int id, String name, String region, ArrayList<Faculty> facs) {
         setId(id);
         setName(name);
         setRegion(region);
+        setFacs(facs);
     }
 
     public City(City source) {
@@ -44,6 +47,33 @@ public class City {
     public void setRegion(String region) {
         if(region == null || region.isBlank()) throw new IllegalArgumentException("Region name cannot be null or blank");
         this.region = region;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    // Deep copying in order to protect the sate of our object
+    public Faculty getFaculty(int index) {
+        return new Faculty(this.facs.get(index));
+    }
+
+    public ArrayList<Faculty> getFacs() {
+        ArrayList<Faculty> copyFacs = new ArrayList<>();
+        for (Faculty faculty : this.facs) {
+            copyFacs.add(new Faculty(faculty));
+        }
+        return copyFacs;
+    }
+
+    public void setFacs(ArrayList<Faculty> facs) {
+        for (Faculty faculty : facs) {
+            this.facs.add(new Faculty(faculty));
+        }
+    }
+
+    public void addFaculty(Faculty newFaculty) {
+        this.facs.add(new Faculty(newFaculty));
     }
 
     @Override

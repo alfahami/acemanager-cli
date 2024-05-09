@@ -75,7 +75,7 @@ public class Card {
     public void setCin(String cin) {
         if (cin == null || cin.isBlank() || cin.length() != 8)
             throw new IllegalArgumentException("CIN must have 8 caracters");
-        this.cin = cin;
+        this.cin = cin.toUpperCase();
     }
 
     public String getReason() {
@@ -94,7 +94,7 @@ public class Card {
 
     public void setObtentionDate(String obtentionDate) {
         if(obtentionDate == null || obtentionDate.isBlank()) throw new IllegalArgumentException("Obtention date cannot be blank or null");
-        if(isValidDateFormat(obtentionDate, obtentionDate)) this.obtentionDate = obtentionDate;
+        if(isValidDateFormat("dd/MM/yyyy", obtentionDate)) this.obtentionDate = obtentionDate;
     }
 
     public String getExpirationDate() {
@@ -103,7 +103,7 @@ public class Card {
 
     public void setExpirationDate(String expirationDate) {
         if(expirationDate == null || expirationDate.isBlank()) throw new IllegalArgumentException("Excpiration date cannot be null or blank");
-        if(isValidDateFormat(expirationDate, expirationDate)) this.expirationDate = expirationDate;
+        if(isValidDateFormat("dd/MM/yyyy", expirationDate)) this.expirationDate = expirationDate;
     }
 
     public int getPin() {

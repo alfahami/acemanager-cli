@@ -1,20 +1,33 @@
-import model.Card;
-import model.Field;
-import model.Member;
+import java.util.ArrayList;
+
+import model.City;
+import model.Faculty;
 
 public class Main {
 
     public static void main(String[] args) {
-        
-        Card fes = new Card(1, 1, 1, "C018507J", "WORK", "21/09/2023", "21/09/2026", 12346);
-        Card fesCopy = new Card(fes);
+        Faculty fs = new Faculty(1, "FS", "Faculty of Science Dar Mehraz");
+        Faculty fst = new Faculty(2, "FST", "Faculty of Science and techniques");
+        Faculty fsjes = new Faculty(3, "FSJES", "Faculty of Science and Juridic");
+        Faculty est = new Faculty(4, "EST", "Superior School of Technology");
+        Faculty ensa = new Faculty(5, "ENSA", "National School of Applied Science");
 
-        Card fesObj = fes;
-        Card fesNew = new Card(1, 1, 1, "C018507J", "WORK", "21/09/2023", "21/09/2026", 1234);
+        ArrayList<Faculty> facs = new ArrayList<>();
+        facs.add(fs);
+        facs.add(fst);
+        facs.add(fsjes);
+        facs.add(est);
+        facs.add(ensa);
 
-        System.out.println(fes.toString());
-        System.out.println(fesCopy.equals(fes));
-        System.out.println(fes==fesObj);
-        System.out.println(fesObj.equals(fesNew));
+        System.out.println(facs.toString());
+
+        City fes = new City(1, "FES", "FES-BOULEMANE", facs);
+        Faculty fm = new Faculty(6, "FM", "Faculty of Medecine");
+        fes.addFaculty(fm);
+
+        Faculty retrievedFaculty = fes.getFaculty(0);
+        System.out.println(retrievedFaculty.toString());
+
+        System.out.println(fes.getFacs().toString());        
     }
 }

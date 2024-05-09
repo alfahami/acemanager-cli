@@ -68,7 +68,7 @@ public class City {
             " ID='" + getIdCity() + "'" +
             ", Name='" + getName() + "'" +
             ", Region='" + getRegion() + "'" +
-            " ]";
+            "]";
     }
     
 }

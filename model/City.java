@@ -2,30 +2,30 @@ package model;
 import java.util.Objects;
 
 public class City {
-    private int idCity;
+    private int id;
     private String name;
     private String region;
 
 
-    public City(int idCity, String name, String region) {
-        setIdCity(idCity);
+    public City(int id, String name, String region) {
+        setId(id);
         setName(name);
         setRegion(region);
     }
 
     public City(City source) {
-        setIdCity(source.idCity);
+        setId(source.id);
         setName(source.name);
         setRegion(source.region);
     }
 
-    public int getIdCity() {
-        return this.idCity;
+    public int getid() {
+        return this.id;
     }
 
-    public void setIdCity(int idCity) {
-        if(idCity <= 0) throw new IllegalArgumentException("City ID must be greater than 0");
-        this.idCity = idCity;
+    public void setId(int id) {
+        if(id <= 0) throw new IllegalArgumentException("City ID must be greater than 0");
+        this.id = id;
     }
 
     public String getName() {
@@ -54,18 +54,18 @@ public class City {
             return false;
         }
         City city = (City) o;
-        return idCity == city.idCity && Objects.equals(name, city.name) && Objects.equals(region, city.region);
+        return id == city.id && Objects.equals(name, city.name) && Objects.equals(region, city.region);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCity, name, region);
+        return Objects.hash(id, name, region);
     }
 
     @Override
     public String toString() {
         return "\n[" +
-            " ID='" + getIdCity() + "'" +
+            " ID='" + getid() + "'" +
             ", Name='" + getName() + "'" +
             ", Region='" + getRegion() + "'" +
             "]";

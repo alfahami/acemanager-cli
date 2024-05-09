@@ -1,18 +1,17 @@
-import model.City;
-import model.Faculty;
+import model.Field;
 
 public class Main {
 
     public static void main(String[] args) {
-        Faculty fes = new Faculty(1, " ");
-        Faculty fesCopy = new Faculty(fes);
+        Field fes = new Field(0, 1, "SMI", "LF", 3);
+        Field fesCopy = new Field(fes);
 
-        Faculty fesObj = fes;
-        Faculty fesNew = new Faculty(1, "FSDM");
+        Field fesObj = fes;
+        Field fesNew = new Field(1, 1, "SMI", "LF", 3);
 
         System.out.println(fes.toString());
         System.out.println(fesCopy.equals(fes));
-        System.out.println(fes==fesNew);
+        System.out.println(fes==fesObj);
         System.out.println(fesObj.equals(fesNew));
     }
 }

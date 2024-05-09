@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,13 +22,14 @@ public class Helpers {
     public static boolean isValidDateFormat(String format, String value) {
         Date date = null;
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            Locale.setDefault(Locale.FRANCE);
+            SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
             date = sdf.parse(value);
             if (!value.equals(sdf.format(date))) {
                 date = null;
             }
-        } catch (ParseException ex) {
-            ex.printStackTrace();
+        } catch (ParseException | DateTimeParseException ex) {
+            throw new DateTimeParseException("Invalid date format", value, 6);
         }
         return date != null;
     }

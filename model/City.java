@@ -20,6 +20,7 @@ public class City {
         setId(source.id);
         setName(source.name);
         setRegion(source.region);
+        setFacs(source.facs);
     }
 
     public int getid() {
@@ -67,6 +68,7 @@ public class City {
     }
 
     public void setFacs(ArrayList<Faculty> facs) {
+        this.facs = new ArrayList<>();
         for (Faculty faculty : facs) {
             this.facs.add(new Faculty(faculty));
         }

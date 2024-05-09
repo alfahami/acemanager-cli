@@ -6,7 +6,6 @@ public class Faculty {
     private int id;
     private String abbr;
     private String name;
-    
 
     public Faculty(int id, String abbr, String name) {
         setId(id);
@@ -30,16 +29,15 @@ public class Faculty {
         this.id = id;
     }
 
-
     public String getAbbr() {
         return this.abbr;
     }
 
     public void setAbbr(String abbr) {
-        if(abbr == null || abbr.isBlank()) throw new IllegalArgumentException("Abbreviation cannot be null or blank");
+        if (abbr == null || abbr.isBlank())
+            throw new IllegalArgumentException("Abbreviation cannot be null or blank");
         this.abbr = abbr;
     }
-
 
     public String getName() {
         return this.name;
@@ -60,7 +58,6 @@ public class Faculty {
                 "]";
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -76,6 +73,4 @@ public class Faculty {
     public int hashCode() {
         return Objects.hash(id, abbr, name);
     }
-    
-
 }

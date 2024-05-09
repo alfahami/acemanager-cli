@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Faculty {
@@ -7,10 +8,13 @@ public class Faculty {
     private String abbr;
     private String name;
 
-    public Faculty(int id, String abbr, String name) {
+    private ArrayList<Field> fields;
+
+    public Faculty(int id, String abbr, String name, ArrayList<Field> fields) {
         setId(id);
         setAbbr(abbr);
         setName(name);
+        setFields(fields);
     }
 
     public Faculty(Faculty source) {
@@ -48,6 +52,36 @@ public class Faculty {
             throw new IllegalArgumentException("Faculty name cannot be null or blank");
         this.name = name;
     }
+
+    // Deep copy to protect the state of our object
+    public ArrayList<Field> getFields() {
+        ArrayList<Field> copyFields = new ArrayList<>(); 
+        for (Field field : this.fields) {
+            copyFields.add(new Field(field));
+        }
+        return copyFields;
+    }
+
+    public Field getField(int index) {
+        return new Field(this.fields.get(index));
+    }
+
+    public void setFields(ArrayList<Field> fields) {
+        this.fields = new ArrayList<>();
+        for (Field field : fields) {
+            this.fields.add(new Field(field));
+        }
+    }
+
+    public void addField(Field field) {
+        this.fields.add(new Field(field));
+    }
+
+    public void removeField(int index) {
+        this.fields.remove(index);
+    }
+
+
 
     @Override
     public String toString() {

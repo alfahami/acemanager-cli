@@ -1,19 +1,18 @@
+import model.City;
 import model.Member;
 
 public class Main {
 
     public static void main(String[] args) {
-        Member admin = new Member(1, "TEST", "Shakur", "21/12/19929", "tupac@gmail.com", "NBE388507", 20111473, 1, 1, 1, 1, 1, true);
+        City fes = new City(1, "FES", "FES-BOULEMANE");
+        City fesCopy = new City(fes);
 
-        Member shakur = new Member(1, "TEST", "Shakur", "21/12/1992", "tupac@gmail.com", "NBE388507", 20111473, 1, 1, 1, 1, 1, true);
+        City fesObj = fes;
+        City fesNew = new City(1, "FES", "FES-BOULEMANE");
 
-
-        Member moderator = admin;
-        Member amed = new Member(moderator);
-        System.out.println(amed);
-        System.out.println(moderator==admin);
-        System.out.println(admin==shakur);
-        System.out.println(admin.toString());
-        System.out.println(moderator.toString());
+        System.out.println(fes.toString());
+        System.out.println(fesCopy.equals(fes));
+        System.out.println(fes==fesObj);
+        System.out.println(fesObj.equals(fesNew));
     }
 }

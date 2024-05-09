@@ -4,7 +4,9 @@ import java.util.Objects;
 
 public class Faculty {
     private int id;
+    private String abbr;
     private String name;
+    
 
     public Faculty(int id, String name) {
         setId(id);
@@ -25,6 +27,17 @@ public class Faculty {
             throw new IllegalArgumentException("Faculty ID must be greater than 0");
         this.id = id;
     }
+
+
+    public String getAbbr() {
+        return this.abbr;
+    }
+
+    public void setAbbr(String abbr) {
+        if(abbr == null || abbr.isBlank()) throw new IllegalArgumentException("Abbreviation cannot be null or blank");
+        this.abbr = abbr;
+    }
+
 
     public String getName() {
         return this.name;

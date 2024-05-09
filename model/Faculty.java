@@ -8,13 +8,15 @@ public class Faculty {
     private String name;
     
 
-    public Faculty(int id, String name) {
+    public Faculty(int id, String abbr, String name) {
         setId(id);
+        setAbbr(abbr);
         setName(name);
     }
 
     public Faculty(Faculty source) {
         setId(source.id);
+        setAbbr(source.abbr);
         setName(source.name);
     }
 

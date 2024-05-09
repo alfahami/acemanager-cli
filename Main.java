@@ -3,7 +3,7 @@ import model.Member;
 public class Main {
 
     public static void main(String[] args) {
-        Member admin = new Member(1, "TEST", "Shakur", "213/12/19929", "tupac@gmail.com", "NBE388507", 20111473, 1, 1, 1, 1, 1, true);
+        Member admin = new Member(1, "TEST", "Shakur", "21/12/19929", "tupac@gmail.com", "NBE388507", 20111473, 1, 1, 1, 1, 1, true);
 
         Member shakur = new Member(1, "TEST", "Shakur", "21/12/1992", "tupac@gmail.com", "NBE388507", 20111473, 1, 1, 1, 1, 1, true);
 

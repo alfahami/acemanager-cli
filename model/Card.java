@@ -70,7 +70,8 @@ public class Card {
     }
 
     public void setObtentionDate(String obtentionDate) {
-        this.obtentionDate = obtentionDate;
+        if(obtentionDate == null || obtentionDate.isBlank()) throw new IllegalArgumentException("Obtention date cannot be blank or null");
+        if(isValidDateFormat(obtentionDate, obtentionDate)) this.obtentionDate = obtentionDate;
     }
 
     public String getExpirationDate() {
@@ -78,7 +79,8 @@ public class Card {
     }
 
     public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
+        if(expirationDate == null || expirationDate.isBlank()) throw new IllegalArgumentException("Excpiration date cannot be null or blank");
+        if(isValidDateFormat(expirationDate, expirationDate)) this.expirationDate = expirationDate;
     }
 
     public int getPin() {

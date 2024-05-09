@@ -4,22 +4,22 @@ import java.util.Objects;
 
 public class Field {
     private int id;
-    private int idField;
+    private int idFac;
     private String name;
     private String certificate;
     private int duration;
 
-    public Field(int id, int idField, String name, String certificate, int duration) {
-        setId(idField);
-        setIdField(idField);
+    public Field(int id, int idFac, String name, String certificate, int duration) {
+        setId(id);
+        setIdFac(idFac);
         setName(name);
         setCertificate(certificate);
         setDuration(duration);
     }
 
     public Field(Field source) {
-        setId(source.idField);
-        setIdField(source.idField);
+        setId(source.id);
+        setIdFac(source.idFac);
         setName(source.name);
         setCertificate(source.certificate);
         setDuration(source.duration);
@@ -35,14 +35,14 @@ public class Field {
         this.id = id;
     }
 
-    public int getIdField() {
-        return this.idField;
+    public int getIdFac() {
+        return this.idFac;
     }
 
-    public void setIdField(int idField) {
-        if (idField <= 0)
+    public void setIdFac(int idFac) {
+        if (idFac <= 0)
             throw new IllegalArgumentException("Faculty ID must be greater than 0");
-        this.idField = idField;
+        this.idFac = idFac;
     }
 
     public String getName() {
@@ -79,7 +79,7 @@ public class Field {
     public String toString() {
         return "[" +
                 " ID='" + getId() + "'" +
-                ", IDField='" + getIdField() + "'" +
+                ", IDFac='" + getIdFac() + "'" +
                 ", Name='" + getName() + "'" +
                 ", Certificate='" + getCertificate() + "'" +
                 ", Duration='" + getDuration() + "'" +
@@ -94,13 +94,13 @@ public class Field {
             return false;
         }
         Field field = (Field) o;
-        return id == field.id && idField == field.idField && Objects.equals(name, field.name)
+        return id == field.id && idFac == field.idFac && Objects.equals(name, field.name)
                 && Objects.equals(certificate, field.certificate) && duration == field.duration;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idField, name, certificate, duration);
+        return Objects.hash(id, idFac, name, certificate, duration);
     }
 
 }

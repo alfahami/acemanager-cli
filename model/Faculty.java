@@ -55,9 +55,11 @@ public class Faculty {
     public String toString() {
         return "[" +
                 " ID='" + id + "'" +
+                ", Abbreviation='" + abbr +
                 ", Name='" + name + "'" +
                 "]";
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -67,12 +69,13 @@ public class Faculty {
             return false;
         }
         Faculty faculty = (Faculty) o;
-        return id == faculty.id && Objects.equals(name, faculty.name);
+        return id == faculty.id && Objects.equals(abbr, faculty.abbr) && Objects.equals(name, faculty.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, abbr, name);
     }
+    
 
 }

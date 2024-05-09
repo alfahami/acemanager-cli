@@ -1,18 +1,18 @@
 import model.City;
-import model.Member;
+import model.Faculty;
 
 public class Main {
 
     public static void main(String[] args) {
-        City fes = new City(1, "FES", "FES-BOULEMANE");
-        City fesCopy = new City(fes);
+        Faculty fes = new Faculty(1, " ");
+        Faculty fesCopy = new Faculty(fes);
 
-        City fesObj = fes;
-        City fesNew = new City(1, "FES", "FES-BOULEMANE");
+        Faculty fesObj = fes;
+        Faculty fesNew = new Faculty(1, "FSDM");
 
         System.out.println(fes.toString());
         System.out.println(fesCopy.equals(fes));
-        System.out.println(fes==fesObj);
+        System.out.println(fes==fesNew);
         System.out.println(fesObj.equals(fesNew));
     }
 }

@@ -55,7 +55,7 @@ public class Faculty {
     public String toString() {
         return "[" +
                 " ID='" + id + "'" +
-                ", Abbreviation='" + abbr + "'"
+                ", Abbreviation='" + abbr + "'" +
                 ", Name='" + name + "'" +
                 "]";
     }

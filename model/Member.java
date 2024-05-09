@@ -199,11 +199,11 @@ public class Member {
     public String toString() {
         return "[" +
             "Full Name='" + getFirstName() + " " + getLastName() + "'" +
-            "| age='" + getAge() + "'" +
-            "| Email='" + getEmail() + "'" +
-            "| Passport='" + getPassport() + "'" +
-            "| Amci='" + getMatriculeAmci() + "'" +
-            "| Member status='" + isIsMember() + "'" +
+            ", age='" + getAge() + "'" +
+            ", Email='" + getEmail() + "'" +
+            ", Passport='" + getPassport() + "'" +
+            ", Amci='" + getMatriculeAmci() + "'" +
+            ", Member status='" + isIsMember() + "'" +
             "]";
     }
 

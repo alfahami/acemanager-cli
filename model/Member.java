@@ -208,14 +208,14 @@ public class Member {
 
     @Override
     public String toString() {
-        return "\n[" +
+        return "\n[ " +
                 "Full Name='" + getFirstName() + " " + getLastName() + "'" +
                 ", age='" + getAge() + "'" +
                 ", Email='" + getEmail() + "'" +
                 ", Passport='" + getPassport() + "'" +
                 ", Amci='" + getMatriculeAmci() + "'" +
                 ", Member status='" + isIsMember() + "'" +
-                "]";
+                " ]";
     }
 
     @Override

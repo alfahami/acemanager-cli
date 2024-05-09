@@ -64,11 +64,11 @@ public class City {
 
     @Override
     public String toString() {
-        return "[" +
+        return "\n[" +
             " ID='" + getIdCity() + "'" +
-            "| Name='" + getName() + "'" +
-            "| Region='" + getRegion() + "'" +
-            "]";
+            ", Name='" + getName() + "'" +
+            ", Region='" + getRegion() + "'" +
+            " ]";
     }
     
 }

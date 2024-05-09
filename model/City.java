@@ -78,6 +78,10 @@ public class City {
         this.facs.add(new Faculty(newFaculty));
     }
 
+    public void deleteFaculty(int index) {
+        this.facs.remove(index);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)

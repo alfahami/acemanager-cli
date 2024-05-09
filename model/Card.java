@@ -19,6 +19,29 @@ public class Card {
         return this.id;
     }
 
+
+    public Card(int id, int idMember, int idCity, String cin, String reason, String obtentionDate, String expirationDate, int pin) {
+        setId(id);
+        setIdMember(idMember);
+        setIdCity(idCity);
+        setCin(cin);
+        setReason(reason);
+        setObtentionDate(obtentionDate);
+        setExpirationDate(expirationDate);
+        setPin(pin);
+    }
+
+    public Card(Card source) {
+        setId(source.id);
+        setIdMember(source.idMember);
+        setIdCity(source.idCity);
+        setCin(source.cin);
+        setReason(source.reason);
+        setObtentionDate(source.obtentionDate);
+        setExpirationDate(source.expirationDate);
+        setPin(source.pin);
+    }
+    
     public void setId(int id) {
         if (id <= 0)
             throw new IllegalArgumentException("ID must be greater than 0");
@@ -87,7 +110,7 @@ public class Card {
         return this.pin;
     }
 
-    public void setcnie(int pin) {
+    public void setPin(int pin) {
         if (pin <= 0 || (String.valueOf(pin).length() != 4))
             throw new IllegalArgumentException("Pin must have 4 digits");
         this.pin = pin;
@@ -105,6 +128,7 @@ public class Card {
                 "]";
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -113,9 +137,7 @@ public class Card {
             return false;
         }
         Card card = (Card) o;
-        return id == card.id && idMember == card.idMember && idCity == card.idCity && Objects.equals(cin, card.cin)
-                && Objects.equals(reason, card.reason) && Objects.equals(obtentionDate, card.obtentionDate)
-                && Objects.equals(expirationDate, card.expirationDate) && pin == card.pin;
+        return id == card.id && idMember == card.idMember && idCity == card.idCity && Objects.equals(cin, card.cin) && Objects.equals(reason, card.reason) && Objects.equals(obtentionDate, card.obtentionDate) && Objects.equals(expirationDate, card.expirationDate) && pin == card.pin;
     }
 
     @Override

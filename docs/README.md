@@ -13,13 +13,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
 Member class based on User table in the DB
 
 ##### Rules:
-- *Birth Date* should be in format *dd/MM/yyyy*
+- *Birth Date* **MUST** be in format *dd/MM/yyyy*
 
-- *Age* should be calculated automatically from birth date;
+- *Age* **MUST** be calculated automatically from birth date.
 
-- *Email* should be verify for the bare minimum using regex or similar methods.
+- *Email* **MUST** be verify for the bare minimum using regex or similar methods.
 
-- *Passport* **MUST** contains **9** characters
+- *Passport* **MUST** have **9** characters.
 
 - *AMCI Matricule* **MUST** have **8** digits.
 

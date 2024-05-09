@@ -1,15 +1,16 @@
+import model.Card;
 import model.Field;
 import model.Member;
 
 public class Main {
 
     public static void main(String[] args) {
-        Member admin = new Member(1, "TEST", "Shakur", "123/09/2012", "tupac@gmail.com", "NBE388507", 20111473, 1, 1, 1, 1, 1, true);
-        Field fes = new Field(0, 1, "SMI", "LF", 3);
-        Field fesCopy = new Field(fes);
+        
+        Card fes = new Card(1, 1, 1, "C018507J", "WORK", "21/09/2023", "21/09/2026", 12346);
+        Card fesCopy = new Card(fes);
 
-        Field fesObj = fes;
-        Field fesNew = new Field(1, 1, "SMI", "LF", 3);
+        Card fesObj = fes;
+        Card fesNew = new Card(1, 1, 1, "C018507J", "WORK", "21/09/2023", "21/09/2026", 1234);
 
         System.out.println(fes.toString());
         System.out.println(fesCopy.equals(fes));

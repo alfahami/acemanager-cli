@@ -60,8 +60,8 @@ public class Moderator extends Member implements Acemanager {
         if (passport == null || passport.isBlank())
             throw new IllegalArgumentException("Passport number cannot be null or blank");
         // int count = 0;
-        if (this.members == null)
-            return null;
+        if (this.members.isEmpty())
+            throw new NullPointerException("No member exist in our DB tables yet.");
         else {
             for (Member member : this.members) {
                 if (member.getPassport().equals(passport)) {
@@ -70,7 +70,7 @@ public class Moderator extends Member implements Acemanager {
             }
         }
         // if(count == 0) return null;
-        return null;
+        throw new IllegalArgumentException("Passport Num: " + passport + " doesn't belong to any member yet.");
     }
 
     public Member getMember(int index) {

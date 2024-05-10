@@ -5,13 +5,15 @@ import java.util.Objects;
 public class Field {
     private int id;
     private int idFac;
+    private String abbr;
     private String name;
     private String certificate;
     private int duration;
 
-    public Field(int id, int idFac, String name, String certificate, int duration) {
+    public Field(int id, int idFac, String abbr, String name, String certificate, int duration) {
         setId(id);
         setIdFac(idFac);
+        setAbbr(abbr);
         setName(name);
         setCertificate(certificate);
         setDuration(duration);
@@ -43,6 +45,15 @@ public class Field {
         if (idFac <= 0)
             throw new IllegalArgumentException("Faculty ID must be greater than 0");
         this.idFac = idFac;
+    }
+
+    public String getAbbr() {
+        return this.abbr;
+    }
+
+    public void setAbbr(String abbr) {
+        if(abbr == null || abbr.isBlank()) throw new IllegalArgumentException("Abbreviation cannot be null or blank");
+        this.abbr = abbr;
     }
 
     public String getName() {

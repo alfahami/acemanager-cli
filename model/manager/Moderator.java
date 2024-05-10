@@ -127,7 +127,7 @@ public class Moderator extends Member implements Acemanager {
         return "{" +
                 " session start='" + getSession_start() + "'" +
                 ", session end='" + getSession_end() + "'" +
-                ", members='" + members.toString() + "'" +
+                ", cards='" + cards.toString() + "'" +
                 "}";
     }
 

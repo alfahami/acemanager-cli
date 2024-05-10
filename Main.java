@@ -1,15 +1,19 @@
 import java.util.ArrayList;
 
-import model.City;
-import model.Faculty;
-import model.Field;
+import model.Card;
 import model.Member;
-import model.manager.Acemanager;
 import model.manager.Moderator;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        Card card1 = new Card(1, 1, 1, "C018507J", "WORK", "01/12/2024", "01/12/2027", 1234);
+        Card card2 = new Card(2, 2, 1, "C018597J", "STUDY", "09/10/2024", "09/10/2027", 1098);
+        Card card3 = new Card(3, 3, 1, "C028556J", "STUDY", "21/09/2023", "21/09/2026", 1076);
+        Card card4 = new Card(1, 1, 1, "C028450M", "WORK", "09/11/2023", "09/11/2026", 9876);
+       
+        
         Member std1 = new Member(1, "TUPAC", "Shakur", "21/12/1992", "tupac@gmail.com", "NBE388589", 20111473, 1, 1, 1, 1, 1, true);
 
         Member std2 = new Member(1, "TEST", "Mbokani", "21/12/1996", "test@gmail.com", "NBE388409", 20111470, 1, 1, 1, 1, 1, true);
@@ -18,33 +22,30 @@ public class Main {
 
         Member std4 = new Member(1, "Ajmal", "Fouad", "20/01/2000", "ajmal@gmail.com", "NBE388991", 20111476, 1, 1, 1, 1, 1, true);
 
-        ArrayList<Member> members = new ArrayList<>();
-
-        members.add(std1);
-        members.add(std2);
-        members.add(std3);
-        members.add(std4);
-
         Moderator modFes = new Moderator();
         modFes.setSession_start();
         System.out.println("Session start: " + modFes.getSession_start());
 
-        // modFes.addMember(std1);
-        // modFes.addMember(std2);
-        // modFes.addMember(std3);
-        // modFes.addMember(std4);
+         modFes.addMember(std1);
+         modFes.addMember(std2);
+         modFes.addMember(std3);
+         modFes.addMember(std4);
+         modFes.addCard(card1);
+         modFes.addCard(card2);
+         modFes.addCard(card3);
+         modFes.addCard(card4);
 
         
-        System.out.println("\n\nLet's find member who has NBE388507 as passport" + modFes.findMember("NBE311111").toString());
+        //System.out.println("\n\nLet's find member who has NBE388507 as passport" + modFes.findMember("NBE311111").toString());
         
         System.out.println("\nBefore rm mbr2: \n\n" + modFes.toString());
-        modFes.removeMemeber(1);
+        modFes.removeCard(1);
         System.out.println("\n\nAfter removal: \n\n" + modFes.toString());
-        System.out.println("\n\nRetrieved member to update" + modFes.getMember(2).toString());
+        System.out.println("\n\nRetrieved member to update" + modFes.getCard(2).toString());
         
-        modFes.updateMemeber(2, new Member(1, "Hercule", "Mmona", "09/02/1999", "hercule@gmail.com", "NBE456890", 20201943, 1, 1, 1, 1, 1, true));
+        modFes.updateCard(2, new Card(6, 8, 1, "C000098H", "CLANDO", "09/11/2023", "09/11/2026", 9654));
         
-        System.out.println("\n\nRetrieved member after update" + modFes.getMember(2).toString());
+        System.out.println("\n\nRetrieved member after update" + modFes.getCard(2).toString());
 
         System.out.println();
 

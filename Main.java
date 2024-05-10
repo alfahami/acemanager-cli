@@ -27,12 +27,12 @@ public class Main {
 
         Moderator modFes = new Moderator();
         modFes.setSession_start();
-        System.out.println("Session start: " +modFes.getSession_start());
+        System.out.println("Session start: " + modFes.getSession_start());
 
-        modFes.addMember(std1);
-        modFes.addMember(std2);
-        modFes.addMember(std3);
-        modFes.addMember(std4);
+        // modFes.addMember(std1);
+        // modFes.addMember(std2);
+        // modFes.addMember(std3);
+        // modFes.addMember(std4);
 
         
         System.out.println("\n\nLet's find member who has NBE388507 as passport" + modFes.findMember("NBE311111").toString());

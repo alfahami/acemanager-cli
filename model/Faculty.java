@@ -73,6 +73,10 @@ public class Faculty {
         }
     }
 
+    public void setField(int index, Field field) {
+        this.fields.set(index, new Field(field));
+    }
+
     public void addField(Field field) {
         this.fields.add(new Field(field));
     }

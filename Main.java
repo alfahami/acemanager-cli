@@ -49,7 +49,7 @@ public class Main {
 
 
 
-/*
+
         ArrayList<Faculty> facs = new ArrayList<>();
         facs.add(fs);
         facs.add(fst);
@@ -65,10 +65,10 @@ public class Main {
 
         Faculty retrievedFaculty = fes.getFaculty(0);
         System.out.println(retrievedFaculty.toString()+"\n\n");
-        fes.deleteFaculty(0);
+        fes.removeFaculty(90);
 
         System.out.println("\n\n\n");
         System.out.println(fes.getFacs().toString());        
-    */
+    
     }
 }

@@ -51,7 +51,7 @@ Stay Card class based on Card table in the DB.
 - *PIN* **MUST** have **4** digits, this is delivered along with the card and is part of Morocco's numerical identity [lear more here.](https://www.identitenumerique.ma/about.html) 
 
 #### City.java
-City Card class based on City table in the DB.
+City class based on City table in the DB.
 
 ##### Rules:
 - *Name*, name of the city: **MUST NOT** be null or blank.

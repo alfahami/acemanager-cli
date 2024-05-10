@@ -6,21 +6,21 @@ import java.util.Objects;
 public class Faculty {
     private int id;
     private String abbr;
-    private String name;
+    private String desc;
 
     private ArrayList<Field> fields;
 
-    public Faculty(int id, String abbr, String name, ArrayList<Field> fields) {
+    public Faculty(int id, String abbr, String desc, ArrayList<Field> fields) {
         setId(id);
         setAbbr(abbr);
-        setName(name);
+        setDesc(desc);
         setFields(fields);
     }
 
     public Faculty(Faculty source) {
         setId(source.id);
         setAbbr(source.abbr);
-        setName(source.name);
+        setDesc(source.desc);
     }
 
     public int getId() {
@@ -43,14 +43,14 @@ public class Faculty {
         this.abbr = abbr;
     }
 
-    public String getName() {
-        return this.name;
+    public String getDesc() {
+        return this.desc;
     }
 
-    public void setName(String name) {
-        if (name == null || name.isBlank())
-            throw new IllegalArgumentException("Faculty name cannot be null or blank");
-        this.name = name;
+    public void setDesc(String desc) {
+        if (desc == null || desc.isBlank())
+            throw new IllegalArgumentException("Faculty desc cannot be null or blank");
+        this.desc = desc;
     }
 
     // Deep copy to protect the state of our object
@@ -88,7 +88,7 @@ public class Faculty {
         return "[" +
                 " ID='" + id + "'" +
                 ", Abbreviation='" + abbr + "'" +
-                ", Name='" + name + "'" +
+                ", Desc='" + desc + "'" +
                 ", Fields=" + fields.toString() +
                 "]";
     }
@@ -102,12 +102,12 @@ public class Faculty {
             return false;
         }
         Faculty faculty = (Faculty) o;
-        return id == faculty.id && Objects.equals(abbr, faculty.abbr) && Objects.equals(name, faculty.name) && Objects.equals(fields, faculty.fields);
+        return id == faculty.id && Objects.equals(abbr, faculty.abbr) && Objects.equals(desc, faculty.desc) && Objects.equals(fields, faculty.fields);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, abbr, name, fields);
+        return Objects.hash(id, abbr, desc, fields);
     }
 
 

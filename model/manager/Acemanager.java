@@ -1,4 +1,6 @@
-package model;
+package model.manager;
+
+import model.Member;
 
 public interface Acemanager {
 

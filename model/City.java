@@ -77,6 +77,11 @@ public class City {
         }
     }
 
+    public void setFaculty(int index, Faculty newFaculty) {
+        if(index < 0 || index > this.facs.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
+        this.facs.set(index, new Faculty(newFaculty));
+    }
+
     public void addFaculty(Faculty newFaculty) {
         this.facs.add(new Faculty(newFaculty));
     }

@@ -9,6 +9,8 @@ public class City {
 
     private ArrayList<Faculty> facs;
 
+    // TODO: impl get a single Faculty
+    //TODO: set a single Faculty in order to be able to update it out
     public City(int id, String name, String region, ArrayList<Faculty> facs) {
         setId(id);
         setName(name);
@@ -79,7 +81,8 @@ public class City {
         this.facs.add(new Faculty(newFaculty));
     }
 
-    public void deleteFaculty(int index) {
+    public void removeFaculty(int index) {
+        if(index < 0 || index > this.facs.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         this.facs.remove(index);
     }
 

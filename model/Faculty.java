@@ -77,6 +77,7 @@ public class Faculty {
     }
 
     public void setField(int index, Field field) {
+        if(index < 0 || index > this.fields.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         this.fields.set(index, new Field(field));
     }
 
@@ -85,6 +86,7 @@ public class Faculty {
     }
 
     public void removeField(int index) {
+        if(index < 0 || index > this.fields.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         this.fields.remove(index);
     }
 

@@ -1,4 +1,5 @@
 package model;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -9,8 +10,6 @@ public class City {
 
     private ArrayList<Faculty> facs;
 
-    // TODO: impl get a single Faculty
-    //TODO: set a single Faculty in order to be able to update it out
     public City(int id, String name, String region, ArrayList<Faculty> facs) {
         setId(id);
         setName(name);
@@ -30,7 +29,8 @@ public class City {
     }
 
     public void setId(int id) {
-        if(id <= 0) throw new IllegalArgumentException("City ID must be greater than 0");
+        if (id <= 0)
+            throw new IllegalArgumentException("City ID must be greater than 0");
         this.id = id;
     }
 
@@ -39,7 +39,8 @@ public class City {
     }
 
     public void setName(String name) {
-        if(name == null || name.isBlank()) throw new IllegalArgumentException("City name cannot be null or blank");
+        if (name == null || name.isBlank())
+            throw new IllegalArgumentException("City name cannot be null or blank");
         this.name = name;
     }
 
@@ -48,7 +49,8 @@ public class City {
     }
 
     public void setRegion(String region) {
-        if(region == null || region.isBlank()) throw new IllegalArgumentException("Region name cannot be null or blank");
+        if (region == null || region.isBlank())
+            throw new IllegalArgumentException("Region name cannot be null or blank");
         this.region = region;
     }
 
@@ -58,7 +60,8 @@ public class City {
 
     // Deep copying in order to protect the sate of our object
     public Faculty getFaculty(int index) {
-        if(index < 0 || index > this.facs.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
+        if (index < 0 || index > this.facs.size())
+            throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         return new Faculty(this.facs.get(index));
     }
 
@@ -78,7 +81,8 @@ public class City {
     }
 
     public void setFaculty(int index, Faculty newFaculty) {
-        if(index < 0 || index > this.facs.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
+        if (index < 0 || index > this.facs.size())
+            throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         this.facs.set(index, new Faculty(newFaculty));
     }
 
@@ -87,7 +91,8 @@ public class City {
     }
 
     public void removeFaculty(int index) {
-        if(index < 0 || index > this.facs.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
+        if (index < 0 || index > this.facs.size())
+            throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         this.facs.remove(index);
     }
 
@@ -110,10 +115,10 @@ public class City {
     @Override
     public String toString() {
         return "\n[" +
-            " ID='" + id + "'" +
-            ", Name='" + name + "'" +
-            ", Region='" + region + "'" +
-            "]";
+                " ID='" + id + "'" +
+                ", Name='" + name + "'" +
+                ", Region='" + region + "'" +
+                "]";
     }
-    
+
 }

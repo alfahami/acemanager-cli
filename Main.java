@@ -18,8 +18,6 @@ public class Main {
         fields.add(smp);
         fields.add(sma);
 
-        
-
         System.out.println("\n\nFaculty Fields management\n\n");
 
         Faculty fs = new Faculty(1, "FS", "Faculty of Science Dar Mehraz", fields);
@@ -35,20 +33,16 @@ public class Main {
         fs.addField(new Field(5, 1, "MIP", "LF", 4));
         fs.addField(new Field(6, 1, "DBA", "LF", 3));
 
-        System.out.println(fs.toString()+"\n\n\n");
+        System.out.println(fs.toString() + "\n\n\n");
 
         fs.removeField(0);
 
         System.out.println("Removed the first field\n\n" + fs.toString());
-        
+
         System.out.println("Before update: " + fs.getField(3).toString());
         fs.setField(3, new Field(6, 1, "INGE", "Ingénieur", 3));
 
         System.out.println("\n\nUpdated Field: " + fs.getField(3).toString());
-
-
-
-
 
         ArrayList<Faculty> facs = new ArrayList<>();
         facs.add(fs);
@@ -57,18 +51,18 @@ public class Main {
         facs.add(est);
         facs.add(ensa);
 
-        System.out.println(facs.toString()+"\n\n\n");
+        System.out.println(facs.toString() + "\n\n\n");
 
         City fes = new City(1, "FES", "FES-BOULEMANE", facs);
         Faculty fm = new Faculty(6, "FM", "Faculty of Medecine", fields);
         fes.addFaculty(fm);
 
         Faculty retrievedFaculty = fes.getFaculty(0);
-        System.out.println(retrievedFaculty.toString()+"\n\n");
+        System.out.println(retrievedFaculty.toString() + "\n\n");
         fes.removeFaculty(90);
 
         System.out.println("\n\n\n");
-        System.out.println(fes.getFacs().toString());        
-    
+        System.out.println(fes.getFacs().toString());
+
     }
 }

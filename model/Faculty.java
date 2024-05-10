@@ -57,7 +57,7 @@ public class Faculty {
 
     // Deep copy to protect the state of our object
     public ArrayList<Field> getFields() {
-        ArrayList<Field> copyFields = new ArrayList<>(); 
+        ArrayList<Field> copyFields = new ArrayList<>();
         for (Field field : this.fields) {
             copyFields.add(new Field(field));
         }
@@ -65,7 +65,8 @@ public class Faculty {
     }
 
     public Field getField(int index) {
-        if(index < 0 || index > this.fields.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
+        if (index < 0 || index > this.fields.size())
+            throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         return new Field(this.fields.get(index));
     }
 
@@ -77,7 +78,8 @@ public class Faculty {
     }
 
     public void setField(int index, Field field) {
-        if(index < 0 || index > this.fields.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
+        if (index < 0 || index > this.fields.size())
+            throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         this.fields.set(index, new Field(field));
     }
 
@@ -86,11 +88,10 @@ public class Faculty {
     }
 
     public void removeField(int index) {
-        if(index < 0 || index > this.fields.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
+        if (index < 0 || index > this.fields.size())
+            throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         this.fields.remove(index);
     }
-
-
 
     @Override
     public String toString() {
@@ -102,7 +103,6 @@ public class Faculty {
                 "]";
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -111,13 +111,13 @@ public class Faculty {
             return false;
         }
         Faculty faculty = (Faculty) o;
-        return id == faculty.id && Objects.equals(abbr, faculty.abbr) && Objects.equals(desc, faculty.desc) && Objects.equals(fields, faculty.fields);
+        return id == faculty.id && Objects.equals(abbr, faculty.abbr) && Objects.equals(desc, faculty.desc)
+                && Objects.equals(fields, faculty.fields);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, abbr, desc, fields);
     }
-
 
 }

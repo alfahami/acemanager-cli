@@ -10,12 +10,12 @@ import java.util.Objects;
 public class Member {
 
     private int id;
-    private String firstName;       
-    private String lastName;        
-    private String birthDate;  // can't be null or not in the format: dd/MM/yyyy
-    private int age;           // Should do automatically be calucated from birthdate
-    private String email;   
-    private String passport;   // NBE388510, MUST: 9 chars max
+    private String firstName;
+    private String lastName;
+    private String birthDate; // can't be null or not in the format: dd/MM/yyyy
+    private int age; // Should do automatically be calucated from birthdate
+    private String email;
+    private String passport; // NBE388510, MUST: 9 chars max
     private int idCard;
     private int matriculeAmci; // 20111473, MUST: 8 chars
     private int idCity;
@@ -24,14 +24,15 @@ public class Member {
     private int idRole;
     private boolean isMember;
 
-
-    public Member(int id, String firstName, String lastName, String birthDate, String email, String passport, int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, int idRole, boolean isMember) {
+    public Member(int id, String firstName, String lastName, String birthDate, String email, String passport,
+            int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, int idRole, boolean isMember) {
         setId(id);
-        setFirstName(firstName); 
+        setFirstName(firstName);
         setLastName(lastName);
         setBirthDate(birthDate);
         setAge(age);
-        setEmail(email);;
+        setEmail(email);
+        ;
         setPassport(passport);
         setIdCard(idCard);
         setMatriculeAmci(matriculeAmci);
@@ -44,11 +45,12 @@ public class Member {
 
     public Member(Member source) {
         setId(source.id);
-        setFirstName(source.firstName); 
+        setFirstName(source.firstName);
         setLastName(source.lastName);
         setBirthDate(source.birthDate);
         setAge(source.age);
-        setEmail(source.email);;
+        setEmail(source.email);
+        ;
         setPassport(source.passport);
         setIdCard(source.idCard);
         setMatriculeAmci(source.matriculeAmci);
@@ -59,13 +61,13 @@ public class Member {
         setIsMember(source.isMember);
     }
 
-    
     public int getId() {
         return this.id;
     }
 
     public void setId(int id) {
-        if(id < 0) throw new IllegalArgumentException("Member ID must be greater than 0");
+        if (id < 0)
+            throw new IllegalArgumentException("Member ID must be greater than 0");
         this.id = id;
     }
 
@@ -74,7 +76,8 @@ public class Member {
     }
 
     public void setFirstName(String firstName) {
-        if(firstName == null || firstName.isBlank()) throw new IllegalArgumentException("First name cannot be null or blank");
+        if (firstName == null || firstName.isBlank())
+            throw new IllegalArgumentException("First name cannot be null or blank");
         this.firstName = firstName.toUpperCase();
     }
 
@@ -83,7 +86,8 @@ public class Member {
     }
 
     public void setLastName(String lastName) {
-        if(lastName == null || lastName.isBlank()) throw new IllegalArgumentException("Last name cannot be blank or null");
+        if (lastName == null || lastName.isBlank())
+            throw new IllegalArgumentException("Last name cannot be blank or null");
         this.lastName = lastName.toUpperCase();
     }
 
@@ -92,8 +96,10 @@ public class Member {
     }
 
     public void setBirthDate(String birthDate) {
-        if(birthDate == null || birthDate.isBlank()) throw new IllegalArgumentException("Birth date cannot be null or blank. ");
-        if(isValidDateFormat("dd/MM/yyyy", birthDate)) this.birthDate = birthDate;  
+        if (birthDate == null || birthDate.isBlank())
+            throw new IllegalArgumentException("Birth date cannot be null or blank. ");
+        if (isValidDateFormat("dd/MM/yyyy", birthDate))
+            this.birthDate = birthDate;
     }
 
     public int getAge() {
@@ -109,7 +115,8 @@ public class Member {
     }
 
     public void setEmail(String email) {
-        if(!validate(email)) throw new IllegalArgumentException("Email is not valid");
+        if (!validate(email))
+            throw new IllegalArgumentException("Email is not valid");
         this.email = email;
     }
 
@@ -118,7 +125,8 @@ public class Member {
     }
 
     public void setPassport(String passport) {
-        if(passport == null || passport.isBlank() || passport.length() != 9 ) throw new IllegalArgumentException("Passport number must have 9 digits and can't be null nor blank!");
+        if (passport == null || passport.isBlank() || passport.length() != 9)
+            throw new IllegalArgumentException("Passport number must have 9 digits and can't be null nor blank!");
         this.passport = passport.toUpperCase();
     }
 
@@ -127,7 +135,8 @@ public class Member {
     }
 
     public void setIdCard(int idCard) {
-        if(idCard < 0) throw new IllegalArgumentException("Card ID must be greater than 0");
+        if (idCard < 0)
+            throw new IllegalArgumentException("Card ID must be greater than 0");
         this.idCard = idCard;
     }
 
@@ -137,7 +146,8 @@ public class Member {
 
     public void setMatriculeAmci(int matriculeAmci) {
         // AMCI matricule MUST be 8 digits
-        if(matriculeAmci <= 0 || String.valueOf(matriculeAmci).length() != 8) throw new IllegalArgumentException("AMCI matricule must contain 8 digits");
+        if (matriculeAmci <= 0 || String.valueOf(matriculeAmci).length() != 8)
+            throw new IllegalArgumentException("AMCI matricule must contain 8 digits");
         this.matriculeAmci = matriculeAmci;
     }
 
@@ -146,7 +156,8 @@ public class Member {
     }
 
     public void setIdCity(int idCity) {
-        if(idCity < 0) throw new IllegalArgumentException("City ID must be greater than 0");
+        if (idCity < 0)
+            throw new IllegalArgumentException("City ID must be greater than 0");
         this.idCity = idCity;
     }
 
@@ -155,7 +166,8 @@ public class Member {
     }
 
     public void setIdFaculty(int idFaculty) {
-        if(idFaculty < 0) throw new IllegalArgumentException("Faculty ID must be greater than 0");
+        if (idFaculty < 0)
+            throw new IllegalArgumentException("Faculty ID must be greater than 0");
         this.idFaculty = idFaculty;
     }
 
@@ -164,7 +176,8 @@ public class Member {
     }
 
     public void setIdField(int idField) {
-        if(idField < 0) throw new IllegalArgumentException("Field ID must be greater than 0");
+        if (idField < 0)
+            throw new IllegalArgumentException("Field ID must be greater than 0");
         this.idField = idField;
     }
 
@@ -185,28 +198,28 @@ public class Member {
     }
 
     public void setIsMember(boolean isMember) {
-        if(!(isMember == true || isMember == false)) throw new IllegalArgumentException("Member is either a member (true) or not(false)");
+        if (!(isMember == true || isMember == false))
+            throw new IllegalArgumentException("Member is either a member (true) or not(false)");
         this.isMember = isMember;
     }
 
     public int toAge(String birthDate) {
-        // Calculate the date using LocalDate and Period 
-        return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now()).getYears();   
+        // Calculate the date using LocalDate and Period
+        return Period.between(LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("dd/MM/yyyy")), LocalDate.now())
+                .getYears();
     }
-
 
     @Override
     public String toString() {
         return "\n[" +
-            "Full Name='" + firstName + " " + lastName + "'" +
-            ", age='" + age + "'" +
-            ", Email='" + email + "'" +
-            ", Passport='" + passport + "'" +
-            ", Amci='" + matriculeAmci + "'" +
-            ", Member status='" + isMember + "'" +
-            "]";
+                "Full Name='" + firstName + " " + lastName + "'" +
+                ", age='" + age + "'" +
+                ", Email='" + email + "'" +
+                ", Passport='" + passport + "'" +
+                ", Amci='" + matriculeAmci + "'" +
+                ", Member status='" + isMember + "'" +
+                "]";
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -216,13 +229,18 @@ public class Member {
             return false;
         }
         Member member = (Member) o;
-        return id == member.id && Objects.equals(firstName, member.firstName) && Objects.equals(lastName, member.lastName) && Objects.equals(birthDate, member.birthDate) && age == member.age && Objects.equals(email, member.email) && Objects.equals(passport, member.passport) && idCard == member.idCard && matriculeAmci == member.matriculeAmci && idCity == member.idCity && idFaculty == member.idFaculty && idField == member.idField && idRole == member.idRole && isMember == member.isMember;
+        return id == member.id && Objects.equals(firstName, member.firstName)
+                && Objects.equals(lastName, member.lastName) && Objects.equals(birthDate, member.birthDate)
+                && age == member.age && Objects.equals(email, member.email) && Objects.equals(passport, member.passport)
+                && idCard == member.idCard && matriculeAmci == member.matriculeAmci && idCity == member.idCity
+                && idFaculty == member.idFaculty && idField == member.idField && idRole == member.idRole
+                && isMember == member.isMember;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthDate, age, email, passport, idCard, matriculeAmci, idCity, idFaculty, idField, idRole, isMember);
+        return Objects.hash(id, firstName, lastName, birthDate, age, email, passport, idCard, matriculeAmci, idCity,
+                idFaculty, idField, idRole, isMember);
     }
-    
 
 }

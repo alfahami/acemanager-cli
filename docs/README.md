@@ -1,4 +1,4 @@
-### Documentation
+### Full Implementation Documentation
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
       NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
@@ -8,6 +8,10 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
 - All ID in classes __MUST__ be greater than 0, this is for displaying purpose in a human readability.
 
 - All fields __MUST NOT__ be null or blank.
+
+- We **SHOULD** be able to make copy of an object, display a class object's details in a pretty printing way.
+
+- Two objects of a class are equal when its fields contents are the same.
 
 #### Member.java
 Member class based on User table in the DB.
@@ -29,6 +33,23 @@ Member class based on User table in the DB.
 
 - Two objects of this class are equal when its fields contents are the same.
 
-- We **SHOULD** be able to to display class object's details in a pretty printing way.
+#### Card.java
+Stay Card class based on Carte Séjour table in the DB.
+
+##### Rules:
+- *Id Member*, follows ID rule cited on top.<br> This will represent a foreign key in DB representation indicating the member posessing the card.
+
+- *Id City* follows ID rule cited on top.<br> This will represent a foreign key in DB representation indicating the city that issued the card.
+
+- *CIN* **MUST** have 8 digits and not be null and always uppercased.
+- *Reason* is the reason of the stay in Morroco.
+
+- *Obtention date*, issued card's date, it **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
+
+- *Exiration date* **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
+
+- *PIN* **MUST** have **4** digits, this is delivered along with the card and is part of Morocco's numerical identity [lear more here.](https://www.identitenumerique.ma/about.html) 
+
+
 
 

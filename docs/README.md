@@ -58,7 +58,7 @@ City Card class based on City table in the DB.
 
 - *Region*, region where the city is located: **MUST NOT** be null or blank.
 
-- *FACS*, list of faculties within the city and **SHOULD** at least have one faculty, it **MAY** be null.
+- *Facs*, list of faculties within the city and **SHOULD** at least have one faculty, it **MAY** be null.
 - *Reason* is the reason of the stay in Morroco.
 
 - *Obtention date*, issued card's date, it **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
@@ -66,6 +66,18 @@ City Card class based on City table in the DB.
 - *Exiration date* **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
 
 - This object should be able to manage the list of faculties (add, update, delete, get a faculy and get all of them)  
+
+#### Faculty.java
+Faculty class based on faculty table in the DB.
+
+##### Rules:
+- *Abbr*, abbreviation of the faculty's initial: **MUST NOT** be null or blank.
+
+- *Desc*, description of faculty's abbreviation. The full name: **MUST NOT** be null or blank.
+
+- *Fields*, list of fields in the faculty **SHOULD** at least have one field, it **MAY** be null.
+
+- This object should be able to manage the list of fields (add, update, delete, get a faculy and get all of them)  
 
 
 

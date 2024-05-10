@@ -79,6 +79,22 @@ Faculty class based on faculty table in the DB.
 
 - This object should be able to manage the list of fields (add, update, delete, get a faculy and get all of them)  
 
+#### Field.java
+Field class based on Field table in the DB.
+
+##### Rules:
+- *Id Faculty*, follows ID rule cited on top.<br> This will represent a foreign key in DB representation indicating the field's Faculty.
+
+- *Abbr*, abbreviation of the field's initial: **MUST NOT** be null or blank.
+
+- *Name*, description of field's abbreviation. The full name: **MUST NOT** be null or blank.
+
+- *Certificate*, diploma that will be issued at the end of the formation; **MUST NOT** be null nor blank.
+
+- *Duration* of the formation, **SHOULD** at least be one year; **MUST NOT** be less or equal to 0
+
+
+
 
 
 

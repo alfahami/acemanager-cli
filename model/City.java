@@ -56,6 +56,7 @@ public class City {
 
     // Deep copying in order to protect the sate of our object
     public Faculty getFaculty(int index) {
+        if(index < 0 || index > this.facs.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         return new Faculty(this.facs.get(index));
     }
 

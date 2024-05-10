@@ -65,6 +65,7 @@ public class Faculty {
     }
 
     public Field getField(int index) {
+        if(index < 0 || index > this.fields.size()) throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
         return new Field(this.fields.get(index));
     }
 

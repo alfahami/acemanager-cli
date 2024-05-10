@@ -64,7 +64,7 @@ public class Moderator extends Member implements Acemanager {
             throw new IllegalArgumentException("Passport number cannot be null or blank");
         // int count = 0;
         if (this.members.isEmpty())
-            throw new NullPointerException("No member exist in our DB tables yet.");
+            throw new NullPointerException("No member exist in our DB table yet.");
         else {
             for (Member member : this.members) {
                 if (member.getPassport().equals(passport)) {
@@ -80,6 +80,49 @@ public class Moderator extends Member implements Acemanager {
         if (index < 0 || index > this.members.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
         return new Member(this.members.get(index));
+    }
+
+    @Override
+    public void addCard(Card card) {
+        this.cards.add(new Card(card));
+    }
+
+    @Override
+    public void updateCard(int index, Card newCard) {
+        if (index < 0 || index > this.cards.size())
+            throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+        this.cards.set(index, new Card(newCard));
+    }
+
+    @Override
+    public void removeCard(int index) {
+        if (index < 0 || index > this.cards.size())
+            throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+        this.cards.remove(index);
+    }
+
+    @Override
+    public Card getCard(int index) {
+        if (index < 0 || index > this.cards.size())
+            throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+        return new Card(this.cards.get(index));
+    }
+
+    @Override
+    public Card findCard(String cin) {
+        if (cin == null || cin.isBlank())
+            throw new IllegalArgumentException("CIN number cannot be null or blank");
+        // int count = 0;
+        if (this.cards.isEmpty())
+            throw new NullPointerException("No card exist in our DB table yet.");
+        else {
+            for (Card card : this.cards) {
+                if (card.getCin().equals(cin)) {
+                    return card;
+                }
+            }
+        }
+        throw new IllegalArgumentException("Card Num: " + cin + " doesn't belong to any member yet.");
     }
 
     @Override

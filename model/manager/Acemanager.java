@@ -14,7 +14,7 @@ public interface Acemanager {
     public void addCard(Card card);
     public void removeCard(int index);
     public void updateCard(int index, Card newCard);
-    public void findCard(String cin);
+    public Card findCard(String cin);
     public Card getCard(int index);
 
 

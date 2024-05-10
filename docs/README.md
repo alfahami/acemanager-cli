@@ -14,7 +14,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
 - Two objects of a class are equal when its fields contents are the same.
 
 #### Member.java
-Member class based on User table in the DB.
+Member class based on Member table in the DB.
 
 ##### Rules:
 - *Birth Date* **MUST** be in format *dd/MM/yyyy*.
@@ -34,7 +34,7 @@ Member class based on User table in the DB.
 - Two objects of this class are equal when its fields contents are the same.
 
 #### Card.java
-Stay Card class based on Carte Séjour table in the DB.
+Stay Card class based on Card table in the DB.
 
 ##### Rules:
 - *Id Member*, follows ID rule cited on top.<br> This will represent a foreign key in DB representation indicating the member posessing the card.
@@ -46,9 +46,26 @@ Stay Card class based on Carte Séjour table in the DB.
 
 - *Obtention date*, issued card's date, it **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
 
-- *Exiration date* **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
+- *Expiration date* **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
 
 - *PIN* **MUST** have **4** digits, this is delivered along with the card and is part of Morocco's numerical identity [lear more here.](https://www.identitenumerique.ma/about.html) 
+
+#### City.java
+City Card class based on City table in the DB.
+
+##### Rules:
+- *Name*, name of the city: **MUST NOT** be null or blank.
+
+- *Region*, region where the city is located: **MUST NOT** be null or blank.
+
+- *FACS*, list of faculties within the city and **SHOULD** at least have one faculty, it **MAY** be null.
+- *Reason* is the reason of the stay in Morroco.
+
+- *Obtention date*, issued card's date, it **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
+
+- *Exiration date* **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
+
+- This object should be able to manage the list of faculties (add, update, delete, get a faculy and get all of them)  
 
 
 

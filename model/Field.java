@@ -22,6 +22,7 @@ public class Field {
     public Field(Field source) {
         setId(source.id);
         setIdFac(source.idFac);
+        setAbbr(source.abbr);
         setName(source.name);
         setCertificate(source.certificate);
         setDuration(source.duration);

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.lang.NullPointerException;
 
+import model.Card;
 import model.Member;
 
 public class Moderator extends Member implements Acemanager {
@@ -13,6 +14,7 @@ public class Moderator extends Member implements Acemanager {
     private String session_end;
 
     private ArrayList<Member> members;
+    private ArrayList<Card> cards;
 
     public Moderator() {
         super();

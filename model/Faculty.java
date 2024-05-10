@@ -21,6 +21,8 @@ public class Faculty {
         setId(source.id);
         setAbbr(source.abbr);
         setDesc(source.desc);
+        setFields(source.fields);
+
     }
 
     public int getId() {

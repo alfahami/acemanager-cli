@@ -23,7 +23,6 @@ public class Member {
     private int idCity;
     private int idFaculty;
     private int idField;
-    private int idRole;
     private boolean isMember;
 
     public Member(int id, String firstName, String lastName, String birthDate, String email, String passport,
@@ -34,14 +33,12 @@ public class Member {
         setBirthDate(birthDate);
         setAge(age);
         setEmail(email);
-        ;
         setPassport(passport);
         setIdCard(idCard);
         setMatriculeAmci(matriculeAmci);
         setIdCity(idCity);
         setIdFaculty(idFaculty);
         setIdField(idField);
-        setIdRole(idRole);
         setIsMember(isMember);
     }
 
@@ -59,7 +56,6 @@ public class Member {
         setIdCity(source.idCity);
         setIdFaculty(source.idFaculty);
         setIdField(source.idField);
-        setIdRole(source.idRole);
         setIsMember(source.isMember);
     }
 
@@ -183,14 +179,6 @@ public class Member {
         this.idField = idField;
     }
 
-    public int getIdRole() {
-        return this.idRole;
-    }
-
-    public void setIdRole(int role) {
-        this.idRole = role;
-    }
-
     public boolean isIsMember() {
         return this.isMember;
     }
@@ -235,14 +223,14 @@ public class Member {
                 && Objects.equals(lastName, member.lastName) && Objects.equals(birthDate, member.birthDate)
                 && age == member.age && Objects.equals(email, member.email) && Objects.equals(passport, member.passport)
                 && idCard == member.idCard && matriculeAmci == member.matriculeAmci && idCity == member.idCity
-                && idFaculty == member.idFaculty && idField == member.idField && idRole == member.idRole
+                && idFaculty == member.idFaculty && idField == member.idField
                 && isMember == member.isMember;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, birthDate, age, email, passport, idCard, matriculeAmci, idCity,
-                idFaculty, idField, idRole, isMember);
+                idFaculty, idField, isMember);
     }
 
 }

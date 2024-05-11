@@ -44,7 +44,6 @@ public class Moderator extends Member implements Acemanager {
         this.members.add(new Member(newMember));
     }
 
-    //TODO: Test this
     @Override
     public void addMembers(ArrayList<Member> members) {
         if(members.isEmpty()) throw new IllegalArgumentException("New Member List cannot be null");
@@ -83,7 +82,6 @@ public class Moderator extends Member implements Acemanager {
         throw new IllegalArgumentException("Passport Num: " + passport + " doesn't belong to any member yet.");
     }
 
-    // TODO: Test this
     @Override
     public ArrayList<Member> getMembers() {
         if(this.members.isEmpty()) throw new IllegalArgumentException("No member found in the DB, add some");
@@ -106,7 +104,6 @@ public class Moderator extends Member implements Acemanager {
         this.cards.add(new Card(card));
     }
 
-    // TODO: Test this
     @Override
     public void addCards(ArrayList<Card> cards) {
         if(cards.isEmpty()) throw new IllegalArgumentException("New Card List cannot be null");
@@ -136,7 +133,6 @@ public class Moderator extends Member implements Acemanager {
         return new Card(this.cards.get(index));
     }
 
-    // TODO: Test this
     @Override
     public ArrayList<Card> getCards() {
         if(this.cards.isEmpty()) throw new IllegalArgumentException("No Card found in the DB, please add some");

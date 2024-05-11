@@ -9,7 +9,8 @@ import java.util.Objects;
 
 public class Member {
 
-    public Member() { }
+    public Member() {
+    }
 
     private int id;
     private String firstName;
@@ -49,7 +50,6 @@ public class Member {
         setBirthDate(source.birthDate);
         setAge(source.age);
         setEmail(source.email);
-        ;
         setPassport(source.passport);
         setIdCard(source.idCard);
         setMatriculeAmci(source.matriculeAmci);

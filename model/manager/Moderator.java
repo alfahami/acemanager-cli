@@ -48,8 +48,8 @@ public class Moderator extends Member implements Acemanager {
     }
 
     @Override
-    public void addMember(Member newMember) {
-        this.members.add(new Member(newMember));
+    public boolean addMember(Member newMember) {
+        return this.members.add(new Member(newMember));
     }
 
     @Override
@@ -62,17 +62,17 @@ public class Moderator extends Member implements Acemanager {
     }
 
     @Override
-    public void updateMemeber(int index, Member newMember) {
+    public Member updateMemeber(int index, Member newMember) {
         if (index < 0 || index > this.members.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        this.members.set(index, new Member(newMember));
+        return this.members.set(index, new Member(newMember));
     }
 
     @Override
-    public void removeMemeber(int index) {
+    public Member removeMemeber(int index) {
         if (index < 0 || index > this.members.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        this.members.remove(index);
+        return this.members.remove(index);
     }
 
     @Override
@@ -98,8 +98,7 @@ public class Moderator extends Member implements Acemanager {
         for (Member member : this.members) {
             copyMembers.add(new Member(member));
         }
-        return copyMembers;
-        
+        return copyMembers; 
     }
 
     public Member getMember(int index) {
@@ -109,8 +108,8 @@ public class Moderator extends Member implements Acemanager {
     }
 
     @Override
-    public void addCard(Card card) {
-        this.cards.add(new Card(card));
+    public boolean addCard(Card card) {
+        return this.cards.add(new Card(card));
     }
 
     @Override
@@ -123,17 +122,17 @@ public class Moderator extends Member implements Acemanager {
     }
 
     @Override
-    public void updateCard(int index, Card newCard) {
+    public Card updateCard(int index, Card newCard) {
         if (index < 0 || index > this.cards.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        this.cards.set(index, new Card(newCard));
+        return this.cards.set(index, new Card(newCard));
     }
 
     @Override
-    public void removeCard(int index) {
+    public Card removeCard(int index) {
         if (index < 0 || index > this.cards.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        this.cards.remove(index);
+        return this.cards.remove(index);
     }
 
     @Override

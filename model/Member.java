@@ -201,14 +201,14 @@ public class Member {
 
     @Override
     public String toString() {
-        return "\n[" +
+        return "{" +
                 "Full Name='" + firstName + " " + lastName + "'" +
                 ", age='" + age + "'" +
                 ", Email='" + email + "'" +
                 ", Passport='" + passport + "'" +
                 ", Amci='" + matriculeAmci + "'" +
                 ", Member status='" + isMember + "'" +
-                "]";
+                "}";
     }
 
     @Override

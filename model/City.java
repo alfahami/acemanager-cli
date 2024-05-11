@@ -114,11 +114,11 @@ public class City {
 
     @Override
     public String toString() {
-        return "\n[" +
+        return "{" +
                 " ID='" + id + "'" +
                 ", Name='" + name + "'" +
                 ", Region='" + region + "'" +
-                "]";
+                "}";
     }
 
 }

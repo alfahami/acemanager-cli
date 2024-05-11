@@ -95,12 +95,12 @@ public class Faculty {
 
     @Override
     public String toString() {
-        return "[" +
+        return "{" +
                 " ID='" + id + "'" +
                 ", Abbreviation='" + abbr + "'" +
                 ", Desc='" + desc + "'" +
                 ", Fields=" + fields.toString() +
-                "]";
+                "}";
     }
 
     @Override

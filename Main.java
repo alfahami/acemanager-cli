@@ -15,13 +15,13 @@ public class Main {
         modFes.addMembers(FillTables.fillMembers());
         modFes.addCards(FillTables.fillCards());
 
-        System.out.println(modFes.getCards().toString());
+        System.out.println("\n\n" + modFes.getCards().toString());
         System.out.println("\n\n" + modFes.getMembers().toString());
 
         System.out.println("\n\n\nRetrieving the 1st Member" + modFes.getMember(0));
         System.out.println("\n\n\nRetrieving the 1st Card" + modFes.getCard(0));
         modFes.setSession_end();
-        System.out.println("Session ends: " + modFes.getSession_end());
+        System.out.println("\n\nSession ends: " + modFes.getSession_end());
 
     }
 }

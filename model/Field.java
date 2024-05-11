@@ -76,12 +76,12 @@ public class Field {
 
     @Override
     public String toString() {
-        return "[" +
+        return "{" +
                 " ID='" + id + "'" +
                 ", Name='" + name + "'" +
                 ", Certificate='" + certificate + "'" +
                 ", Duration='" + duration + "'" +
-                "]";
+                "}";
     }
 
     @Override

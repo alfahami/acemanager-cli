@@ -122,14 +122,14 @@ public class Card {
 
     @Override
     public String toString() {
-        return "[" +
-                " Id='" + id + "'" +
+        return "{" +
+                "ID='" + id + "'" +
                 ", CIN='" + cin + "'" +
                 ", Reason='" + reason + "'" +
                 ", ObtentionDate='" + obtentionDate + "'" +
                 ", ExpirationDate='" + expirationDate + "'" +
                 ", PIN='" + pin + "'" +
-                "]";
+                "}";
     }
 
     @Override

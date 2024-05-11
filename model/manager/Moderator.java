@@ -21,6 +21,12 @@ public class Moderator extends Member implements Acemanager {
         this.cards = new ArrayList<>();
     }
 
+    public Moderator(Moderator source) {
+        super();
+        this.addMembers(source.getMembers());
+        this.addCards(source.getCards());
+    }
+
     public String getSession_start() {
         return this.session_start;
     }

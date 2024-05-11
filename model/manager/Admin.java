@@ -105,8 +105,8 @@ public class Admin extends Moderator {
     @Override
     public String toString() {
         return "{" +
-            " cities='" + getCities() + "'" +
-            ", mods='" + getMods() + "'" +
+            " cities='" + cities.toString() + "'" +
+            ", mods='" + mods.toString() + "'" +
             "}";
     }
 

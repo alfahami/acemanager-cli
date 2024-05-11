@@ -5,21 +5,19 @@ import java.util.ArrayList;
 import model.City;
 import java.util.Objects;
 
+// Can add Fac through city
 public class Admin extends Moderator {
 
     // TODO: change return on set, remove functionalities as they return the modified elements
     private ArrayList<City> cities;
-    private ArrayList<Moderator> mods;
 
     public Admin() {
         super();
         this.cities = new ArrayList<>();
-        this.mods = new ArrayList<>();
     }
 
     public Admin(Admin source) {
         super();
-        this.addMods(source.getMods());
         this.addCards(source.getCards());
     }
 
@@ -62,51 +60,11 @@ public class Admin extends Moderator {
         this.cities.remove(index);
     }
 
-    public ArrayList<Moderator> getMods() {
-        if(this.mods.isEmpty()) throw new IllegalArgumentException("You don't have moderator yet, add some");
-        ArrayList<Moderator> copyMods = new ArrayList<>();
-        for (Moderator moderator : this.mods) {
-            copyMods.add(new Moderator(moderator));
-        }
-        return copyMods;
-    }
-
-    public Moderator getModerator(int index) {
-        if (index < 0 || index > this.mods.size())
-            throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        return new Moderator(this.mods.get(index));
-    }
-
-    public void addModerator(Moderator moderator) {
-        if(moderator == null) throw new IllegalArgumentException("Moderator cannot be null");
-        this.mods.add(new Moderator(moderator));
-    }
-
-    public void addMods(ArrayList<Moderator> mods) {
-        if(mods.isEmpty()) throw new IllegalArgumentException("New moderator list cannot be empty, add some mods before");
-        for (Moderator moderator : mods) {
-            this.mods.add(new Moderator(moderator));
-        }
-    }
-
-    public void updateModerator(int index, Moderator newModerator) {
-        if (index < 0 || index > this.mods.size())
-            throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        this.mods.set(index, new Moderator(newModerator));
-    }
-
-    public void removeModerator(int index) {
-        if (index < 0 || index > this.mods.size())
-            throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        this.mods.remove(index);
-    }
-
-
     @Override
     public String toString() {
         return "{" +
-            " cities='" + cities.toString() + "'" +
-            ", mods='" + mods.toString() + "'" +
+            " Cities='" + cities.toString() + "'" +
+            ", Members='" + getMembers().toString() + "'" + 
             "}";
     }
 
@@ -119,12 +77,12 @@ public class Admin extends Moderator {
             return false;
         }
         Admin admin = (Admin) o;
-        return Objects.equals(cities, admin.cities) && Objects.equals(mods, admin.mods);
+        return Objects.equals(cities, admin.cities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cities, mods);
+        return Objects.hash(cities);
     }   
 
 

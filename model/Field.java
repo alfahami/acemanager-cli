@@ -4,15 +4,13 @@ import java.util.Objects;
 
 public class Field {
     private int id;
-    private int idFac; //TODO: remove this field
     private String abbr;
     private String name;
     private String certificate;
     private int duration;
 
-    public Field(int id, int idFac, String abbr, String name, String certificate, int duration) {
+    public Field(int id, String abbr, String name, String certificate, int duration) {
         setId(id);
-        setIdFac(idFac);
         setAbbr(abbr);
         setName(name);
         setCertificate(certificate);
@@ -21,7 +19,6 @@ public class Field {
 
     public Field(Field source) {
         setId(source.id);
-        setIdFac(source.idFac);
         setAbbr(source.abbr);
         setName(source.name);
         setCertificate(source.certificate);
@@ -36,16 +33,6 @@ public class Field {
         if (id <= 0)
             throw new IllegalArgumentException("ID must be greater than 0");
         this.id = id;
-    }
-
-    public int getIdFac() {
-        return this.idFac;
-    }
-
-    public void setIdFac(int idFac) {
-        if (idFac <= 0)
-            throw new IllegalArgumentException("Faculty ID must be greater than 0");
-        this.idFac = idFac;
     }
 
     public String getAbbr() {
@@ -91,7 +78,6 @@ public class Field {
     public String toString() {
         return "[" +
                 " ID='" + id + "'" +
-                ", IDFac='" + idFac + "'" +
                 ", Name='" + name + "'" +
                 ", Certificate='" + certificate + "'" +
                 ", Duration='" + duration + "'" +
@@ -106,13 +92,13 @@ public class Field {
             return false;
         }
         Field field = (Field) o;
-        return id == field.id && idFac == field.idFac && Objects.equals(name, field.name)
+        return id == field.id && Objects.equals(name, field.name)
                 && Objects.equals(certificate, field.certificate) && duration == field.duration;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idFac, name, certificate, duration);
+        return Objects.hash(id, name, certificate, duration);
     }
 
 }

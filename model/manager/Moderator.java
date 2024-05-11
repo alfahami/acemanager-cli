@@ -23,6 +23,8 @@ public class Moderator extends Member implements Acemanager {
 
     public Moderator(Moderator source) {
         super();
+        this.members = new ArrayList<>();
+        this.cards = new ArrayList<>();
         this.addMembers(source.getMembers());
         this.addCards(source.getCards());
     }
@@ -53,6 +55,7 @@ public class Moderator extends Member implements Acemanager {
     @Override
     public void addMembers(ArrayList<Member> members) {
         if(members.isEmpty()) throw new IllegalArgumentException("New Member List cannot be null");
+        //this.members = new ArrayList<>();
         for (Member member : members) {
             this.members.add(new Member(member));
         }
@@ -113,6 +116,7 @@ public class Moderator extends Member implements Acemanager {
     @Override
     public void addCards(ArrayList<Card> cards) {
         if(cards.isEmpty()) throw new IllegalArgumentException("New Card List cannot be null");
+        // this.cards = new ArrayList<>();
         for (Card card : cards) {
             this.cards.add(new Card(card));
         }

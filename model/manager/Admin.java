@@ -17,6 +17,12 @@ public class Admin extends Moderator {
         this.mods = new ArrayList<>();
     }
 
+    public Admin(Admin source) {
+        super();
+        this.addMods(source.getMods());
+        this.addCards(source.getCards());
+    }
+
     public ArrayList<City> getCities() {
         if(this.cities.isEmpty()) throw new IllegalArgumentException("No city found in cities table, add some");
         ArrayList<City> copyCities = new ArrayList<>();

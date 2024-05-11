@@ -10,7 +10,7 @@ import model.Member;
 
 public class FillTables {
 
-    private final static ArrayList<Field> fillFieldsFs() {
+    public final static ArrayList<Field> fillFieldsFs() {
         Field smi = new Field(1, "SMI", "Mathematics Science & Computer Science", "LF", 3);
         Field sma = new Field(2, "SMA", "Applied Mathematics Science", "LF", 3);
         Field smp = new Field(3, "SMA", "Mathematics Science & Physics", "LF", 3);
@@ -24,7 +24,7 @@ public class FillTables {
         return fields;
     }
 
-    private final static ArrayList<Field> fillFieldsFsjes() {
+    public final static ArrayList<Field> fillFieldsFsjes() {
         Field da = new Field(1, "DA", "Droit Arabe", "LF", 3);
         Field df = new Field(2, "DF", "Droit Français", "LF", 3);
         Field eg = new Field(3, "EG", "Economie & Gestion", "LF", 3);
@@ -38,7 +38,7 @@ public class FillTables {
         return fields;
     }
 
-    private final static ArrayList<Field> fillFieldsEst() {
+    public final static ArrayList<Field> fillFieldsEst() {
         Field dba = new Field(1, "DBA", "Database Administration", "LF", 3);
         Field ce = new Field(2, "CE", "Civil Engineering", "LF", 3);
         Field fbm = new Field(3, "FBM", "Financial Banking & Marketing", "LF", 3);
@@ -52,7 +52,7 @@ public class FillTables {
         return fields;
     }
 
-    private final static ArrayList<Faculty> fillFaculty() {
+    public final static ArrayList<Faculty> fillFaculty() {
         Faculty fs = new Faculty(1, "FS", "Faculty of Science", fillFieldsFs());
         Faculty fsjes = new Faculty(2, "FSJES", "Faculty of Science and Juridical Science", fillFieldsFsjes());
         Faculty fst = new Faculty(3, "FST", "Faculty of Science and Techniques", fillFieldsFsjes());
@@ -64,7 +64,7 @@ public class FillTables {
         return facs;
     }
 
-    private final static ArrayList<City> fillCities() {
+    public final static ArrayList<City> fillCities() {
         City fes = new City(1, "FES", "FES-BOULEMANE", fillFaculty());
         City meknes = new City(1, "MEKNES", "FES-BOULEMANE", fillFaculty());
         City oujda = new City(2, "OUJDA", "FES-BOULEMANE", fillFaculty());
@@ -79,7 +79,7 @@ public class FillTables {
 
     }
     
-    private final static ArrayList<Card> fillCards() {
+    public final static ArrayList<Card> fillCards() {
         Card card1 = new Card(1, 1, 1, "C018409K", "STUDY", "23/09/2022", "23/09/2025", 1345);
         Card card2 = new Card(2, 2, 1, "C018409J", "STUDY", "26/11/2022", "23/09/2025", 1256);
         Card card3 = new Card(3, 3, 1, "C018508M", "WORK", "01/01/2023", "01/01/2026", 2398);
@@ -93,7 +93,7 @@ public class FillTables {
     }
 
 
-    private final static ArrayList<Member> fillMembers() {
+    public final static ArrayList<Member> fillMembers() {
         Member mbr1 = new Member(1, "AMED", "ALI SAID", "12/09/1989", "amed@gmail.com", "nbe388409", 20212345, 1, 1, 1, 1, 1, true);
 
         Member mbr2 = new Member(2, "HISSANE", "IRCHAD", "23/10/1990", "his@gmail.com", "nbe319590", 20212346, 1, 1, 1, 1, 1, true);

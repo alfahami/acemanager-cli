@@ -44,6 +44,15 @@ public class Moderator extends Member implements Acemanager {
         this.members.add(new Member(newMember));
     }
 
+    //TODO: Test this
+    @Override
+    public void addMembers(ArrayList<Member> members) {
+        if(members.isEmpty()) throw new IllegalArgumentException("New Member List cannot be null");
+        for (Member member : members) {
+            this.members.add(new Member(member));
+        }
+    }
+
     @Override
     public void updateMemeber(int index, Member newMember) {
         if (index < 0 || index > this.members.size())
@@ -74,6 +83,18 @@ public class Moderator extends Member implements Acemanager {
         throw new IllegalArgumentException("Passport Num: " + passport + " doesn't belong to any member yet.");
     }
 
+    // TODO: Test this
+    @Override
+    public ArrayList<Member> getMembers() {
+        if(this.members.isEmpty()) throw new IllegalArgumentException("No member found in the DB, add some");
+        ArrayList<Member> copyMembers = new ArrayList<>();
+        for (Member member : this.members) {
+            copyMembers.add(new Member(member));
+        }
+        return copyMembers;
+        
+    }
+
     public Member getMember(int index) {
         if (index < 0 || index > this.members.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
@@ -83,6 +104,15 @@ public class Moderator extends Member implements Acemanager {
     @Override
     public void addCard(Card card) {
         this.cards.add(new Card(card));
+    }
+
+    // TODO: Test this
+    @Override
+    public void addCards(ArrayList<Card> cards) {
+        if(cards.isEmpty()) throw new IllegalArgumentException("New Card List cannot be null");
+        for (Card card : cards) {
+            this.cards.add(new Card(card));
+        }
     }
 
     @Override
@@ -104,6 +134,17 @@ public class Moderator extends Member implements Acemanager {
         if (index < 0 || index > this.cards.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
         return new Card(this.cards.get(index));
+    }
+
+    // TODO: Test this
+    @Override
+    public ArrayList<Card> getCards() {
+        if(this.cards.isEmpty()) throw new IllegalArgumentException("No Card found in the DB, please add some");
+        ArrayList<Card> copyCards = new ArrayList<>();
+        for (Card card : this.cards) {
+            copyCards.add(new Card(card));
+        }
+        return copyCards;
     }
 
     @Override

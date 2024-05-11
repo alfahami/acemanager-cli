@@ -66,11 +66,11 @@ public class FillTables {
 
     public final static ArrayList<City> fillCities() {
         City fes = new City(1, "FES", "FES-BOULEMANE", fillFaculty());
-        City meknes = new City(1, "MEKNES", "FES-BOULEMANE", fillFaculty());
-        City oujda = new City(2, "OUJDA", "FES-BOULEMANE", fillFaculty());
-        City kenitra = new City(3, "KENITRA", "RABAT-SALE-KENITRA", fillFaculty());
-        City rabat = new City(4, "RABAT", "RABAT-SALE-KENITRA", fillFaculty());
-        City sale = new City(5, "SALE", "FRABAT-SALE-KENITRA", fillFaculty());
+        City meknes = new City(2, "MEKNES", "FES-BOULEMANE", fillFaculty());
+        City oujda = new City(3, "OUJDA", "FES-BOULEMANE", fillFaculty());
+        City kenitra = new City(4, "KENITRA", "RABAT-SALE-KENITRA", fillFaculty());
+        City rabat = new City(5, "RABAT", "RABAT-SALE-KENITRA", fillFaculty());
+        City sale = new City(6, "SALE", "FRABAT-SALE-KENITRA", fillFaculty());
 
         ArrayList<City> cities = new ArrayList<>();
         cities.add(fes); cities.add(meknes); cities.add(oujda); cities.add(kenitra); cities.add(rabat); cities.add(sale);

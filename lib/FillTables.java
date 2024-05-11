@@ -93,7 +93,7 @@ public class FillTables {
     }
 
 
-    public final static ArrayList<Member> fillMembers() {
+    private final static ArrayList<Member> fillMembers() {
         Member mbr1 = new Member(1, "AMED", "ALI SAID", "12/09/1989", "amed@gmail.com", "nbe388409", 20212345, 1, 1, 1, 1, 1, true);
 
         Member mbr2 = new Member(2, "HISSANE", "IRCHAD", "23/10/1990", "his@gmail.com", "nbe319590", 20212346, 1, 1, 1, 1, 1, true);

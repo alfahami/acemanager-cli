@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Field {
     private int id;
-    private int idFac;
+    private int idFac; //TODO: remove this field
     private String abbr;
     private String name;
     private String certificate;

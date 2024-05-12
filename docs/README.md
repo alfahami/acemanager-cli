@@ -34,7 +34,7 @@ Stay Card class based on Card table in the DB.
 - *Reason* is the reason of the stay in Morroco.
 - *Obtention date* : issued card's date, it **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
 - *Expiration date* : **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
-- *PIN* : **MUST** have **4** digits, this is delivered along with the card and is part of Morocco's numerical identity [lear more here.](https://www.identitenumerique.ma/about.html) 
+- *PIN* : **MUST** have **4** digits, this is delivered along with the card and is part of Morocco's [numerical identity](https://www.identitenumerique.ma/about.html) 
 
 #### City.java
 City class based on City table in the DB.

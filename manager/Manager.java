@@ -24,14 +24,17 @@ public class Manager extends Member implements Permission {
         super();
         this.members = new ArrayList<>();
         this.cards = new ArrayList<>();
+        this.cities = new ArrayList<>();
     }
 
     public Manager(Manager source) {
         super();
         this.members = new ArrayList<>();
         this.cards = new ArrayList<>();
+        this.cities = new ArrayList<>();
         this.addMembers(source.getMembers());
         this.addCards(source.getCards());
+        this.addCities(source.getCities());
     }
 
     public String getSession_start() {

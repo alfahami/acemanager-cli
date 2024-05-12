@@ -6,7 +6,7 @@ import model.City;
 import java.util.Objects;
 
 // Can add Fac through city
-public class Admin extends Moderator {
+public class Admin extends Manager {
 
     private ArrayList<City> cities;
 

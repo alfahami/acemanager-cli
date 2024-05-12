@@ -1,6 +1,6 @@
-import lib.FillTables;
+import constants.FillTables;
 import manager.Admin;
-import manager.Moderator;
+import manager.Manager;
 import model.City;
 
 public class Main {
@@ -25,7 +25,7 @@ public class Main {
 
         admin.setSession_end();
         System.out.println("\n\nAdmin session end: " + admin.getSession_end());
-        Moderator modFes = new Moderator();
+        Manager modFes = new Manager();
         modFes.setSession_start();
         System.out.println("\n\nModerator Session start: " + modFes.getSession_start());
         modFes.addMembers(FillTables.fillMembers());

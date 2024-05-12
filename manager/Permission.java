@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.Card;
 import model.Member;
 
-public interface Acemanager {
+public interface Permission {
 
     public boolean addMember(Member newMember);
     public void addMembers(ArrayList<Member> members);

@@ -8,20 +8,20 @@ import java.util.Objects;
 import model.Card;
 import model.Member;
 
-public class Moderator extends Member implements Acemanager {
+public class Manager extends Member implements Permission {
     private String session_start;
     private String session_end;
 
     private ArrayList<Member> members;
     private ArrayList<Card> cards;
 
-    public Moderator() {
+    public Manager() {
         super();
         this.members = new ArrayList<>();
         this.cards = new ArrayList<>();
     }
 
-    public Moderator(Moderator source) {
+    public Manager(Manager source) {
         super();
         this.members = new ArrayList<>();
         this.cards = new ArrayList<>();
@@ -181,10 +181,10 @@ public class Moderator extends Member implements Acemanager {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Moderator)) {
+        if (!(o instanceof Manager)) {
             return false;
         }
-        Moderator moderator = (Moderator) o;
+        Manager moderator = (Manager) o;
         return Objects.equals(session_start, moderator.session_start)
                 && Objects.equals(session_end, moderator.session_end) && Objects.equals(members, moderator.members);
     }

@@ -8,7 +8,6 @@ import java.util.Objects;
 // Can add Fac through city
 public class Admin extends Moderator {
 
-    // TODO: change return on set, remove functionalities as they return the modified elements
     private ArrayList<City> cities;
 
     public Admin() {
@@ -36,9 +35,9 @@ public class Admin extends Moderator {
         return new City(this.cities.get(index));
     }
 
-    public void addCity(City city) {
+    public boolean addCity(City city) {
         if(city == null) throw new IllegalArgumentException("City cannot be null");
-        this.cities.add(new City(city));
+        return this.cities.add(new City(city));
     }
 
     public void addCities(ArrayList<City> cities) {
@@ -48,16 +47,17 @@ public class Admin extends Moderator {
         }
     }
 
-    public void updateCity(int index, City newCity) {
+    public City updateCity(int index, City newCity) {
         if (index < 0 || index > this.cities.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        this.cities.set(index, new City(newCity));
+       
+        return this.cities.set(index, new City(newCity));
     }
 
-    public void removeCity(int index) {
+    public City removeCity(int index) {
         if (index < 0 || index > this.cities.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-        this.cities.remove(index);
+        return this.cities.remove(index);
     }
 
     @Override

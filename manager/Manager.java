@@ -96,7 +96,7 @@ public class Manager extends Member implements Permission {
     @Override
     public Member findMember(String passport) {
         if (passport == null || passport.isBlank())
-            throw new IllegalArgumentException("Passport number cannot be null or blank");
+            throw new IllegalArgumentException("Passport number cannot be null or blank"); 
         // // int count = 0;
         // if (this.members.isEmpty())
         // throw new NullPointerException("No member exist in our DB table yet.");
@@ -201,7 +201,7 @@ public class Manager extends Member implements Permission {
             return copyCities;
         } 
 
-        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+        throw new RuntimeException("Rights not guaranted for this user");
 
     }
 
@@ -213,7 +213,7 @@ public class Manager extends Member implements Permission {
             return new City(this.cities.get(index));
         } 
 
-        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+        throw new RuntimeException("Rights not guaranted for this user");
     }
 
     @Override
@@ -224,7 +224,7 @@ public class Manager extends Member implements Permission {
             return this.cities.add(new City(city));
         }
 
-        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+        throw new RuntimeException("Rights not guaranted for this user");
     }
 
     @Override
@@ -237,7 +237,7 @@ public class Manager extends Member implements Permission {
             }
         } 
 
-        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+        throw new RuntimeException("Rights not guaranted for this user");
     }
 
     @Override
@@ -249,7 +249,7 @@ public class Manager extends Member implements Permission {
             return this.cities.set(index, new City(newCity));
         } 
 
-        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+        throw new RuntimeException("Rights not guaranted for this user");
     }
 
     @Override
@@ -260,7 +260,7 @@ public class Manager extends Member implements Permission {
             return this.cities.remove(index);
         }
 
-        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+        throw new RuntimeException("Rights not guaranted for this user");
 
     }
 

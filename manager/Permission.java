@@ -3,6 +3,7 @@ package manager;
 import java.util.ArrayList;
 
 import model.Card;
+import model.City;
 import model.Member;
 
 public interface Permission {
@@ -22,6 +23,17 @@ public interface Permission {
     public Card updateCard(int index, Card newCard);
     public Card findCard(String cin);
     public Card getCard(int index);
+
+    // Strictly for an andministrator
+    public boolean addCity(City newCity);
+    public void addCities(ArrayList<City> cities);
+    public ArrayList<City> getCitiess();
+    public City removeCity(int index);
+    public City updateCity(int index, City newCity);
+    public City findCity(String name);
+    public City getCity(int index);
+    public ArrayList<City> getCities();
+    
 
 
 }

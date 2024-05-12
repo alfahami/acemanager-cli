@@ -1,9 +1,5 @@
-import java.util.ArrayList;
-
 import lib.FillTables;
-import model.Card;
-import model.Member;
-import model.manager.Moderator;
+import manager.Moderator;
 
 public class Main {
 

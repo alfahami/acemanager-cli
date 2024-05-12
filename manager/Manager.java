@@ -60,10 +60,8 @@ public class Manager extends Member implements Permission {
     }
 
     public void setRole(Role role) {
-        if (role.name() == null || role.name().isBlank())
-            throw new IllegalArgumentException("Role cannot be null or blank");
-        if (!(role.name().equals("ADMINISTRAOR") || role.name().equals("MODERATOR")))
-            throw new IllegalArgumentException("Role " + role + "has no corresponding value");
+        if (role == null)
+            throw new IllegalArgumentException("Role cannot be null");
         this.role = role;
     }
 
@@ -99,7 +97,7 @@ public class Manager extends Member implements Permission {
     @Override
     public Member findMember(String passport) {
         if (passport == null || passport.isBlank())
-            throw new IllegalArgumentException("Passport number cannot be null or blank"); 
+            throw new IllegalArgumentException("Passport number cannot be null or blank");
         // // int count = 0;
         // if (this.members.isEmpty())
         // throw new NullPointerException("No member exist in our DB table yet.");
@@ -192,6 +190,8 @@ public class Manager extends Member implements Permission {
         throw new IllegalArgumentException("Card Num: " + cin + " doesn't belong to any member yet.");
     }
 
+    // ADMIN OPERATIONS
+
     @Override
     public ArrayList<City> getCities() {
         if (this.role.name().equals("ADMINISTRATOR")) {
@@ -202,9 +202,9 @@ public class Manager extends Member implements Permission {
                 copyCities.add(new City(city));
             }
             return copyCities;
-        } 
-
-        throw new RuntimeException("Rights not guaranted for this user");
+        } else {
+            throw new RuntimeException("Rights not guaranted for this user");
+        }
 
     }
 
@@ -214,9 +214,9 @@ public class Manager extends Member implements Permission {
             if (index < 0 || index > this.cities.size())
                 throw new IllegalArgumentException("Error: index " + index + "out of bounds");
             return new City(this.cities.get(index));
-        } 
-
-        throw new RuntimeException("Rights not guaranted for this user");
+        } else {
+            throw new RuntimeException("Rights not guaranted for this user");
+        }
     }
 
     @Override
@@ -225,9 +225,10 @@ public class Manager extends Member implements Permission {
             if (city == null)
                 throw new IllegalArgumentException("City cannot be null");
             return this.cities.add(new City(city));
+        } else {
+            throw new RuntimeException("Rights not guaranted for this user");
         }
 
-        throw new RuntimeException("Rights not guaranted for this user");
     }
 
     @Override
@@ -238,9 +239,10 @@ public class Manager extends Member implements Permission {
             for (City city : cities) {
                 this.cities.add(new City(city));
             }
-        } 
+        } else {
+            throw new RuntimeException("Rights not guaranted for this user");
+        }
 
-        throw new RuntimeException("Rights not guaranted for this user");
     }
 
     @Override
@@ -250,9 +252,10 @@ public class Manager extends Member implements Permission {
                 throw new IllegalArgumentException("Error: index " + index + "out of bounds");
 
             return this.cities.set(index, new City(newCity));
-        } 
+        } else {
+            throw new RuntimeException("Rights not guaranted for this user");
+        }
 
-        throw new RuntimeException("Rights not guaranted for this user");
     }
 
     @Override
@@ -261,33 +264,40 @@ public class Manager extends Member implements Permission {
             if (index < 0 || index > this.cities.size())
                 throw new IllegalArgumentException("Error: index " + index + "out of bounds");
             return this.cities.remove(index);
+        } else {
+            throw new RuntimeException("Rights not guaranted for this user");
         }
-
-        throw new RuntimeException("Rights not guaranted for this user");
 
     }
 
     @Override
     public ArrayList<City> getCitiess() {
-        if (this.cities == null || this.cities.isEmpty())
-            throw new IllegalArgumentException("No city has been added yet! City table is empty");
-        ArrayList<City> copyCities = new ArrayList<>();
-        for (City city : this.cities) {
-            copyCities.add(new City(city));
+        if (this.role.name().equals("ADMINISTRATOR")) {
+            if (this.cities == null || this.cities.isEmpty())
+                throw new IllegalArgumentException("No city has been added yet! City table is empty");
+            ArrayList<City> copyCities = new ArrayList<>();
+            for (City city : this.cities) {
+                copyCities.add(new City(city));
+            }
+            return copyCities;
+        } else {
+            throw new RuntimeException("Rights not guaranted for this user");
         }
-        return copyCities;
     }
 
     @Override
     public City findCity(String name) {
-        if (name == null || name.isBlank())
-            throw new IllegalArgumentException("City name cannot be null or blank");
-        for (City city : this.cities) {
-            if (city.getName().equals(name))
-                return city;
+        if (this.role.name().equals("ADMINISTRATOR")) {
+            if (name == null || name.isBlank())
+                throw new IllegalArgumentException("City name cannot be null or blank");
+            for (City city : this.cities) {
+                if (city.getName().equals(name))
+                    return city;
+            }
+            throw new IllegalArgumentException("City not found, add some");
+        } else {
+            throw new RuntimeException("Rights not guaranted for this user");
         }
-
-        throw new IllegalArgumentException("City not found, add some");
     }
 
     @Override
@@ -295,7 +305,8 @@ public class Manager extends Member implements Permission {
         return "{" +
                 " session start='" + getSession_start() + "'" +
                 ", session end='" + getSession_end() + "'" +
-                ", cards='" + cards.toString() + "'" +
+                ", cities='" + cities.toString() + "'" + 
+                
                 "}";
     }
 

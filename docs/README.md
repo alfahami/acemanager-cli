@@ -8,52 +8,34 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
       [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
 - All ID in classes __MUST__ be greater than 0, this is for displaying purpose in a human readability.
-
 - All fields __MUST NOT__ be null or blank.
 
 - One **SHOULD** be able to make copy of an object, display a class object's details in a pretty printing way.
-
 - Two objects of a class are equal when its fields contents are the same.
-
 The classes below are located in the package **model**
+
 #### Member.java
 Member class based on Member table in the DB.
-
 ##### Rules:
-
 - *First Name and last bame* : **MUST NOT** be null or empty*.
-
 - *Birth Date* : **MUST** be in format *dd/MM/yyyy*.
-
 - *Age* : **MUST** be calculated automatically from birth date.
-
 - *Email* : **MUST** be verify for the bare minimum using regex or similar methods.
-
 - *Passport* : **MUST** have **9** characters.
-
 - *AMCI Matricule* : **MUST** have **8** digits.
-
 - *Membership Status* : **MUST** be **true**(yes) or **false**(no).
-
 - One **SHOULD** be able to create copy object of this class.
-
 - Two objects of this class are equal when its fields contents are the same.
 
 #### Card.java
 Stay Card class based on Card table in the DB.
-
 ##### Rules:
 - *Id Member* : represent the person's card holder, follows ID rule cited on top.<br> This will represent a foreign key in DB representation indicating the member posessing the card.
-
 - *Id City* : follows ID rule cited on top.<br> This will represent a foreign key in DB representation indicating the city that issued the card.
-
 - *CIN* : **MUST** have 8 digits and not be null and always uppercased.
 - *Reason* is the reason of the stay in Morroco.
-
 - *Obtention date* : issued card's date, it **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
-
 - *Expiration date* : **MUST** be a date or stored as one and **MUST** follow the format _dd/MM/yyyy_.
-
 - *PIN* : **MUST** have **4** digits, this is delivered along with the card and is part of Morocco's numerical identity [lear more here.](https://www.identitenumerique.ma/about.html) 
 
 #### City.java
@@ -61,12 +43,9 @@ City class based on City table in the DB.
 
 ##### Rules:
 - *Name* : name of the city: **MUST NOT** be null or blank.
-
 - *Region* : region where the city is located: **MUST NOT** be null or blank.
-
 - *Facs* : list of faculties within the city and **SHOULD** at least have one faculty, it **MAY** be null.
 - *Reason* : is the reason of the stay in Morroco.
-
 - This object should be able to manage the list of faculties (_add, update, delete, get a faculy and get all of them_ or whatever management service of yours)  
 
 #### Faculty.java
@@ -74,11 +53,8 @@ Faculty class based on faculty table in the DB.
 
 ##### Rules:
 - *Abbr* : abbreviation of the faculty's initial: **MUST NOT** be null or blank.
-
 - *Desc* : description of faculty's abbreviation. The full name: **MUST NOT** be null or blank.
-
 - *Fields* : list of fields in the faculty. A given Faculty **SHOULD** at least have one field, it **MAY** be null.
-
 - This object should be able to manage the list of fields (_add, update, delete, get a faculy and get all of them_ and whatever management system on your own)  
 
 #### Field.java
@@ -86,22 +62,16 @@ Field class based on Field table in the DB.
 
 ##### Rules:
 - *Abbreviation* : of the field name's initial, **MUST NOT** be null or blank.
-
 - *Name* : description of field's abbreviation. The full name: **MUST NOT** be null or blank.
-
 - *Certificate* : diploma that will be issued at the end of the formation; **MUST NOT** be null nor blank.
-
 - *Duration* : of the formation, **SHOULD** at least be one year; **MUST NOT** be less or equal to 0.
-
 Within the package **model**, there's another package **manager** that handles all management _roles, permissions and operations_.
 
 The first approach is as below:
 <blockquote>I used inheritance in order to achieve role management as follow:<br>
 
 - A **moderator**, is a member with a _session_ and a set of _permissions_ on members, he/she can add, remove, update a member in a given city but **MUST** not be able to manage cities or list all members of the app.
-
 - An **admin**, on the other hand is a member and a moderator meaning he can manage cities on top of what a moderator does.
-
 - A diagram class explaining this approach is to be found in <code>**_the docs/_**</code> folder.
 - <cite>Note: this approach is simple but less clever and will surely replace by another.</cite></blockquote>
 
@@ -120,14 +90,10 @@ This class does represent the Moderator that will mod the app.
 ##### Rules:
 - *Session Start* : **MUST NOT** be null or blank.<br>
 It **SHOULD BE** on format _dd/MM/yyy at HH:mm:ss_ or whatever other format. 
-
 - *Session End* : **MUST NOT** be null or blank.<br>
 It **SHOULD BE** on format _dd/MM/yyy at HH:mm:ss_ or whatever other format. 
-
 - *Members* : a list of the members that the moderator would manage; **MAY** be null.
-
 - *Cards* : a list of the cards that the moderator would manage; **MAY** be null.
-
 - *Permissions* : a list of methods that **MUST** be implemented from Acemanger which represents the moderator's permitted operations.
 
 #### Admin.java
@@ -136,11 +102,9 @@ Has no corresponding entity in DB.
 This class does represent the Admin that will mod the app.
 <cite>It might represent a role table or stuff like that! We'll figure that out.</cite>
 
-
 ##### Rules:
 
 - *Cities* : a list of the cities that the admin would manage; **MAY** be null.
-
 - *Permissions* : a list of methods that **MUST** be implemented from which represents the admin's permitted operations.
 
 The package <code>lib</code> represents all librairies, classes, functions and snippets of code used in the app but are not at the core of it.
@@ -148,7 +112,6 @@ The package <code>lib</code> represents all librairies, classes, functions and s
 #### Helpers.java
 
 - Contains randoms functions utilized in the app such as (<code>validate email</code>, <code>validate date</code>, ...etc)
-
 - Functions such as the mentionned above **SHOULD BE** added here.
 
 #### FillTables.java

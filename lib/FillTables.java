@@ -52,7 +52,7 @@ public class FillTables {
         return fields;
     }
 
-    public final static ArrayList<Faculty> fillFaculty() {
+    public final static ArrayList<Faculty> fillFaculties() {
         Faculty fs = new Faculty(1, "FS", "Faculty of Science", fillFieldsFs());
         Faculty fsjes = new Faculty(2, "FSJES", "Faculty of Science and Juridical Science", fillFieldsFsjes());
         Faculty fst = new Faculty(3, "FST", "Faculty of Science and Techniques", fillFieldsFsjes());
@@ -65,12 +65,12 @@ public class FillTables {
     }
 
     public final static ArrayList<City> fillCities() {
-        City fes = new City(1, "FES", "FES-BOULEMANE", fillFaculty());
-        City meknes = new City(2, "MEKNES", "FES-BOULEMANE", fillFaculty());
-        City oujda = new City(3, "OUJDA", "FES-BOULEMANE", fillFaculty());
-        City kenitra = new City(4, "KENITRA", "RABAT-SALE-KENITRA", fillFaculty());
-        City rabat = new City(5, "RABAT", "RABAT-SALE-KENITRA", fillFaculty());
-        City sale = new City(6, "SALE", "FRABAT-SALE-KENITRA", fillFaculty());
+        City fes = new City(1, "FES", "FES-BOULEMANE", fillFaculties());
+        City meknes = new City(2, "MEKNES", "FES-BOULEMANE", fillFaculties());
+        City oujda = new City(3, "OUJDA", "FES-BOULEMANE", fillFaculties());
+        City kenitra = new City(4, "KENITRA", "RABAT-SALE-KENITRA", fillFaculties());
+        City rabat = new City(5, "RABAT", "RABAT-SALE-KENITRA", fillFaculties());
+        City sale = new City(6, "SALE", "FRABAT-SALE-KENITRA", fillFaculties());
 
         ArrayList<City> cities = new ArrayList<>();
         cities.add(fes); cities.add(meknes); cities.add(oujda); cities.add(kenitra); cities.add(rabat); cities.add(sale);

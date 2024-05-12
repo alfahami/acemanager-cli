@@ -64,7 +64,6 @@ public class Admin extends Moderator {
     public String toString() {
         return "{" +
             " Cities='" + cities.toString() + "'" +
-            ", Members='" + getMembers().toString() + "'" + 
             "}";
     }
 

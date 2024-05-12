@@ -77,20 +77,21 @@ public class Faculty {
         }
     }
 
-    public void setField(int index, Field field) {
+    public Field setField(int index, Field field) {
         if (index < 0 || index > this.fields.size())
             throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
-        this.fields.set(index, new Field(field));
+        return this.fields.set(index, new Field(field));
     }
 
-    public void addField(Field field) {
-        this.fields.add(new Field(field));
+    public boolean addField(Field newField) {
+        if(newField == null) throw new IllegalArgumentException("New Field cannot be null");
+        return this.fields.add(new Field(newField));
     }
 
-    public void removeField(int index) {
+    public Field removeField(int index) {
         if (index < 0 || index > this.fields.size())
             throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
-        this.fields.remove(index);
+        return this.fields.remove(index);
     }
 
     @Override

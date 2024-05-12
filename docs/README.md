@@ -1,7 +1,5 @@
 ### Full Implementation Documentation
 
-//TODO: Add diagram class in docs before pre-releasing
-
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
       NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
       "OPTIONAL" in this document are to be interpreted as described in
@@ -117,6 +115,14 @@ The package <code>lib</code> represents all librairies, classes, functions and s
 #### FillTables.java
 
 - Contains static function that fill the base tables as a preloaded data of the app.
+
+#### Class Diagram
+
+- The folder <code>docs/images/</code> contains the class diagram images.
+
+Here is the diagram class for this full implementation documentation.
+
+![alt text](images/mod_admin_class_diagram.svg)
 
 
 

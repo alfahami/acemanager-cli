@@ -5,15 +5,20 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import constants.Role;
 import model.Card;
+import model.City;
 import model.Member;
 
+// TODO: think about handling when a mod tries to perform admin operations 
 public class Manager extends Member implements Permission {
     private String session_start;
     private String session_end;
+    private Role role;
 
     private ArrayList<Member> members;
     private ArrayList<Card> cards;
+    private ArrayList<City> cities;
 
     public Manager() {
         super();
@@ -47,6 +52,18 @@ public class Manager extends Member implements Permission {
                 .toString();
     }
 
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        if (role.name() == null || role.name().isBlank())
+            throw new IllegalArgumentException("Role cannot be null or blank");
+        if (!(role.name().equals("ADMINISTRAOR") || role.name().equals("MODERATOR")))
+            throw new IllegalArgumentException("Role " + role + "has no corresponding value");
+        this.role = role;
+    }
+
     @Override
     public boolean addMember(Member newMember) {
         return this.members.add(new Member(newMember));
@@ -54,8 +71,9 @@ public class Manager extends Member implements Permission {
 
     @Override
     public void addMembers(ArrayList<Member> members) {
-        if(members.isEmpty()) throw new IllegalArgumentException("New Member List cannot be null");
-        //this.members = new ArrayList<>();
+        if (members.isEmpty())
+            throw new IllegalArgumentException("New Member List cannot be null");
+        // this.members = new ArrayList<>();
         for (Member member : members) {
             this.members.add(new Member(member));
         }
@@ -93,12 +111,13 @@ public class Manager extends Member implements Permission {
 
     @Override
     public ArrayList<Member> getMembers() {
-        if(this.members.isEmpty()) throw new IllegalArgumentException("No member found in the DB, add some");
+        if (this.members.isEmpty())
+            throw new IllegalArgumentException("No member found in the DB, add some");
         ArrayList<Member> copyMembers = new ArrayList<>();
         for (Member member : this.members) {
             copyMembers.add(new Member(member));
         }
-        return copyMembers; 
+        return copyMembers;
     }
 
     public Member getMember(int index) {
@@ -114,7 +133,8 @@ public class Manager extends Member implements Permission {
 
     @Override
     public void addCards(ArrayList<Card> cards) {
-        if(cards.isEmpty()) throw new IllegalArgumentException("New Card List cannot be null");
+        if (cards.isEmpty())
+            throw new IllegalArgumentException("New Card List cannot be null");
         // this.cards = new ArrayList<>();
         for (Card card : cards) {
             this.cards.add(new Card(card));
@@ -144,7 +164,8 @@ public class Manager extends Member implements Permission {
 
     @Override
     public ArrayList<Card> getCards() {
-        if(this.cards.isEmpty()) throw new IllegalArgumentException("No Card found in the DB, please add some");
+        if (this.cards.isEmpty())
+            throw new IllegalArgumentException("No Card found in the DB, please add some");
         ArrayList<Card> copyCards = new ArrayList<>();
         for (Card card : this.cards) {
             copyCards.add(new Card(card));
@@ -166,6 +187,104 @@ public class Manager extends Member implements Permission {
         }
 
         throw new IllegalArgumentException("Card Num: " + cin + " doesn't belong to any member yet.");
+    }
+
+    @Override
+    public ArrayList<City> getCities() {
+        if (this.role.name().equals("ADMINISTRATOR")) {
+            if (this.cities.isEmpty())
+                throw new IllegalArgumentException("No city found in cities table, add some");
+            ArrayList<City> copyCities = new ArrayList<>();
+            for (City city : this.cities) {
+                copyCities.add(new City(city));
+            }
+            return copyCities;
+        } 
+
+        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+
+    }
+
+    @Override
+    public City getCity(int index) {
+        if (this.role.name().equals("ADMINISTRATOR")) {
+            if (index < 0 || index > this.cities.size())
+                throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+            return new City(this.cities.get(index));
+        } 
+
+        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+    }
+
+    @Override
+    public boolean addCity(City city) {
+        if (this.role.name().equals("ADMINISTRATOR")) {
+            if (city == null)
+                throw new IllegalArgumentException("City cannot be null");
+            return this.cities.add(new City(city));
+        }
+
+        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+    }
+
+    @Override
+    public void addCities(ArrayList<City> cities) {
+        if (this.role.name().equals("ADMINISTRATOR")) {
+            if (cities.isEmpty())
+                throw new IllegalArgumentException("New city list cannot be empty");
+            for (City city : cities) {
+                this.cities.add(new City(city));
+            }
+        } 
+
+        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+    }
+
+    @Override
+    public City updateCity(int index, City newCity) {
+        if (this.role.name().equals("ADMINISTRATOR")) {
+            if (index < 0 || index > this.cities.size())
+                throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+
+            return this.cities.set(index, new City(newCity));
+        } 
+
+        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+    }
+
+    @Override
+    public City removeCity(int index) {
+        if (this.role.name().equals("ADMINISTRATOR")) {
+            if (index < 0 || index > this.cities.size())
+                throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+            return this.cities.remove(index);
+        }
+
+        throw new IllegalArgumentException("Rights not guaranted! Please contact your admin");
+
+    }
+
+    @Override
+    public ArrayList<City> getCitiess() {
+        if (this.cities == null || this.cities.isEmpty())
+            throw new IllegalArgumentException("No city has been added yet! City table is empty");
+        ArrayList<City> copyCities = new ArrayList<>();
+        for (City city : this.cities) {
+            copyCities.add(new City(city));
+        }
+        return copyCities;
+    }
+
+    @Override
+    public City findCity(String name) {
+        if (name == null || name.isBlank())
+            throw new IllegalArgumentException("City name cannot be null or blank");
+        for (City city : this.cities) {
+            if (city.getName().equals(name))
+                return city;
+        }
+
+        throw new IllegalArgumentException("City not found, add some");
     }
 
     @Override

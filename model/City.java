@@ -80,20 +80,21 @@ public class City {
         }
     }
 
-    public void setFaculty(int index, Faculty newFaculty) {
+    public Faculty setFaculty(int index, Faculty newFaculty) {
         if (index < 0 || index > this.facs.size())
             throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
-        this.facs.set(index, new Faculty(newFaculty));
+        return this.facs.set(index, new Faculty(newFaculty));
     }
 
-    public void addFaculty(Faculty newFaculty) {
-        this.facs.add(new Faculty(newFaculty));
+    public boolean addFaculty(Faculty newFaculty) {
+        if(newFaculty == null) throw new IllegalArgumentException("New Faculty cannot be null");
+        return this.facs.add(new Faculty(newFaculty));
     }
 
-    public void removeFaculty(int index) {
+    public Faculty removeFaculty(int index) {
         if (index < 0 || index > this.facs.size())
             throw new IllegalArgumentException("Error: Index: " + index + " is out of bounds");
-        this.facs.remove(index);
+        return this.facs.remove(index);
     }
 
     @Override

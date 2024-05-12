@@ -113,7 +113,7 @@ public class Member {
     }
 
     public void setEmail(String email) {
-        if (!validate(email))
+        if (!validateEmail(email))
             throw new IllegalArgumentException("Email is not valid");
         this.email = email;
     }

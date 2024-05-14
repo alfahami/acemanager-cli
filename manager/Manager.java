@@ -9,19 +9,25 @@ import constants.Role;
 import model.Card;
 import model.City;
 import model.Member;
-
-// TODO: think about handling when a mod tries to perform admin operations 
+ 
 public class Manager extends Member implements Permission {
+    private int id;
     private String session_start;
     private String session_end;
-    private Role role;
+    protected Role role;
 
     private ArrayList<Member> members;
     private ArrayList<Card> cards;
     private ArrayList<City> cities;
 
-    public Manager() {
-        super();
+    public Manager() { 
+        this.members = new ArrayList<>();
+        this.cards = new ArrayList<>();
+        this.cities = new ArrayList<>();
+    }
+
+    public Manager(Member member) {
+        super(member);
         this.members = new ArrayList<>();
         this.cards = new ArrayList<>();
         this.cities = new ArrayList<>();
@@ -34,7 +40,20 @@ public class Manager extends Member implements Permission {
         this.cities = new ArrayList<>();
         this.addMembers(source.getMembers());
         this.addCards(source.getCards());
-        this.addCities(source.getCities());
+        // Moderator doesn't have cities
+        if(this.role.name().equals("ADMINISTRATOR") && source.getCities() != null && !source.getCities().isEmpty()) {
+            this.addCities(source.getCities());
+        } else {
+
+        }
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSession_start() {
@@ -59,11 +78,11 @@ public class Manager extends Member implements Permission {
         return this.role;
     }
 
-    public void setRole(Role role) {
-        if (role == null)
-            throw new IllegalArgumentException("Role cannot be null");
-        this.role = role;
-    }
+    // public void setRole(Role role) {
+    //     if (role == null)
+    //         throw new IllegalArgumentException("Role cannot be null");
+    //     this.role = role;
+    // }
 
     @Override
     public boolean addMember(Member newMember) {
@@ -72,6 +91,7 @@ public class Manager extends Member implements Permission {
 
     @Override
     public void addMembers(ArrayList<Member> members) {
+        this.members = new ArrayList<>();
         if (members.isEmpty())
             throw new IllegalArgumentException("New Member List cannot be null");
         // this.members = new ArrayList<>();
@@ -303,6 +323,8 @@ public class Manager extends Member implements Permission {
     @Override
     public String toString() {
         return "{" +
+                " ID='" + getId() + 
+                " Full name=" + getFirstName() + " " + getLastName() +
                 " session start='" + getSession_start() + "'" +
                 ", session end='" + getSession_end() + "'" +
                 ", cities='" + cities.toString() + "'" + 

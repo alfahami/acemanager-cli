@@ -86,6 +86,7 @@ public class Manager extends Member implements Permission {
 
     @Override
     public boolean addMember(Member newMember) {
+        newMember.setId(this.members.size() + 1);
         return this.members.add(new Member(newMember));
     }
 
@@ -96,7 +97,10 @@ public class Manager extends Member implements Permission {
             throw new IllegalArgumentException("New Member List cannot be null");
         // this.members = new ArrayList<>();
         for (Member member : members) {
+            // prefer using the length of members array, in case it's already have data
+            member.setId(this.members.size() + 1);
             this.members.add(new Member(member));
+            
         }
     }
 
@@ -104,6 +108,7 @@ public class Manager extends Member implements Permission {
     public Member updateMemeber(int index, Member newMember) {
         if (index < 0 || index > this.members.size())
             throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+        newMember.setId(index + 1);
         return this.members.set(index, new Member(newMember));
     }
 
@@ -149,6 +154,7 @@ public class Manager extends Member implements Permission {
 
     @Override
     public boolean addCard(Card card) {
+       // card.setId(this.cards.getLast().getId() + 1);
         return this.cards.add(new Card(card));
     }
 
@@ -158,6 +164,7 @@ public class Manager extends Member implements Permission {
             throw new IllegalArgumentException("New Card List cannot be null");
         // this.cards = new ArrayList<>();
         for (Card card : cards) {
+            card.setId(this.cards.size() + 1);
             this.cards.add(new Card(card));
         }
     }

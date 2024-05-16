@@ -9,7 +9,7 @@ import constants.Role;
 import model.Card;
 import model.City;
 import model.Member;
- 
+
 public class Manager extends Member implements Permission {
     private int id;
     private String session_start;
@@ -20,7 +20,7 @@ public class Manager extends Member implements Permission {
     private ArrayList<Card> cards;
     private ArrayList<City> cities;
 
-    public Manager() { 
+    public Manager() {
         this.members = new ArrayList<>();
         this.cards = new ArrayList<>();
         this.cities = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Manager extends Member implements Permission {
         this.addMembers(source.getMembers());
         this.addCards(source.getCards());
         // Moderator doesn't have cities
-        if(this.role.name().equals("ADMINISTRATOR") && source.getCities() != null && !source.getCities().isEmpty()) {
+        if (this.role.name().equals("ADMINISTRATOR") && source.getCities() != null && !source.getCities().isEmpty()) {
             this.addCities(source.getCities());
         } else {
 
@@ -79,9 +79,9 @@ public class Manager extends Member implements Permission {
     }
 
     // public void setRole(Role role) {
-    //     if (role == null)
-    //         throw new IllegalArgumentException("Role cannot be null");
-    //     this.role = role;
+    // if (role == null)
+    // throw new IllegalArgumentException("Role cannot be null");
+    // this.role = role;
     // }
 
     @Override
@@ -92,7 +92,8 @@ public class Manager extends Member implements Permission {
 
     @Override
     public void addMembers(ArrayList<Member> members) {
-        this.members = new ArrayList<>();
+        if (this.members == null)
+            this.members = new ArrayList<>();
         if (members.isEmpty())
             throw new IllegalArgumentException("New Member List cannot be null");
         // this.members = new ArrayList<>();
@@ -100,7 +101,7 @@ public class Manager extends Member implements Permission {
             // prefer using the length of members array, in case it's already have data
             member.setId(this.members.size() + 1);
             this.members.add(new Member(member));
-            
+
         }
     }
 
@@ -154,12 +155,13 @@ public class Manager extends Member implements Permission {
 
     @Override
     public boolean addCard(Card card) {
-       // card.setId(this.cards.getLast().getId() + 1);
+        card.setId(this.cards.size() + 1);
         return this.cards.add(new Card(card));
     }
 
     @Override
     public void addCards(ArrayList<Card> cards) {
+        if(this.cards == null) this.cards = new ArrayList<>();
         if (cards.isEmpty())
             throw new IllegalArgumentException("New Card List cannot be null");
         // this.cards = new ArrayList<>();
@@ -250,6 +252,7 @@ public class Manager extends Member implements Permission {
         if (this.role.name().equals("ADMINISTRATOR")) {
             if (city == null)
                 throw new IllegalArgumentException("City cannot be null");
+            city.setId(this.cities.size() + 1);
             return this.cities.add(new City(city));
         } else {
             throw new RuntimeException("Rights not guaranted for this user");
@@ -263,6 +266,7 @@ public class Manager extends Member implements Permission {
             if (cities.isEmpty())
                 throw new IllegalArgumentException("New city list cannot be empty");
             for (City city : cities) {
+                city.setId(this.cities.size() + 1);
                 this.cities.add(new City(city));
             }
         } else {
@@ -276,7 +280,7 @@ public class Manager extends Member implements Permission {
         if (this.role.name().equals("ADMINISTRATOR")) {
             if (index < 0 || index > this.cities.size())
                 throw new IllegalArgumentException("Error: index " + index + "out of bounds");
-
+            newCity.setId(index + 1);
             return this.cities.set(index, new City(newCity));
         } else {
             throw new RuntimeException("Rights not guaranted for this user");
@@ -314,12 +318,12 @@ public class Manager extends Member implements Permission {
     @Override
     public String toString() {
         return "{" +
-                " ID='" + getId() + 
+                " ID='" + getId() +
                 " Full name=" + getFirstName() + " " + getLastName() +
                 " session start='" + getSession_start() + "'" +
                 ", session end='" + getSession_end() + "'" +
-                ", cities='" + cities.toString() + "'" + 
-                
+                ", cities='" + cities.toString() + "'" +
+
                 "}";
     }
 

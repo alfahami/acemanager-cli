@@ -13,8 +13,8 @@ public class FillTables {
     public final static ArrayList<Field> fillFieldsFs() {
         Field smi = new Field(1, "SMI", "Mathematics Science & Computer Science", "LF", 3);
         Field sma = new Field(2, "SMA", "Applied Mathematics Science", "LF", 3);
-        Field smp = new Field(3, "SMA", "Mathematics Science & Physics", "LF", 3);
-        Field mip = new Field(4, "SMA", "Mathematics Science", "LF", 3);
+        Field smp = new Field(3, "SMP", "Mathematics Science & Physics", "LF", 3);
+        Field mip = new Field(4, "MIP", "Mathematics Computer Science & Physics", "LF", 3);
         Field smc = new Field(5, "SMC", "Mathematics Science & Chemistry", "LF", 3);
 
         ArrayList<Field> fields = new ArrayList<>();
@@ -98,11 +98,11 @@ public class FillTables {
 
         Member mbr2 = new Member(2, "HISSANE", "IRCHAD", "23/10/1990", "his@gmail.com", "nbe319590", 20212346, 2, 2, 2, 2, true);
 
-        Member mbr3 = new Member(1, "CHARKAOUI", "ISSA", "03/03/1993", "issa@gmail.com", "nbe509879", 20212347, 3, 3, 3, 3, true);
+        Member mbr3 = new Member(3, "CHARKAOUI", "ISSA", "03/03/1993", "issa@gmail.com", "nbe509879", 20212347, 3, 3, 3, 3, true);
 
-        Member mbr4 = new Member(1, "MSA", "YOUSSOUF", "09/11/1990", "msa@gmail.com", "nbe388985", 20212345, 4, 4, 4, 4, true);
+        Member mbr4 = new Member(4, "MSA", "YOUSSOUF", "09/11/1990", "msa@gmail.com", "nbe388985", 20212345, 4, 4, 4, 4, true);
 
-        Member mbr5 = new Member(1, "ILYASS", "HAIDAR", "08/01/2000", "ilys@gmail.com", "nbe388789", 20212345, 5, 5, 5, 5, true);
+        Member mbr5 = new Member(5, "ILYASS", "HAIDAR", "08/01/2000", "ilys@gmail.com", "nbe388789", 20212345, 5, 5, 5, 5, true);
 
         ArrayList<Member> members = new ArrayList<>();
         members.add(mbr1); members.add(mbr2); members.add(mbr3); members.add(mbr4); members.add(mbr5);

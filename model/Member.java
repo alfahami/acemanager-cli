@@ -76,7 +76,7 @@ public class Member {
     public void setFirstName(String firstName) {
         if (firstName == null || firstName.isBlank())
             throw new IllegalArgumentException("First name cannot be null or blank");
-        this.firstName = firstName.toUpperCase();
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -86,7 +86,7 @@ public class Member {
     public void setLastName(String lastName) {
         if (lastName == null || lastName.isBlank())
             throw new IllegalArgumentException("Last name cannot be blank or null");
-        this.lastName = lastName.toUpperCase();
+        this.lastName = lastName;
     }
 
     public String getBirthDate() {
@@ -96,8 +96,10 @@ public class Member {
     public void setBirthDate(String birthDate) {
         if (birthDate == null || birthDate.isBlank())
             throw new IllegalArgumentException("Birth date cannot be null or blank. ");
-        if (isValidDateFormat("dd/MM/yyyy", birthDate))
-            this.birthDate = birthDate;
+        if (!isValidDateFormat("dd/MM/yyyy", birthDate))
+            throw new IllegalArgumentException("Invalid date format: date format must strictly follow \"dd/MM/yyyy\"");
+        this.birthDate = birthDate;
+
     }
 
     public int getAge() {
@@ -125,7 +127,7 @@ public class Member {
     public void setPassport(String passport) {
         if (passport == null || passport.isBlank() || passport.length() != 9)
             throw new IllegalArgumentException("Passport number must have 9 digits and can't be null nor blank!");
-        this.passport = passport.toUpperCase();
+        this.passport = passport;
     }
 
     public int getIdCard() {

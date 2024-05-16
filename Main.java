@@ -21,7 +21,7 @@ public class Main {
 
         SuperUser root = new SuperUser();
         root.setSession_start();
-        System.out.println("Root session start: " + root.getSession_start());
+        System.out.println("\n\t\t\t\t\t\t\t\t\t\tRoot session start: " + root.getSession_start());
         ArrayList<Field> fields = FillTables.fillFieldsFs();
         ArrayList<Faculty> facs = FillTables.fillFaculties(fields);
         root.addCities(FillTables.fillCities(facs));
@@ -46,7 +46,7 @@ public class Main {
 
     public static String promptForFirstName(Scanner scanner) {
         while (true) {
-            System.out.print("Enter member's firstname: ");
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's firstname: ");
             String firstname = scanner.nextLine();
             if (!isNullOrBlank(firstname))
                 return firstname;
@@ -55,7 +55,7 @@ public class Main {
 
     public static String promptForLastName(Scanner scanner) {
         while (true) {
-            System.out.print("Enter member's lastname: ");
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's lastname: ");
             String lastname = scanner.nextLine();
             if (!isNullOrBlank(lastname))
                 return lastname;
@@ -64,7 +64,7 @@ public class Main {
 
     public static String promptForPassport(Scanner scanner) {
         while (true) {
-            System.out.print("Enter member's passport: ");
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's passport: ");
             String passport = scanner.nextLine();
             if (!isNullOrBlank(passport) && !isInvalidPassport(passport))
                 return passport;
@@ -73,7 +73,7 @@ public class Main {
 
     public static String promptForBirthDate(Scanner scanner) {
         while (true) {
-            System.out.print("Enter member's birth date: ");
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's birth date: ");
             String birthdate = scanner.nextLine();
             if (!isNullOrBlank(birthdate))
                 return birthdate;
@@ -82,7 +82,7 @@ public class Main {
 
     public static int promptForMatAmci(Scanner scanner) {
         while (true) {
-            System.out.print("Enter member's AMCI identifier: ");
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's AMCI identifier: ");
             if (!scanner.hasNextInt()) {
                 scanner.next();
                 continue;
@@ -97,7 +97,7 @@ public class Main {
 
     public static String promptForEmail(Scanner scanner) {
         while (true) {
-            System.out.print("Enter member's email: ");
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's email: ");
             String email = scanner.nextLine();
             if (!isNullOrBlank(email) && validateEmail(email))
                 return email;
@@ -106,7 +106,7 @@ public class Main {
 
     public static boolean promptForMemberStatus(Scanner scanner) {
         while (true) {
-            System.out.print("Is the member already an adherant - Yes|No- : ");
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tIs the member already an adherant - Yes|No- : ");
             String status = scanner.nextLine();
             if (!isNullOrBlank(status))
                 return status.equalsIgnoreCase("yes");

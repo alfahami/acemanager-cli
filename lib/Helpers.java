@@ -12,26 +12,26 @@ import model.Member;
 
 public class Helpers {
 
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
-    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+            Pattern.CASE_INSENSITIVE);
 
     public static boolean validateEmail(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.matches();
     }
 
-    // prefer java.time over SimpleFormat    
+    // prefer java.time over SimpleFormat
     public static boolean isValidDateFormat(String format, String value) {
         try {
             LocalDate.parse(value, DateTimeFormatter.ofPattern(format));
             return true;
-        } catch ( DateTimeParseException ex) {
+        } catch (DateTimeParseException ex) {
             throw new IllegalArgumentException("Invalid date format: date format must strictly follow \"dd/MM/yyyy\"");
         }
     }
 
-     public static void printAnyList(ArrayList<?> list, SuperUser manager) {
-       if (list != null) {
+    public static void printAnyList(ArrayList<?> list, SuperUser manager) {
+        if (list != null) {
             String className = list.get(0).getClass().getName();
 
             switch (className) {
@@ -54,7 +54,8 @@ public class Helpers {
                                 + member.getAge() + "  | " + member.getPassport() + " | " + member.getMatriculeAmci()
                                 + " | " +
 
-                                (manager.getCard(member.getIdCard() -1) != null ? manager.getCard(member.getIdCard()).getCin()
+                                (manager.getCard(member.getIdCard() - 1) != null
+                                        ? manager.getCard(member.getIdCard()).getCin()
                                         : "No Card!")
                                 + " | " +
 
@@ -63,11 +64,20 @@ public class Helpers {
                                         : formatString("No Card!", 10))
 
                                 + "| " + formatString(manager.getCity(member.getIdCity() - 1).getName(), 9) + "| "
-                                + formatString(manager.getCity(member.getIdCity() - 1).getFaculty(member.getIdFaculty() -1).getField(member.getIdField() - 1).getAbbr(), 19)
+                                + formatString(
+                                        manager.getCity(member.getIdCity() - 1).getFaculty(member.getIdFaculty() - 1)
+                                                .getField(member.getIdField() - 1).getAbbr(),
+                                        19)
 
-                                + "| " + formatString(manager.getCity(member.getIdCity() - 1).getFaculty(member.getIdFaculty() -1).getField(member.getIdField() - 1).getCertificate(), 10)
                                 + "| "
-                                + formatString((manager.getCity(member.getIdCity() - 1).getFaculty(member.getIdFaculty() -1).getAbbr()), 6) +
+                                + formatString(
+                                        manager.getCity(member.getIdCity() - 1).getFaculty(member.getIdFaculty() - 1)
+                                                .getField(member.getIdField() - 1).getCertificate(),
+                                        10)
+                                + "| "
+                                + formatString((manager.getCity(member.getIdCity() - 1)
+                                        .getFaculty(member.getIdFaculty() - 1).getAbbr()), 6)
+                                +
 
                                 "| "
                                 + (member.getIsMember() == true ? (formatString("YES ", 6)) : (formatString("NO ", 6)))
@@ -77,78 +87,93 @@ public class Helpers {
                                 : "\n\n");
                     }
                     break;
-                /*    
-                case "City[]":
-                    System.out.println(printTableTitle("LIST OF CITIES"));
-                    System.out.println("");
-                    System.out.print(
-                            "\n\t\t\t\t     ID |\tCITY       |\t\tREGION\t          |   \t\tFACULTIES\t\t |\n\t\t\t\t    ----|------------------|------------------------------|--------------------------------------|\n");
-                    for (int i = 0; i < list.length; i++) {
-                        City city = manager.getCity(i);
-                        System.out.println("\t\t\t\t   " + printId(i, city.getId()) + " | "
-                                + formatString(city.getName(), 14) + " | " + formatString(city.getRegion(), 26) + " | "
-                                + list.toString(city.getFacultyName()) + "  |");
-                        System.out.print((i < list.length - 1)
-                                ? "\t\t\t\t    ----|------------------|------------------------------|--------------------------------------|\n"
-                                : "\n\n");
-                    }
-                    break;
-                case "Formation[]":
-                    System.out.println(printTableTitle("LIST OF FORMATIONS"));
-                    System.out.print(
-                            "\n\t\t\t\t\t\t  ID |    FORMATION NAME    | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n");
-                    for (int i = 0; i < list.length; i++) {
-                        Formation formation = getFormation(i);
-                        System.out.println("\t\t\t\t\t\t" + printId(i, formation.getIdFormation()) + " | "
-                                + formatString(formation.getName(), 18) + " | "
-                                + formatString(formation.getFCertificate(), 12) + " | " + formation.getDuration()
-                                + "\t\t  |");
-                        System.out.print((i < list.length - 1)
-                                ? "\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
-                                : "\n\n");
-                    }
-                    break;
-                case "FacultyInstitute[]":
-                    System.out.println(printTableTitle("LIST OF FACULTIES"));
-                    System.out.print(
-                            "\n\t\t     ID |    FACULTY    | \t\t\t\t\t\t\tFORMATIONS\t\t\t\t\t\t  |\n\t\t    ----|---------------|-----------------------------------------------------------------------------------------------------------------|\n");
-                    for (int i = 0; i < list.length; i++) {
-                        FacultyInstitute fac = getFacultyInstitute(i);
-                        System.out.println("\t\t   " + printId(i, fac.getIdFacultyInstitute()) + " | "
-                                + formatString(fac.getNameFacInst(), 11) + " | "
-                                + list.toString(fac.getFormationNames()) + " |");
-                        // System.out.println("\t
-                        // ----|---------------|------------------------------------------------------------------------------------------------------------------");
-                        System.out.print((i < list.length - 1)
-                                ? "\t\t    ----|---------------|-----------------------------------------------------------------------------------------------------------------|\n"
-                                : "\n\n");
-                    }
-                    break;
-                case "Card[]":
-                    System.out.println(printTableTitle("LIST OF STAY CARDS"));
-                    System.out.print(
-                            "\n\t\t\t     ID | \tFULL NAME\t  | BIRTH DATE |   CIN    |  STAY REASON | OBTENTION DATE | EXPIRATION DATE |  PIN   |\n\t\t\t    ----|-------------------------|------------|----------|--------------|----------------|-----------------|--------|\n");
-                    for (int i = 0; i < list.length; i++) {
-                        Card card = getCard(i);
-                        System.out.println("\t\t\t   " + printId(i, card.getIdCard()) + " | "
-                                + formatString(getMemberCard(card.getIdMember()).getFirstName() + " "
-                                        + getMemberCard(card.getIdMember()).getLastName(), 21)
-                                + " | " + getMemberCard(card.getIdMember()).getBirthDate() + " | " + card.getCardNum()
-                                + " | " + formatString(card.getPattern(), 10) + " | "
-                                + formatString(card.getObtentionDate(), 12) + " | "
-                                + formatString(card.getExpirationDate(), 13) + " | " + card.getPin() + " |");
-                        System.out.print((i < list.length - 1)
-                                ? "\t\t\t    ----|-------------------------|------------|----------|--------------|----------------|-----------------|--------|\n"
-                                : "\n\n");
-                    }
-                    break;
-                    */
-                 default:
-                     System.out.println("The fuck you trying to do though");
+                /*
+                 * case "City[]":
+                 * System.out.println(printTableTitle("LIST OF CITIES"));
+                 * System.out.println("");
+                 * System.out.print(
+                 * "\n\t\t\t\t     ID |\tCITY       |\t\tREGION\t          |   \t\tFACULTIES\t\t |\n\t\t\t\t    ----|------------------|------------------------------|--------------------------------------|\n"
+                 * );
+                 * for (int i = 0; i < list.length; i++) {
+                 * City city = manager.getCity(i);
+                 * System.out.println("\t\t\t\t   " + printId(i, city.getId()) + " | "
+                 * + formatString(city.getName(), 14) + " | " + formatString(city.getRegion(),
+                 * 26) + " | "
+                 * + list.toString(city.getFacultyName()) + "  |");
+                 * System.out.print((i < list.length - 1)
+                 * ?
+                 * "\t\t\t\t    ----|------------------|------------------------------|--------------------------------------|\n"
+                 * : "\n\n");
+                 * }
+                 * break;
+                 * case "Formation[]":
+                 * System.out.println(printTableTitle("LIST OF FORMATIONS"));
+                 * System.out.print(
+                 * "\n\t\t\t\t\t\t  ID |    FORMATION NAME    | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
+                 * );
+                 * for (int i = 0; i < list.length; i++) {
+                 * Formation formation = getFormation(i);
+                 * System.out.println("\t\t\t\t\t\t" + printId(i, formation.getIdFormation()) +
+                 * " | "
+                 * + formatString(formation.getName(), 18) + " | "
+                 * + formatString(formation.getFCertificate(), 12) + " | " +
+                 * formation.getDuration()
+                 * + "\t\t  |");
+                 * System.out.print((i < list.length - 1)
+                 * ?
+                 * "\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
+                 * : "\n\n");
+                 * }
+                 * break;
+                 * case "FacultyInstitute[]":
+                 * System.out.println(printTableTitle("LIST OF FACULTIES"));
+                 * System.out.print(
+                 * "\n\t\t     ID |    FACULTY    | \t\t\t\t\t\t\tFORMATIONS\t\t\t\t\t\t  |\n\t\t    ----|---------------|-----------------------------------------------------------------------------------------------------------------|\n"
+                 * );
+                 * for (int i = 0; i < list.length; i++) {
+                 * FacultyInstitute fac = getFacultyInstitute(i);
+                 * System.out.println("\t\t   " + printId(i, fac.getIdFacultyInstitute()) +
+                 * " | "
+                 * + formatString(fac.getNameFacInst(), 11) + " | "
+                 * + list.toString(fac.getFormationNames()) + " |");
+                 * // System.out.println("\t
+                 * //
+                 * ----|---------------|--------------------------------------------------------
+                 * ----------------------------------------------------------");
+                 * System.out.print((i < list.length - 1)
+                 * ?
+                 * "\t\t    ----|---------------|-----------------------------------------------------------------------------------------------------------------|\n"
+                 * : "\n\n");
+                 * }
+                 * break;
+                 * case "Card[]":
+                 * System.out.println(printTableTitle("LIST OF STAY CARDS"));
+                 * System.out.print(
+                 * "\n\t\t\t     ID | \tFULL NAME\t  | BIRTH DATE |   CIN    |  STAY REASON | OBTENTION DATE | EXPIRATION DATE |  PIN   |\n\t\t\t    ----|-------------------------|------------|----------|--------------|----------------|-----------------|--------|\n"
+                 * );
+                 * for (int i = 0; i < list.length; i++) {
+                 * Card card = getCard(i);
+                 * System.out.println("\t\t\t   " + printId(i, card.getIdCard()) + " | "
+                 * + formatString(getMemberCard(card.getIdMember()).getFirstName() + " "
+                 * + getMemberCard(card.getIdMember()).getLastName(), 21)
+                 * + " | " + getMemberCard(card.getIdMember()).getBirthDate() + " | " +
+                 * card.getCardNum()
+                 * + " | " + formatString(card.getPattern(), 10) + " | "
+                 * + formatString(card.getObtentionDate(), 12) + " | "
+                 * + formatString(card.getExpirationDate(), 13) + " | " + card.getPin() + " |");
+                 * System.out.print((i < list.length - 1)
+                 * ?
+                 * "\t\t\t    ----|-------------------------|------------|----------|--------------|----------------|-----------------|--------|\n"
+                 * : "\n\n");
+                 * }
+                 * break;
+                 */
+                default:
+                    System.out.println("The fuck you trying to do though");
             }
-         } else
-           System.exit(0);
-     }
+        } else
+            System.exit(0);
+    }
 
     public static String formatString(String s, int i) {
         String space = " ";

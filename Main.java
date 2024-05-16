@@ -42,73 +42,74 @@ public class Main {
         root.addMember(member);
         printAnyList(root.getMembers(), root);
 
-
-
-
-        
     }
 
-
-
     public static String promptForFirstName(Scanner scanner) {
-        while(true) {
+        while (true) {
             System.out.print("Enter member's firstname: ");
             String firstname = scanner.nextLine();
-            if(!isNullOrBlank(firstname)) return firstname;
+            if (!isNullOrBlank(firstname))
+                return firstname;
         }
     }
 
     public static String promptForLastName(Scanner scanner) {
-        while(true) {
+        while (true) {
             System.out.print("Enter member's lastname: ");
             String lastname = scanner.nextLine();
-            if(!isNullOrBlank(lastname)) return lastname;
+            if (!isNullOrBlank(lastname))
+                return lastname;
         }
-    } 
+    }
 
     public static String promptForPassport(Scanner scanner) {
-        while(true) {
+        while (true) {
             System.out.print("Enter member's passport: ");
             String passport = scanner.nextLine();
-            if(!isNullOrBlank(passport) && !isInvalidPassport(passport)) return passport;
+            if (!isNullOrBlank(passport) && !isInvalidPassport(passport))
+                return passport;
         }
     }
 
     public static String promptForBirthDate(Scanner scanner) {
-        while(true) {
+        while (true) {
             System.out.print("Enter member's birth date: ");
             String birthdate = scanner.nextLine();
-            if(!isNullOrBlank(birthdate)) return birthdate;
+            if (!isNullOrBlank(birthdate))
+                return birthdate;
         }
     }
 
     public static int promptForMatAmci(Scanner scanner) {
-        while(true) {
+        while (true) {
             System.out.print("Enter member's AMCI identifier: ");
-            if(!scanner.hasNextInt()){
-                 scanner.next();
+            if (!scanner.hasNextInt()) {
+                scanner.next();
                 continue;
             }
             int matAmci = scanner.nextInt();
-            if(!isInvalidMatAmci(matAmci)) { 
+            if (!isInvalidMatAmci(matAmci)) {
                 scanner.nextLine(); // nextLine trap
-                return matAmci; }  
+                return matAmci;
+            }
         }
     }
 
     public static String promptForEmail(Scanner scanner) {
-        while(true) {
+        while (true) {
             System.out.print("Enter member's email: ");
             String email = scanner.nextLine();
-            if(!isNullOrBlank(email) && validateEmail(email)) return email;
+            if (!isNullOrBlank(email) && validateEmail(email))
+                return email;
         }
     }
 
     public static boolean promptForMemberStatus(Scanner scanner) {
-        while(true) {
+        while (true) {
             System.out.print("Is the member already an adherant - Yes|No- : ");
             String status = scanner.nextLine();
-            if(!isNullOrBlank(status)) return status.equalsIgnoreCase("yes");
+            if (!isNullOrBlank(status))
+                return status.equalsIgnoreCase("yes");
 
         }
     }
@@ -122,7 +123,7 @@ public class Main {
     }
 
     public static boolean isInvalidPassport(String input) {
-        return ( input.length() != 9);
+        return (input.length() != 9);
     }
-    
+
 }

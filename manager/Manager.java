@@ -161,7 +161,8 @@ public class Manager extends Member implements Permission {
 
     @Override
     public void addCards(ArrayList<Card> cards) {
-        if(this.cards == null) this.cards = new ArrayList<>();
+        if (this.cards == null)
+            this.cards = new ArrayList<>();
         if (cards.isEmpty())
             throw new IllegalArgumentException("New Card List cannot be null");
         // this.cards = new ArrayList<>();
@@ -263,7 +264,8 @@ public class Manager extends Member implements Permission {
     @Override
     public void addCities(ArrayList<City> cities) {
         if (this.role.name().equals("ADMINISTRATOR")) {
-            if(this.cards == null) this.cards = new ArrayList<>();
+            if (this.cards == null)
+                this.cards = new ArrayList<>();
             if (cities.isEmpty())
                 throw new IllegalArgumentException("New city list cannot be empty");
             for (City city : cities) {

@@ -29,7 +29,18 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(FillTables.fillCards());
 
-        
+        String fname = promptForFirstName(scan);
+        String lname = promptForLastName(scan);
+        String passport = promptForPassport(scan);
+        int matAmci = promptForMatAmci(scan);
+        String birthDate = promptForBirthDate(scan);
+        String email = promptForEmail(scan);
+        boolean isMember = promptForMemberStatus(scan);
+
+        Member member = new Member(0, fname, lname, birthDate, email, passport, matAmci, 2, 2, 2, 2, isMember);
+
+        root.addMember(member);
+        printAnyList(root.getMembers(), root);
 
 
 

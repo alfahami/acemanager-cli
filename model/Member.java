@@ -27,7 +27,7 @@ public class Member {
     private boolean isMember;
 
     public Member(int id, String firstName, String lastName, String birthDate, String email, String passport,
-            int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, int idRole, boolean isMember) {
+            int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, boolean isMember) {
         setId(id);
         setFirstName(firstName);
         setLastName(lastName);

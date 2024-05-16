@@ -225,7 +225,6 @@ public class Manager extends Member implements Permission {
         } else {
             throw new RuntimeException("Rights not guaranted for this user");
         }
-
     }
 
     @Override
@@ -288,21 +287,6 @@ public class Manager extends Member implements Permission {
             throw new RuntimeException("Rights not guaranted for this user");
         }
 
-    }
-
-    @Override
-    public ArrayList<City> getCitiess() {
-        if (this.role.name().equals("ADMINISTRATOR")) {
-            if (this.cities == null || this.cities.isEmpty())
-                throw new IllegalArgumentException("No city has been added yet! City table is empty");
-            ArrayList<City> copyCities = new ArrayList<>();
-            for (City city : this.cities) {
-                copyCities.add(new City(city));
-            }
-            return copyCities;
-        } else {
-            throw new RuntimeException("Rights not guaranted for this user");
-        }
     }
 
     @Override

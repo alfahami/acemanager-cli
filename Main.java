@@ -27,7 +27,10 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(FillTables.fillCards());
 
-        printAnyList(baseMembers, root);
+        //printAnyList(baseMembers, root);
+        root.addMembers(baseMembers);
+
+        printAnyList(root.getMembers(), root);
         
 
 

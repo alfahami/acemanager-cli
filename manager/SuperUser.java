@@ -7,6 +7,9 @@ import model.Member;
 
 public class SuperUser extends Manager {
 
+    private int id;
+    private ArrayList<Manager> managers;
+    
     public SuperUser() {
         super();
         this.role = Role.ADMINISTRATOR;
@@ -18,9 +21,6 @@ public class SuperUser extends Manager {
         super(member);
         this.managers = new ArrayList<>();
     }
-
-    private int id;
-    private ArrayList<Manager> managers;
 
     public int getId() {
         return this.id;
@@ -35,7 +35,8 @@ public class SuperUser extends Manager {
     }
 
     // Make administrator
-    public Manager makeManager(String role, int index, ArrayList<Member> members, String City) {
+    public Manager makeManager(String role, int index, ArrayList<Member> members, String city) {
+        if(city == null || city.isBlank()) throw new IllegalArgumentException("City cannot be null or blank");
         if (members == null || members.isEmpty())
             throw new IllegalArgumentException("Not a single member is found.");
         if (index < 0 || index > members.size())

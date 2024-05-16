@@ -4,14 +4,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import manager.Manager;
 import manager.SuperUser;
-import model.Card;
-import model.City;
 import model.Member;
 
 public class Helpers {
@@ -37,8 +33,7 @@ public class Helpers {
      public static void printAnyList(ArrayList<?> list, SuperUser manager) {
        if (list != null) {
             String className = list.get(0).getClass().getName();
-            // switch array instance
-            //String className = list[i].getClass().getName();
+
             switch (className) {
                 case "model.Member":
                     System.out.println(printTableTitle("LIST OF ACEM MEMBERS"));
@@ -53,9 +48,6 @@ public class Helpers {
                         // we used ternary for displayind id in the same column no matter how many
                         // digits it holds
                         String fullName = member.getFirstName() + " " + member.getLastName();
-
-                        // THINK ABOUT USING STRINGBUILDER as it offers a set length, the idea would be
-                        // to print all the Stringbuilder object and when no value found print space
 
                         /* ### HACK ENDS */
                         System.out.println(printId(i, member.getId()) + " | " + formatString(fullName, 17) + "| "

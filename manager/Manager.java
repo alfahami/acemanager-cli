@@ -188,7 +188,7 @@ public class Manager extends Member implements Permission {
     @Override
     public Card getCard(int index) {
         if (index < 0 || index > this.cards.size())
-            throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+            throw new IllegalArgumentException("Error: index " + index + " out of bounds");
         return new Card(this.cards.get(index));
     }
 

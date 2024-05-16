@@ -47,7 +47,7 @@ public class Main {
     public static String promptForFirstName(Scanner scanner) {
         while (true) {
             System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's firstname: ");
-            String firstname = scanner.nextLine();
+            String firstname = scanner.nextLine().toUpperCase();
             if (!isNullOrBlank(firstname))
                 return firstname;
         }
@@ -56,7 +56,7 @@ public class Main {
     public static String promptForLastName(Scanner scanner) {
         while (true) {
             System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's lastname: ");
-            String lastname = scanner.nextLine();
+            String lastname = scanner.nextLine().toUpperCase();
             if (!isNullOrBlank(lastname))
                 return lastname;
         }
@@ -65,7 +65,7 @@ public class Main {
     public static String promptForPassport(Scanner scanner) {
         while (true) {
             System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's passport: ");
-            String passport = scanner.nextLine();
+            String passport = scanner.nextLine().toUpperCase();
             if (!isNullOrBlank(passport) && !isInvalidPassport(passport))
                 return passport;
         }
@@ -74,8 +74,8 @@ public class Main {
     public static String promptForBirthDate(Scanner scanner) {
         while (true) {
             System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's birth date: ");
-            String birthdate = scanner.nextLine();
-            if (!isNullOrBlank(birthdate))
+            String birthdate = scanner.nextLine().toUpperCase();
+            if (!isNullOrBlank(birthdate) && isValidDateFormat("dd/MM/yyyy", birthdate))
                 return birthdate;
         }
     }
@@ -107,7 +107,7 @@ public class Main {
     public static boolean promptForMemberStatus(Scanner scanner) {
         while (true) {
             System.out.print("\n\t\t\t\t\t\t\t\t\t\tIs the member already an adherant - Yes|No- : ");
-            String status = scanner.nextLine();
+            String status = scanner.nextLine().toUpperCase();
             if (!isNullOrBlank(status))
                 return status.equalsIgnoreCase("yes");
 

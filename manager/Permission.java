@@ -27,7 +27,6 @@ public interface Permission {
     // Strictly for an andministrator
     public boolean addCity(City newCity);
     public void addCities(ArrayList<City> cities);
-    public ArrayList<City> getCitiess();
     public City removeCity(int index);
     public City updateCity(int index, City newCity);
     public City findCity(String name);

@@ -94,15 +94,15 @@ public class FillTables {
 
 
     public final static ArrayList<Member> fillMembers() {
-        Member mbr1 = new Member(1, "AMED", "ALI SAID", "12/09/1989", "amed@gmail.com", "nbe388409", 20212345, 1, 1, 1, 1, 1, true);
+        Member mbr1 = new Member(1, "AMED", "ALI SAID", "12/09/1989", "amed@gmail.com", "nbe388409", 20212345, 1,  1, 1, 1, true);
 
-        Member mbr2 = new Member(2, "HISSANE", "IRCHAD", "23/10/1990", "his@gmail.com", "nbe319590", 20212346, 1, 1, 1, 1, 1, true);
+        Member mbr2 = new Member(2, "HISSANE", "IRCHAD", "23/10/1990", "his@gmail.com", "nbe319590", 20212346, 1, 1, 1, 1, true);
 
-        Member mbr3 = new Member(1, "CHARKAOUI", "ISSA", "03/03/1993", "issa@gmail.com", "nbe509879", 20212347, 1, 1, 1, 1, 1, true);
+        Member mbr3 = new Member(1, "CHARKAOUI", "ISSA", "03/03/1993", "issa@gmail.com", "nbe509879", 20212347, 1, 1, 1, 1, true);
 
-        Member mbr4 = new Member(1, "MSA", "YOUSSOUF", "09/11/1990", "msa@gmail.com", "nbe388985", 20212345, 1, 1, 1, 1, 1, true);
+        Member mbr4 = new Member(1, "MSA", "YOUSSOUF", "09/11/1990", "msa@gmail.com", "nbe388985", 20212345, 1, 1, 1, 1, true);
 
-        Member mbr5 = new Member(1, "ILYASS", "HAIDAR", "08/01/2000", "ilys@gmail.com", "nbe388789", 20212345, 1, 1, 1, 1, 1, true);
+        Member mbr5 = new Member(1, "ILYASS", "HAIDAR", "08/01/2000", "ilys@gmail.com", "nbe388789", 20212345, 1, 1, 1, 1, true);
 
         ArrayList<Member> members = new ArrayList<>();
         members.add(mbr1); members.add(mbr2); members.add(mbr3); members.add(mbr4); members.add(mbr5);

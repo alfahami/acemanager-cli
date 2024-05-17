@@ -139,8 +139,8 @@ public class Helpers {
                         Faculty fac = manager.getCity(i).getFacs().get(i);
                         System.out.println("\t\t   " + printId(i, fac.getId()) +
                                 " | "
-                                + formatString(fac.ge(), 11) + " | "
-                                + list.toString(fac.getFacu()) + " |");
+                                + formatString(fac.getAbbr(), 11) + " | "
+                                + fac.getFields().toString());
                         // System.out.println("\t----|---------------|--------------------------------------------------------
                         // ----------------------------------------------------------");
                         System.out.print((i < list.size() - 1)

@@ -29,7 +29,8 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(FillTables.fillCards());
 
-        
+        int choice = promptForMenu(scan);
+        processChoice(choice, scan, baseMembers, root);
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);

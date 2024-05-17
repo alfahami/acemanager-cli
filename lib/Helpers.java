@@ -8,6 +8,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import manager.Manager;
+import model.Card;
+import model.City;
+import model.Faculty;
+import model.Field;
 import model.Member;
 
 public class Helpers {
@@ -26,7 +30,7 @@ public class Helpers {
             LocalDate.parse(value, DateTimeFormatter.ofPattern(format));
             return true;
         } catch (DateTimeParseException ex) {
-           return false;
+            return false;
         }
     }
 
@@ -87,93 +91,118 @@ public class Helpers {
                                 : "\n\n");
                     }
                     break;
+
+                case "model.City":
+                    System.out.println(printTableTitle("LIST OF CITIES"));
+                    System.out.println("");
+                    System.out.print(
+                            "\n\t\t\t\t     ID |\tCITY       |\t\tREGION\t          |   \t\tFACULTIES\t\t |\n\t\t\t\t    ----|------------------|------------------------------|--------------------------------------|\n");
+                    for (int i = 0; i < list.size(); i++) {
+                        City city = manager.getCity(i);
+                        System.out.println("\t\t\t\t   " + printId(i, city.getId()) + " | "
+                                + formatString(city.getName(), 14) + " | " + formatString(city.getRegion(),
+                                        26)
+                                + " | "
+                                + city.getFacs().toString() + " \t");
+                        System.out.print((i < list.size() - 1)
+                                ? "\t\t\t\t    ----|------------------|------------------------------|--------------------------------------|\n"
+                                : "\n\n");
+                    }
+
+                    break;
                 /*
-                 * case "City[]":
-                 * System.out.println(printTableTitle("LIST OF CITIES"));
-                 * System.out.println("");
-                 * System.out.print(
-                 * "\n\t\t\t\t     ID |\tCITY       |\t\tREGION\t          |   \t\tFACULTIES\t\t |\n\t\t\t\t    ----|------------------|------------------------------|--------------------------------------|\n"
-                 * );
-                 * for (int i = 0; i < list.length; i++) {
-                 * City city = manager.getCity(i);
-                 * System.out.println("\t\t\t\t   " + printId(i, city.getId()) + " | "
-                 * + formatString(city.getName(), 14) + " | " + formatString(city.getRegion(),
-                 * 26) + " | "
-                 * + list.toString(city.getFacultyName()) + "  |");
-                 * System.out.print((i < list.length - 1)
-                 * ?
-                 * "\t\t\t\t    ----|------------------|------------------------------|--------------------------------------|\n"
-                 * : "\n\n");
-                 * }
-                 * break;
-                 * case "Formation[]":
+                 * case "model.Field":
                  * System.out.println(printTableTitle("LIST OF FORMATIONS"));
                  * System.out.print(
-                 * "\n\t\t\t\t\t\t  ID |    FORMATION NAME    | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
+                 * "\n\t\t\t\t\t\t  ID |    FIELD NAME    | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
                  * );
-                 * for (int i = 0; i < list.length; i++) {
-                 * Formation formation = getFormation(i);
-                 * System.out.println("\t\t\t\t\t\t" + printId(i, formation.getIdFormation()) +
+                 * for (int i = 0; i < list.size(); i++) {
+                 * Field field;
+                 * System.out.println("\t\t\t\t\t\t" + printId(i, field.getId()) +
                  * " | "
-                 * + formatString(formation.getName(), 18) + " | "
-                 * + formatString(formation.getFCertificate(), 12) + " | " +
-                 * formation.getDuration()
+                 * + formatString(field.getName(), 18) + " | "
+                 * + formatString(field.getCertificate(), 12) + " | " +
+                 * field.getDuration()
                  * + "\t\t  |");
-                 * System.out.print((i < list.length - 1)
+                 * System.out.print((i < list.size() - 1)
                  * ?
                  * "\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
                  * : "\n\n");
                  * }
                  * break;
-                 * case "FacultyInstitute[]":
-                 * System.out.println(printTableTitle("LIST OF FACULTIES"));
-                 * System.out.print(
-                 * "\n\t\t     ID |    FACULTY    | \t\t\t\t\t\t\tFORMATIONS\t\t\t\t\t\t  |\n\t\t    ----|---------------|-----------------------------------------------------------------------------------------------------------------|\n"
-                 * );
-                 * for (int i = 0; i < list.length; i++) {
-                 * FacultyInstitute fac = getFacultyInstitute(i);
-                 * System.out.println("\t\t   " + printId(i, fac.getIdFacultyInstitute()) +
-                 * " | "
-                 * + formatString(fac.getNameFacInst(), 11) + " | "
-                 * + list.toString(fac.getFormationNames()) + " |");
-                 * // System.out.println("\t
-                 * //
-                 * ----|---------------|--------------------------------------------------------
-                 * ----------------------------------------------------------");
-                 * System.out.print((i < list.length - 1)
-                 * ?
-                 * "\t\t    ----|---------------|-----------------------------------------------------------------------------------------------------------------|\n"
-                 * : "\n\n");
-                 * }
-                 * break;
-                 * case "Card[]":
-                 * System.out.println(printTableTitle("LIST OF STAY CARDS"));
-                 * System.out.print(
-                 * "\n\t\t\t     ID | \tFULL NAME\t  | BIRTH DATE |   CIN    |  STAY REASON | OBTENTION DATE | EXPIRATION DATE |  PIN   |\n\t\t\t    ----|-------------------------|------------|----------|--------------|----------------|-----------------|--------|\n"
-                 * );
-                 * for (int i = 0; i < list.length; i++) {
-                 * Card card = getCard(i);
-                 * System.out.println("\t\t\t   " + printId(i, card.getIdCard()) + " | "
-                 * + formatString(getMemberCard(card.getIdMember()).getFirstName() + " "
-                 * + getMemberCard(card.getIdMember()).getLastName(), 21)
-                 * + " | " + getMemberCard(card.getIdMember()).getBirthDate() + " | " +
-                 * card.getCardNum()
-                 * + " | " + formatString(card.getPattern(), 10) + " | "
-                 * + formatString(card.getObtentionDate(), 12) + " | "
-                 * + formatString(card.getExpirationDate(), 13) + " | " + card.getPin() + " |");
-                 * System.out.print((i < list.length - 1)
-                 * ?
-                 * "\t\t\t    ----|-------------------------|------------|----------|--------------|----------------|-----------------|--------|\n"
-                 * : "\n\n");
-                 * }
-                 * break;
                  */
+                case "model.Faculty":
+                    System.out.println(printTableTitle("LIST OF FACULTIES"));
+                    System.out.print(
+                            "\n\t\t     ID |    FACULTY    | \t\t\t\t\t\t\tFORMATIONS\t\t\t\t\t\t  |\n\t\t    ----|---------------|-----------------------------------------------------------------------------------------------------------------|\n");
+                    for (int i = 0; i < list.size(); i++) {
+                        Faculty fac = manager.getCity(i).getFacs().get(i);
+                        System.out.println("\t\t   " + printId(i, fac.getId()) +
+                                " | "
+                                + formatString(fac.ge(), 11) + " | "
+                                + list.toString(fac.getFacu()) + " |");
+                        // System.out.println("\t----|---------------|--------------------------------------------------------
+                        // ----------------------------------------------------------");
+                        System.out.print((i < list.size() - 1)
+                                ? "\t\t    ----|---------------|-----------------------------------------------------------------------------------------------------------------|\n"
+                                : "\n\n");
+                    }
+                    break;
+                case "model.Card":
+                    System.out.println(printTableTitle("LIST OF STAY CARDS"));
+                    System.out.print(
+                            "\n\t\t\t     ID | \tFULL NAME\t  | BIRTH DATE |   CIN    |  STAY REASON | OBTENTION DATE | EXPIRATION DATE |  PIN   | CITY\n\t\t\t    ----|-------------------------|------------|----------|--------------|----------------|-----------------|--------|------\n");
+                    for (int i = 0; i < list.size(); i++) {
+                        Card card = manager.getCard(i);
+                        System.out.println("\t\t\t   " + printId(i, card.getId()) + " | "
+                                + formatString(getMemberCard(card.getIdMember(), manager).getFirstName() + " "
+                                        + getMemberCard(card.getIdMember(), manager).getLastName(), 21)
+                                + " | " + getMemberCard(card.getIdMember(), manager).getBirthDate() + " | " +
+                                card.getCin()
+                                + " | " + formatString(card.getReason(), 10) + " | "
+                                + formatString(card.getObtentionDate(), 12) + " | "
+                                + formatString(card.getExpirationDate(), 13) + " | " + card.getPin() + "   | "
+                                + formatString(findCityCardbyId(card.getIdCity(), manager).getName(), 13));
+                        System.out.print((i < list.size() - 1)
+                                ? "\t\t\t    ----|-------------------------|------------|----------|--------------|----------------|-----------------|--------|------\n"
+                                : "\n\n");
+                    }
+                    break;
+
                 default:
                     System.out.println("The fuck you trying to do though");
             }
         } else
             System.exit(0);
     }
+
+    /*
+     * FOREIGN KEY LOGIC IMPLEMENTATION
+     * this helps with looking for data in foreign tables to print
+     */
+    public static Member getMemberCard(int idMember, Manager manager) {
+        // Member member = new Member();
+        for (Member member : manager.getMembers()) {
+            if (idMember == member.getId())
+                return member;
+        }
+
+        return null;
+    }
+
+    public static City findCityCardbyId(int idCity, Manager manager) {
+
+        for (City city : manager.getCities()) {
+            if (idCity == city.getId())
+                return city;
+        }
+        return null;
+
+    }
+
+    /*
+     * FOREIGN KEYS IMPLEMENTATION ENDS
+     */
 
     public static String formatString(String s, int i) {
         String space = " ";

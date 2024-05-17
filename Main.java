@@ -24,14 +24,14 @@ public class Main {
         SuperUser root = new SuperUser();
         root.setSession_start();
         System.out.println("\n\t\t\t\t\t\t\t\t\tRoot session start: " + root.getSession_start());
-        ArrayList<Field> fields = fillFieldsFs();
-        ArrayList<Faculty> facs = fillFaculties(fields);
+
+        ArrayList<Faculty> facs = fillFaculties();
         root.addCities(fillCities(facs));
         ArrayList<Member> baseMembers = fillMembers();
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
-        createCardd(scan);
+        printAnyList(root.getCities().get(0).getFacs(), root);
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);
@@ -98,7 +98,7 @@ public class Main {
         return new Field(1, abbr, name, certificate, duration);
     }
 
-    public static Card createCardd(Scanner scan) {
+    public static Card createCard(Scanner scan) {
         String cin = promptForCin(scan);
         String reason = promptForReason(scan);
         String obtDate = promptForObtentionDate(scan);
@@ -112,7 +112,7 @@ public class Main {
         String name = promptForCityName(scan);
         String region = promptForRegion(scan);
 
-        return new City(1, name, region, fillFaculties(fillFieldsFsjes()));
+        return new City(1, name, region, fillFaculties());
     }
 
 }

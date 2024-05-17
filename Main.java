@@ -29,7 +29,7 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
-        createFaculty(scan);
+        
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);
@@ -181,6 +181,51 @@ public class Main {
         }
     }
 
+    public static Field createField(Scanner scan) {
+        String abbr = promptForFieldAbbr(scan);
+        String name = promptForFieldName(scan);
+        String certificate = promptForCertificate(scan);
+        int duration = promptForDuration(scan);
+
+        return new Field(1, abbr, name, certificate, duration);
+    }
+
+    public static String promptForFieldAbbr(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter field nitials (abbreviation): ");
+            String abbr = scanner.nextLine().toUpperCase();
+            if (!isNullOrBlank(abbr)) return abbr;
+        } 
+    }
+
+    public static String promptForFieldName(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter field name : ");
+            String name = scanner.nextLine().toUpperCase();
+            if (!isNullOrBlank(name)) return name;
+        } 
+    }
+
+    public static String promptForCertificate(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter field certificate : ");
+            String certificate = scanner.nextLine();
+            if (!isNullOrBlank(certificate)) return certificate;
+        } 
+    }
+
+    public static int promptForDuration(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter field's duration : ");
+            if(!scanner.hasNextInt()) {
+                scanner.next();
+                continue;
+            }
+            int duration = scanner.nextInt();
+            if(!isInvalidDuration(duration)) return duration;
+        } 
+    }
+
     public static boolean isNullOrBlank(String input) {
         return input == null || input.isBlank();
     }
@@ -191,6 +236,10 @@ public class Main {
 
     public static boolean isInvalidPassport(String input) {
         return (input.length() != 9);
+    }
+
+    public static boolean isInvalidDuration(int input) {
+        return (input < 0 || input >= 5);
     }
 
 }

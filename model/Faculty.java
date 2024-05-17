@@ -96,12 +96,7 @@ public class Faculty {
 
     @Override
     public String toString() {
-        return "{" +
-                " ID='" + id + "'" +
-                ", Abbreviation='" + abbr + "'" +
-                ", Desc='" + desc + "'" +
-                ", Fields=" + fields.toString() +
-                "}";
+        return abbr;
     }
 
     @Override

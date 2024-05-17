@@ -52,14 +52,15 @@ public class FillTables {
         return fields;
     }
 
-    public final static ArrayList<Faculty> fillFaculties(ArrayList<Field> fields) {
-        Faculty fs = new Faculty(1, "FS", "Faculty of Science", fields);
-        Faculty fsjes = new Faculty(2, "FSJES", "Faculty of Science and Juridical Science", fields);
-        Faculty fst = new Faculty(3, "FST", "Faculty of Science and Techniques", fields);
-        Faculty est = new Faculty(2, "EST", "Superior School for Technology", fields);
+    public final static ArrayList<Faculty> fillFaculties() {
+        Faculty fs = new Faculty(1, "FS", "Faculty of Science", fillFieldsFs());
+        Faculty fsjes = new Faculty(2, "FSJES", "Faculty of Science and Juridical Science", fillFieldsFsjes());
+        Faculty fst = new Faculty(3, "FST", "Faculty of Science and Techniques", fillFieldsFs());
+        Faculty est = new Faculty(4, "EST", "Superior School for Technology", fillFieldsEst());
+        Faculty ensa = new Faculty(5, "ENSA", "Superior School for Technology", fillFieldsEst());
 
         ArrayList<Faculty> facs = new ArrayList<>();
-        facs.add(fs); facs.add(fsjes); facs.add(fst); facs.add(est); facs.add(est);
+        facs.add(fs); facs.add(fsjes); facs.add(fst); facs.add(est); facs.add(ensa);
 
         return facs;
     }

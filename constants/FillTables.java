@@ -87,7 +87,7 @@ public class FillTables {
         Card card5 = new Card(5, 5, 1, "C018409Z", "STUDY", "17/11/2022", "17/11/2025", 1345);
 
         ArrayList<Card> cards = new ArrayList<>();
-        cards.add(card1); cards.add(card2); cards.add(card3); cards.add(card3); cards.add(card4); cards.add(card5);
+        cards.add(card1); cards.add(card2); cards.add(card3); cards.add(card4); cards.add(card5);
 
         return cards;
     }

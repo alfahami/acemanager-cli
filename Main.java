@@ -3,7 +3,7 @@ import static lib.Helpers.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import constants.FillTables;
+import static constants.FillTables.*;
 import constants.Role;
 import lib.Helpers;
 import manager.Manager;
@@ -21,21 +21,22 @@ public class Main {
 
         SuperUser root = new SuperUser();
         root.setSession_start();
-        System.out.println("\n\t\t\t\t\t\t\t\t\t\tRoot session start: " + root.getSession_start());
-        ArrayList<Field> fields = FillTables.fillFieldsFs();
-        ArrayList<Faculty> facs = FillTables.fillFaculties(fields);
-        root.addCities(FillTables.fillCities(facs));
-        ArrayList<Member> baseMembers = FillTables.fillMembers();
+        System.out.println("\n\t\t\t\t\t\t\t\t\tRoot session start: " + root.getSession_start());
+        ArrayList<Field> fields = fillFieldsFs();
+        ArrayList<Faculty> facs = fillFaculties(fields);
+        root.addCities(fillCities(facs));
+        ArrayList<Member> baseMembers = fillMembers();
         root.addMembers(baseMembers);
-        root.addCards(FillTables.fillCards());
+        root.addCards(fillCards());
 
-        int choice = promptForMenu(scan);
-        processChoice(choice, scan, baseMembers, root);
+        
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);
         root.setSession_end();
-        System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tRoot session start: " + root.getSession_start());
+        System.out.println("\n\t\t\t\t\t\t\t\t\tRoot session start: " + root.getSession_end());
+
+        scan.close();
 
     }
 
@@ -152,6 +153,30 @@ public class Main {
             String status = scanner.nextLine().toUpperCase();
             if (!isNullOrBlank(status))
                 return status.equalsIgnoreCase("yes");
+
+        }
+    }
+
+    public static Faculty createFaculty(Scanner scan) {
+        String abbr = promptForFacAbbr(scan);
+        String name = promptForFacName(scan);
+
+        return new Faculty(1, abbr, name, fillFieldsFs());
+    }
+
+    public static String promptForFacAbbr(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter faculty nitials (abbreviation): ");
+            String abbr = scanner.nextLine().toUpperCase();
+            if (!isNullOrBlank(abbr)) return abbr;
+        } 
+    }
+
+    public static String promptForFacName(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter faculty's name : ");
+            String name = scanner.nextLine().toUpperCase();
+            if (!isNullOrBlank(name)) return name;
 
         }
     }

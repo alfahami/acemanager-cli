@@ -29,7 +29,7 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
-        
+        createFaculty(scan);
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);

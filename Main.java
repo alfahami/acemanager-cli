@@ -108,4 +108,11 @@ public class Main {
         return new Card(1, 1, 1, cin, reason, obtDate, expDate, pin);
     }
 
+    public static City createCity(Scanner scan) {
+        String name = promptForCityName(scan);
+        String region = promptForRegion(scan);
+
+        return new City(1, name, region, fillFaculties(fillFieldsFsjes()));
+    }
+
 }

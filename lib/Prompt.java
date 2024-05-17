@@ -154,7 +154,25 @@ public class Prompt {
         } 
     }
 
+    /*
+     * PROMPT FOR CREATING A CITY
+     * 
+     */
+    public static String promptForCityName(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter city name : ");
+            String name = scanner.nextLine().toUpperCase();
+            if (!isNullOrBlank(name)) return name;
+        } 
+    }
 
+    public static String promptForRegion(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter region name : ");
+            String name = scanner.nextLine().toUpperCase();
+            if (!isNullOrBlank(name)) return name;
+        } 
+    }
     /*
      * PROMPT FOR CREATING A FIELD
      * 
@@ -194,6 +212,10 @@ public class Prompt {
             if(!isInvalidDuration(duration)) return duration;
         } 
     }
+
+    /*
+     * VALIDATORS
+     */
 
     public static boolean isNullOrBlank(String input) {
         return input == null || input.isBlank();

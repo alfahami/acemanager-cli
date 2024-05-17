@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static constants.FillTables.*;
+import static lib.Prompt.*;
 import constants.Role;
 import lib.Helpers;
 import manager.Manager;
 import manager.SuperUser;
+import model.Card;
 import model.City;
 import model.Faculty;
 import model.Field;
@@ -29,7 +31,7 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
-        
+        createCardd(scan);
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);
@@ -87,100 +89,6 @@ public class Main {
         return member;
     }
 
-    public static String promptForFirstName(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's firstname: ");
-            String firstname = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(firstname))
-                return firstname;
-        }
-    }
-
-    public static String promptForLastName(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's lastname: ");
-            String lastname = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(lastname))
-                return lastname;
-        }
-    }
-
-    public static String promptForPassport(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's passport: ");
-            String passport = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(passport) && !isInvalidPassport(passport))
-                return passport;
-        }
-    }
-
-    public static String promptForBirthDate(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's birth date: ");
-            String birthdate = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(birthdate) && isValidDateFormat("dd/MM/yyyy", birthdate))
-                return birthdate;
-        }
-    }
-
-    public static int promptForMatAmci(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's AMCI identifier: ");
-            if (!scanner.hasNextInt()) {
-                scanner.next();
-                continue;
-            }
-            int matAmci = scanner.nextInt();
-            if (!isInvalidMatAmci(matAmci)) {
-                scanner.nextLine(); // nextLine trap
-                return matAmci;
-            }
-        }
-    }
-
-    public static String promptForEmail(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter member's email: ");
-            String email = scanner.nextLine();
-            if (!isNullOrBlank(email) && validateEmail(email))
-                return email;
-        }
-    }
-
-    public static boolean promptForMemberStatus(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tIs the member already an adherant - Yes|No- : ");
-            String status = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(status))
-                return status.equalsIgnoreCase("yes");
-
-        }
-    }
-
-    public static Faculty createFaculty(Scanner scan) {
-        String abbr = promptForFacAbbr(scan);
-        String name = promptForFacName(scan);
-
-        return new Faculty(1, abbr, name, fillFieldsFs());
-    }
-
-    public static String promptForFacAbbr(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter faculty nitials (abbreviation): ");
-            String abbr = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(abbr)) return abbr;
-        } 
-    }
-
-    public static String promptForFacName(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter faculty's name : ");
-            String name = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(name)) return name;
-
-        }
-    }
-
     public static Field createField(Scanner scan) {
         String abbr = promptForFieldAbbr(scan);
         String name = promptForFieldName(scan);
@@ -190,56 +98,14 @@ public class Main {
         return new Field(1, abbr, name, certificate, duration);
     }
 
-    public static String promptForFieldAbbr(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter field nitials (abbreviation): ");
-            String abbr = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(abbr)) return abbr;
-        } 
-    }
+    public static Card createCardd(Scanner scan) {
+        String cin = promptForCin(scan);
+        String reason = promptForReason(scan);
+        String obtDate = promptForObtentionDate(scan);
+        String expDate = promptForExpirationDate(scan);
+        int pin = promptForPin(scan);
 
-    public static String promptForFieldName(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter field name : ");
-            String name = scanner.nextLine().toUpperCase();
-            if (!isNullOrBlank(name)) return name;
-        } 
-    }
-
-    public static String promptForCertificate(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter field certificate : ");
-            String certificate = scanner.nextLine();
-            if (!isNullOrBlank(certificate)) return certificate;
-        } 
-    }
-
-    public static int promptForDuration(Scanner scanner) {
-        while (true) {
-            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter field's duration : ");
-            if(!scanner.hasNextInt()) {
-                scanner.next();
-                continue;
-            }
-            int duration = scanner.nextInt();
-            if(!isInvalidDuration(duration)) return duration;
-        } 
-    }
-
-    public static boolean isNullOrBlank(String input) {
-        return input == null || input.isBlank();
-    }
-
-    public static boolean isInvalidMatAmci(int mat) {
-        return (mat <= 0 || String.valueOf(mat).length() != 8);
-    }
-
-    public static boolean isInvalidPassport(String input) {
-        return (input.length() != 9);
-    }
-
-    public static boolean isInvalidDuration(int input) {
-        return (input < 0 || input >= 5);
+        return new Card(1, 1, 1, cin, reason, obtDate, expDate, pin);
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import manager.SuperUser;
+import manager.Manager;
 import model.Member;
 
 public class Helpers {
@@ -30,7 +30,7 @@ public class Helpers {
         }
     }
 
-    public static void printAnyList(ArrayList<?> list, SuperUser manager) {
+    public static void printAnyList(ArrayList<?> list, Manager manager) {
         if (list != null) {
             String className = list.get(0).getClass().getName();
 
@@ -190,7 +190,7 @@ public class Helpers {
     }
 
     public static String printTableTitle(String tTitle) {
-        return "\n\t\t\t\t\t\t\t\t\t\t==========================\n\t\t\t\t\t\t\t\t\t\t\s\s\s" + tTitle
-                + "\n\t\t\t\t\t\t\t\t\t\t==========================\n";
+        return "\n\t\t\t\t\t\t\t\t\t==========================\n\t\t\t\t\t\t\t\t\t\s\s\s" + tTitle
+                + "\n\t\t\t\t\t\t\t\t\t==========================\n";
     }
 }

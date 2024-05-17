@@ -107,6 +107,53 @@ public class Prompt {
         }
     }
 
+    /*
+     * PROMPT FOR CREATING A CARD
+     */
+    public static String promptForCin(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter CIN identifier : ");
+            String cin = scanner.nextLine().toUpperCase();
+            if (!isNullOrBlank(cin) && !isInvalidCin(cin)) return cin;
+        } 
+    }
+
+    public static String promptForReason(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter CIN's reason : ");
+            String reason = scanner.nextLine();
+            if (!isNullOrBlank(reason)) return reason;
+        } 
+    }
+
+    public static String promptForObtentionDate(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter CIN's obtention date : ");
+            String obtDate = scanner.nextLine();
+            if (!isNullOrBlank(obtDate) && isValidDateFormat("dd/MM/yyyy", obtDate)) return obtDate;
+        } 
+    }
+
+    public static String promptForExpirationDate(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter CIN's expiration date : ");
+            String expDate = scanner.nextLine();
+            if (!isNullOrBlank(expDate) && isValidDateFormat("dd/MM/yyyy", expDate)) return expDate;
+        } 
+    }
+
+    public static int promptForPin(Scanner scanner) {
+        while (true) {
+            System.out.print("\n\t\t\t\t\t\t\t\t\t\tEnter CIN's secret pin : ");
+            if(!scanner.hasNextInt()) {
+                scanner.next();
+                continue;
+            }
+            int pin = scanner.nextInt();
+            if (!isInvalidPin(pin)) return pin;
+        } 
+    }
+
 
     /*
      * PROMPT FOR CREATING A FIELD
@@ -153,14 +200,22 @@ public class Prompt {
     }
 
     public static boolean isInvalidMatAmci(int mat) {
-        return (mat <= 0 || String.valueOf(mat).length() != 8);
+        return mat <= 0 || String.valueOf(mat).length() != 8;
     }
 
     public static boolean isInvalidPassport(String input) {
-        return (input.length() != 9);
+        return input.length() != 9;
     }
 
     public static boolean isInvalidDuration(int input) {
-        return (input < 0 || input >= 5);
+        return input < 0 || input >= 5;
+    }
+
+    public static boolean isInvalidPin(int input) {
+        return input <= 0 || String.valueOf(input).length() != 4;
+    }
+
+    public static boolean isInvalidCin(String cin) {
+        return cin.length() != 8;
     }
 }

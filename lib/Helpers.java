@@ -59,12 +59,12 @@ public class Helpers {
                                 + " | " +
 
                                 (manager.getCard(member.getIdCard() - 1) != null
-                                        ? manager.getCard(member.getIdCard()).getCin()
+                                        ? manager.getCard(member.getIdCard() - 1).getCin()
                                         : "No Card!")
                                 + " | " +
 
-                                (manager.getCard(member.getIdCard()) != null
-                                        ? formatString(manager.getCard(member.getIdCard()).getReason(), 10)
+                                (manager.getCard(member.getIdCard() -1) != null
+                                        ? formatString(manager.getCard(member.getIdCard() - 1).getReason(), 10)
                                         : formatString("No Card!", 10))
 
                                 + "| " + formatString(manager.getCity(member.getIdCity() - 1).getName(), 9) + "| "
@@ -110,27 +110,25 @@ public class Helpers {
                     }
 
                     break;
-                /*
-                 * case "model.Field":
-                 * System.out.println(printTableTitle("LIST OF FORMATIONS"));
-                 * System.out.print(
-                 * "\n\t\t\t\t\t\t  ID |    FIELD NAME    | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
-                 * );
-                 * for (int i = 0; i < list.size(); i++) {
-                 * Field field;
-                 * System.out.println("\t\t\t\t\t\t" + printId(i, field.getId()) +
-                 * " | "
-                 * + formatString(field.getName(), 18) + " | "
-                 * + formatString(field.getCertificate(), 12) + " | " +
-                 * field.getDuration()
-                 * + "\t\t  |");
-                 * System.out.print((i < list.size() - 1)
-                 * ?
-                 * "\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
-                 * : "\n\n");
-                 * }
-                 * break;
-                 */
+
+                case "model.Field":
+                    System.out.println(printTableTitle("LIST OF FORMATIONS"));
+                    System.out.print(
+                            "\n\t\t\t\t\t\t  ID |    FIELD NAME    | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n");
+                    for (int i = 0; i < list.size(); i++) {
+                        Field field = manager.getCity(i).getFaculty(i).getField(i);
+                        System.out.println("\t\t\t\t\t\t" + printId(i, field.getId()) +
+                                " | "
+                                + formatString(field.getAbbr(), 18) + " | "
+                                + formatString(field.getCertificate(), 12) + " | " +
+                                field.getDuration()
+                                + "\t\t  |");
+                        System.out.print((i < list.size() - 1)
+                                ? "\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
+                                : "\n\n");
+                    }
+                    break;
+
                 case "model.Faculty":
                     System.out.println(printTableTitle("LIST OF FACULTIES"));
                     System.out.print(

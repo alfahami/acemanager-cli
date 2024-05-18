@@ -162,20 +162,20 @@ public class Helpers {
 
                 System.out.println(printTableTitle(faculty.getAbbr() + ":  SAVED FIELDS"));
         System.out.print(
-                "\n\t\t\t\t\t\t  ID |    FIELD ABBR\t    | FIELD NAME\t\t\t  | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|-------------------------------------|----------------|--------------|\n");
+                "\n\t\t\t\t\t\t  ID |    FIELD ABBR\t    | FIELD NAME\t\t\t       | CERTIFICATE      |  DURATION \t |\n\t\t\t\t\t\t ----|----------------------|------------------------------------------|------------------|--------------|\n");
 
                 for (int i = 0; i < faculty.getFields().size(); i++) {
                     Field field = faculty.getField(i);
                     System.out.println("\t\t\t\t\t\t" + printId(i, field.getId()) +
                             " | "
                             + formatString(field.getAbbr(), 18) + " | "
-                            + formatString(field.getName(), 33) + " | "
-                            + formatString(field.getCertificate(), 12) + " | " +
+                            + formatString(field.getName(), 38) + " | "
+                            + formatString(field.getCertificate(), 12) + "   | " +
                             field.getDuration()
-                            + "\t\t  |");
+                            + "\t\t |");
 
                     System.out.print((i < faculty.getFields().size() - 1)
-                            ? "\t\t\t\t\t\t ----|----------------------|-------------------------------------|----------------|--------------|\n"
+                            ? "\t\t\t\t\t\t ----|----------------------|------------------------------------------|------------------|--------------|\n"
                             : "\n\n");
 
                 }

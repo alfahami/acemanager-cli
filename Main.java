@@ -34,7 +34,7 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
-        printFieldByFaculty(root, "FSJES");
+        printFieldByFaculty(root, "ENSA");
 
         // int choice = promptForMenu(scan);
         // processChoice(choice, scan, baseMembers, root);

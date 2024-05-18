@@ -63,7 +63,7 @@ public class Helpers {
                                         : "No Card!")
                                 + " | " +
 
-                                (manager.getCard(member.getIdCard() -1) != null
+                                (manager.getCard(member.getIdCard() - 1) != null
                                         ? formatString(manager.getCard(member.getIdCard() - 1).getReason(), 10)
                                         : formatString("No Card!", 10))
 
@@ -110,25 +110,6 @@ public class Helpers {
                     }
 
                     break;
-
-                case "model.Field":
-                    System.out.println(printTableTitle("LIST OF FORMATIONS"));
-                    System.out.print(
-                            "\n\t\t\t\t\t\t  ID |    FIELD NAME    | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n");
-                    for (int i = 0; i < list.size(); i++) {
-                        Field field = manager.getCity(i).getFaculty(i).getField(i);
-                        System.out.println("\t\t\t\t\t\t" + printId(i, field.getId()) +
-                                " | "
-                                + formatString(field.getAbbr(), 18) + " | "
-                                + formatString(field.getCertificate(), 12) + " | " +
-                                field.getDuration()
-                                + "\t\t  |");
-                        System.out.print((i < list.size() - 1)
-                                ? "\t\t\t\t\t\t ----|----------------------|----------------|--------------------|\n"
-                                : "\n\n");
-                    }
-                    break;
-
                 case "model.Faculty":
                     System.out.println(printTableTitle("LIST OF FACULTIES"));
                     System.out.print(
@@ -172,6 +153,34 @@ public class Helpers {
             }
         } else
             System.exit(0);
+    }
+
+    public static void printFieldByFaculty(Manager manager, String abbr) {
+        City cityMgr = manager.getCity(manager.getIdCity() - 1);
+        for (Faculty faculty : cityMgr.getFacs()) {
+            if (faculty.getAbbr().equalsIgnoreCase(abbr)) {
+
+                System.out.println(printTableTitle(faculty.getAbbr() + ":  SAVED FIELDS"));
+        System.out.print(
+                "\n\t\t\t\t\t\t  ID |    FIELD ABBR\t    | FIELD NAME\t\t\t  | CERTIFICATE    |  DURATION \t  |\n\t\t\t\t\t\t ----|----------------------|-------------------------------------|----------------|--------------|\n");
+
+                for (int i = 0; i < faculty.getFields().size(); i++) {
+                    Field field = faculty.getField(i);
+                    System.out.println("\t\t\t\t\t\t" + printId(i, field.getId()) +
+                            " | "
+                            + formatString(field.getAbbr(), 18) + " | "
+                            + formatString(field.getName(), 33) + " | "
+                            + formatString(field.getCertificate(), 12) + " | " +
+                            field.getDuration()
+                            + "\t\t  |");
+
+                    System.out.print((i < faculty.getFields().size() - 1)
+                            ? "\t\t\t\t\t\t ----|----------------------|-------------------------------------|----------------|--------------|\n"
+                            : "\n\n");
+
+                }
+            }
+        }
     }
 
     /*

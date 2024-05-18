@@ -19,6 +19,7 @@ public class SuperUser extends Manager {
 
     public SuperUser(Member member) {
         super(member);
+        this.setRole(this, Role.ADMINISTRATOR);
         this.managers = new ArrayList<>();
     }
 

@@ -21,7 +21,10 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
 
-        SuperUser root = new SuperUser();
+        Member mbr2 = new Member(2, "TUPAC", "SHAKUR", "23/09/1992", "tup@gmail.com", "nbe456098", 20212332, 2, 2, 2, 2, true);
+        
+        SuperUser root = new SuperUser(mbr2);
+
         root.setSession_start();
         System.out.println("\n\t\t\t\t\t\t\t\t\tRoot session start: " + root.getSession_start());
 
@@ -31,7 +34,10 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
-        printAnyList(root.getCities().get(0).getFacs(), root);
+        printFieldByFaculty(root, "FSJES");
+
+        // int choice = promptForMenu(scan);
+        // processChoice(choice, scan, baseMembers, root);
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);
@@ -70,6 +76,8 @@ public class Main {
                 Member newMember = createMember(scan);
                 manager.addMember(newMember);
                 printAnyList(manager.getMembers(), manager);
+            case 3:
+                scan.nextLine();
             default:
                 break;
         }

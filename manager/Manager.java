@@ -241,7 +241,7 @@ public class Manager extends Member implements Permission {
     public City getCity(int index) {
         if (this.role.name().equals("ADMINISTRATOR")) {
             if (index < 0 || index > this.cities.size())
-                throw new IllegalArgumentException("Error: index " + index + "out of bounds");
+                throw new IllegalArgumentException("Error: index " + index + " out of bounds");
             return new City(this.cities.get(index));
         } else {
             throw new RuntimeException("Rights not guaranted for this user");

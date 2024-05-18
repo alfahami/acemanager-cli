@@ -155,14 +155,66 @@ public class Helpers {
             System.exit(0);
     }
 
+    public static void printSingleMember(Manager manager, Member member, int i) {
+        if(member == null) {
+            System.out.println(printTableTitle("ERROR MEMBER NOT FOUND"));
+            System.exit(0);
+        }
+        System.out.println(printTableTitle("MEMBER FOUND"));
+        System.out.print(
+                "\n  ID | \t   FULL NAME  \t  | AGE | PASSPORT  | MAT AMCI |   CIN    |   REASON    |    CITY    |      FORMATION       |   DIPLOMA   | FACULTY | ADHESION |       EMAIL       |\n ----|--------------------|-----|-----------|----------|----------|-------------|------------|----------------------|-------------|---------|----------|-------------------|\n");
+
+        /* #### HACK TO HAVE AN AWESOME DISPLAY OF THE ARRAY IN THE CONSOLE */
+
+        // we used ternary for displayind id in the same column no matter how many
+        // digits it holds
+        String fullName = member.getFirstName() + " " + member.getLastName();
+
+        /* ### HACK ENDS */
+        System.out.println(printId(i, member.getId()) + " | " + formatString(fullName, 17) + "| "
+                + member.getAge() + "  | " + member.getPassport() + " | " + member.getMatriculeAmci()
+                + " | " +
+
+                (manager.getCard(member.getIdCard() - 1) != null
+                        ? manager.getCard(member.getIdCard() - 1).getCin()
+                        : "No Card!")
+                + " | " +
+
+                (manager.getCard(member.getIdCard() - 1) != null
+                        ? formatString(manager.getCard(member.getIdCard() - 1).getReason(), 10)
+                        : formatString("No Card!", 10))
+
+                + "| " + formatString(manager.getCity(member.getIdCity() - 1).getName(), 9) + "| "
+                + formatString(
+                        manager.getCity(member.getIdCity() - 1).getFaculty(member.getIdFaculty() - 1)
+                                .getField(member.getIdField() - 1).getAbbr(),
+                        19)
+
+                + "| "
+                + formatString(
+                        manager.getCity(member.getIdCity() - 1).getFaculty(member.getIdFaculty() - 1)
+                                .getField(member.getIdField() - 1).getCertificate(),
+                        10)
+                + "| "
+                + formatString((manager.getCity(member.getIdCity() - 1)
+                        .getFaculty(member.getIdFaculty() - 1).getAbbr()), 6)
+                +
+
+                "| "
+                + (member.getIsMember() == true ? (formatString("YES ", 6)) : (formatString("NO ", 6)))
+                + " | " + formatString(member.getEmail(), 16) + "|");
+        System.out.print(
+                " ----|--------------------|-----|-----------|----------|----------|-------------|------------|----------------------|-------------|---------|----------|-------------------|\n");
+    }
+
     public static void printFieldByFaculty(Manager manager, String abbr) {
         City cityMgr = manager.getCity(manager.getIdCity() - 1);
         for (Faculty faculty : cityMgr.getFacs()) {
             if (faculty.getAbbr().equalsIgnoreCase(abbr)) {
 
                 System.out.println(printTableTitle(faculty.getAbbr() + ":  SAVED FIELDS"));
-        System.out.print(
-                "\n\t\t\t\t\t\t  ID |    FIELD ABBR\t    | FIELD NAME\t\t\t       | CERTIFICATE      |  DURATION \t |\n\t\t\t\t\t\t ----|----------------------|------------------------------------------|------------------|--------------|\n");
+                System.out.print(
+                        "\n\t\t\t\t\t\t  ID |    FIELD ABBR\t    | FIELD NAME\t\t\t       | CERTIFICATE      |  DURATION \t |\n\t\t\t\t\t\t ----|----------------------|------------------------------------------|------------------|--------------|\n");
 
                 for (int i = 0; i < faculty.getFields().size(); i++) {
                     Field field = faculty.getField(i);

@@ -34,10 +34,11 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
-        printFieldByFaculty(root, "ENSA");
+        //printFieldByFaculty(root, "ENSA");
 
         // int choice = promptForMenu(scan);
         // processChoice(choice, scan, baseMembers, root);
+        printSingleMember(root, root.getMember(3), root.getId() - 1);
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);

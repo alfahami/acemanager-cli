@@ -235,6 +235,13 @@ public class Helpers {
         }
     }
 
+    public static City searchForCityID(String cityName, ArrayList<City> cities) {
+        for (City city : cities) {
+                if(city.getName().equals(cityName)) return city;
+        }
+        return null;
+    }
+
     /*
      * FOREIGN KEY LOGIC IMPLEMENTATION
      * this helps with looking for data in foreign tables to print

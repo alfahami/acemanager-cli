@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 import static constants.FillTables.*;
 import static lib.Prompt.*;
-import constants.Role;
-import lib.Helpers;
 import manager.Manager;
 import manager.SuperUser;
 import model.Card;
@@ -34,7 +32,6 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
-        Manager mod = new Manager(root.getMember(2));
 
         //printFieldByFaculty(root, "ENSA");
 

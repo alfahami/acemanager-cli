@@ -34,11 +34,13 @@ public class Main {
         root.addMembers(baseMembers);
         root.addCards(fillCards());
 
+        Manager mod = new Manager(root.getMember(2));
+
         //printFieldByFaculty(root, "ENSA");
 
         // int choice = promptForMenu(scan);
         // processChoice(choice, scan, baseMembers, root);
-        printSingleMember(root, root.getMember(3), root.getId() - 1);
+        //printSingleMember(root, root.getMember(0), root.getId() - 1);
 
        // root.addMember(member);
         //printAnyList(root.getMembers(), root);

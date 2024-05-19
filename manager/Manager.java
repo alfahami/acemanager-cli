@@ -11,7 +11,6 @@ import model.City;
 import model.Member;
 
 public class Manager extends Member implements Permission {
-    private int id;
     private String session_start;
     private String session_end;
     protected Role role;
@@ -31,6 +30,9 @@ public class Manager extends Member implements Permission {
         this.members = new ArrayList<>();
         this.cards = new ArrayList<>();
         this.cities = new ArrayList<>();
+        this.role = Role.MODERATOR;
+        // this.addMembers(this.getMembers());
+        // this.addCards(this.getCards());
     }
 
     public Manager(Manager source) {
@@ -46,14 +48,6 @@ public class Manager extends Member implements Permission {
         } else {
 
         }
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getSession_start() {
@@ -239,14 +233,14 @@ public class Manager extends Member implements Permission {
 
     @Override
     public City getCity(int index) {
-        if (this.role.name().equals("ADMINISTRATOR")) {
-            if (index < 0 || index > this.cities.size())
-                throw new IllegalArgumentException("Error: index " + index + " out of bounds");
-            return new City(this.cities.get(index));
-        } else {
-            throw new RuntimeException("Rights not guaranted for this user");
-        }
-    }
+        // if (this.role.name().equals("ADMINISTRATOR")) {
+        if (index < 0 || index > this.cities.size())
+            throw new IllegalArgumentException("Error: index " + index + " out of bounds");
+        return new City(this.cities.get(index));
+    }// else {
+     // throw new RuntimeException("Rights not guaranted for this user");
+     // }
+    // }
 
     @Override
     public boolean addCity(City city) {

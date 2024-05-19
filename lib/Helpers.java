@@ -155,7 +155,7 @@ public class Helpers {
             System.exit(0);
     }
 
-    public static void printSingleMember(Manager manager, Member member, int i) {
+    public static void printSingleMember(Manager manager, Member member) {
         if(member == null) {
             System.out.println(printTableTitle("ERROR MEMBER NOT FOUND"));
             System.exit(0);
@@ -171,7 +171,7 @@ public class Helpers {
         String fullName = member.getFirstName() + " " + member.getLastName();
 
         /* ### HACK ENDS */
-        System.out.println(printId(i, member.getId()) + " | " + formatString(fullName, 17) + "| "
+        System.out.println("  " + member.getId() + " " + " | " + formatString(fullName, 17) + "| "
                 + member.getAge() + "  | " + member.getPassport() + " | " + member.getMatriculeAmci()
                 + " | " +
 

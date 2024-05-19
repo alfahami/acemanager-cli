@@ -12,6 +12,20 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
 - Two objects of a class are equal when its fields contents are the same.
 The classes below are located in the package **model**
 
+#### Version Change, updates and Challenges
+ArrayList has been used in this version over arrays, which has helped a lot when dealing with adding, retrieving, deleting but most importantly shifting and restructuring the table after each operation.
+
+Roles are basically managed with inheritance which happened to quite tidious but feasible.
+
+All crud operations have been implemented regarding the faced challenges.
+
+The menu is not fully implemented as implementation was getting slow and a better approach on how to deal with Roles has been throughly thought and will be in the next release candidate.
+
+The project will be refractored on a **THREE LAYER DESIGN** comprises of a **PRESENTATION**, **SERVICE** and a **REPOSITORY**.
+
+Implementing such will be fun and most of the current code will be reused.
+
+
 #### Member.java
 Member class based on Member table in the DB.
 ##### Rules:
@@ -79,11 +93,18 @@ Interface that would define all the operations a give moderator can do; thus the
 
 Everything one can imagine about member management should be defined here.
 
-#### Moderator.java
+#### *Permission.java*
+An interface that set the contracts between Admin and moderator. This class must declare all core permissions amongst parties.
+
+Has no corresponding entity in DB. 
+
+#### Manager.java
 
 Has no corresponding entity in DB. 
 This class does represent the Moderator that will mod the app.
-<cite>It might represent a role table or stuff like that! We'll figure that out.</cite>
+<cite>~~It might represent a role table or stuff like that! We'll figure that out.~~</cite>
+This class implements *Permission* and extends *Member.java*. 
+The manager or moderator is a member.
 
 ##### Rules:
 - *Session Start* : **MUST NOT** be null or blank.<br>
@@ -92,20 +113,24 @@ It **SHOULD BE** on format _dd/MM/yyy at HH:mm:ss_ or whatever other format.
 It **SHOULD BE** on format _dd/MM/yyy at HH:mm:ss_ or whatever other format. 
 - *Members* : a list of the members that the moderator would manage; **MAY** be null.
 - *Cards* : a list of the cards that the moderator would manage; **MAY** be null.
-- *Permissions* : a list of methods that **MUST** be implemented from Acemanger which represents the moderator's permitted operations.
 
-#### Admin.java
+- *Role* : **MUST** be **ADMINISTRATOR** or **MODERATOR** following this: <blockquote>A moderator <b>MUST NOT</b> be able to manage cities. He can only manage a set of members in a given city which at 99% would be his city.  
+</blockquote>
+
+- *Cities* : a list of the cities that the administrator would manage; **MAY** be null.
+
+
+#### SuperUser.java
 
 Has no corresponding entity in DB. 
 This class does represent the Admin that will mod the app.
-<cite>It might represent a role table or stuff like that! We'll figure that out.</cite>
+<cite>~~It might represent a role table or stuff like that! We'll figure that out.~~</cite>
+This object **MUST** inherit from **MODERATOR**, at the end an admin can do everything a moderator does and more.
+
 
 ##### Rules:
 
-- *Cities* : a list of the cities that the admin would manage; **MAY** be null.
-- *Permissions* : a list of methods that **MUST** be implemented from which represents the admin's permitted operations.
-
-The package <code>lib</code> represents all librairies, classes, functions and snippets of code used in the app but are not at the core of it.
+- *moderators* : a list of the moderators that the admin would manage; **MAY** be null.
 
 #### Helpers.java
 
@@ -115,6 +140,10 @@ The package <code>lib</code> represents all librairies, classes, functions and s
 #### FillTables.java
 
 - Contains static function that fill the base tables as a preloaded data of the app.
+
+#### Prompt.java
+
+- Contains static functions that ask and validate user's input.
 
 #### Class Diagram
 

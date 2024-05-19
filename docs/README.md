@@ -101,8 +101,8 @@ Has no corresponding entity in DB.
 #### Manager.java
 
 Has no corresponding entity in DB. 
-This class does represent the Moderator that will mod the app.
-<cite>~~It might represent a role table or stuff like that! We'll figure that out.~~</cite>
+This class does represent the Moderator that will mod the app.<br>
+<cite>~~It might represent a role table or stuff like that! We'll figure that out.~~</cite><br>
 This class implements *Permission* and extends *Member.java*. 
 The manager or moderator is a member.
 
@@ -123,8 +123,8 @@ It **SHOULD BE** on format _dd/MM/yyy at HH:mm:ss_ or whatever other format.
 #### SuperUser.java
 
 Has no corresponding entity in DB. 
-This class does represent the Admin that will mod the app.
-<cite>~~It might represent a role table or stuff like that! We'll figure that out.~~</cite>
+This class does represent the Admin that will mod the app.<br>
+<cite>~~It might represent a role table or stuff like that! We'll figure that out.~~</cite><br>
 This object **MUST** inherit from **MODERATOR**, at the end an admin can do everything a moderator does and more.
 
 

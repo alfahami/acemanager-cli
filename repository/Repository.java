@@ -21,4 +21,7 @@ public class Repository {
         return new Member(this.mDatastore.get(id));
     }
 
+    public Member updateMember(Member newMember) {
+        return new Member(this.mDatastore.put(newMember.getId(), new Member(newMember)));
+    }
 }

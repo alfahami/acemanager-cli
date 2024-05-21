@@ -1,4 +1,4 @@
-package model;
+package pojo;
 
 import java.time.LocalDate;
 import java.time.Period;

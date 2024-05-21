@@ -1,4 +1,4 @@
-package model;
+package pojo;
 
 import static lib.Helpers.*;
 

@@ -7,11 +7,11 @@ import static constants.FillTables.*;
 import static lib.Prompt.*;
 import manager.Manager;
 import manager.SuperUser;
-import model.Card;
-import model.City;
-import model.Faculty;
-import model.Field;
-import model.Member;
+import pojo.Card;
+import pojo.City;
+import pojo.Faculty;
+import pojo.Field;
+import pojo.Member;
 
 public class Main {
 

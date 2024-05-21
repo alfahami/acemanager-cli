@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-import static lib.Helpers.*;
+import static helpers.Helpers.*;
 import java.util.Objects;
 
 public class Member {

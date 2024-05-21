@@ -1,6 +1,6 @@
 package pojo;
 
-import static lib.Helpers.*;
+import static helpers.Helpers.*;
 
 import java.util.Objects;
 

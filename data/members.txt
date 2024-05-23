@@ -1,0 +1,10 @@
+1,"AMED","ALI SAID","12/09/1989","amed@gmail.com","NBE388409",20212345, 1,  1, 1, 1, true
+2,"IRCHAD","ABDOU","23/01/2000","irc@gmail.com","NBE345410",20212149, 1,  1, 1, 1, true
+3,"HISSANE","MHOMA","21/08/1999","hiss@gmail.com","NBE098432",20202109, 1,  1, 1, 1, true
+4,"ALI","MZOUNGOU","14/01/1997","alim@gmail.com","NBE309809",20192345, 1,  1, 1, 1, true
+5,"FATIMA","MADI","01/01/2001","fati@gmail.com","NBE325987",20210914, 1,  1, 1, 1, true
+6,"MARIAMA","NDJIZI","18/03/2002","ndjz@gmail.com","NBE345409",20212360, 1,  1, 1, 1, true
+7,"DJAOID","SIDI","02/03/2008","sdj@gmail.com","NBE3154765",20202049, 1,  1, 1, 1, true
+8,"ISSIHAKA","ALI","24/05/1995","iss@gmail.com","NBE323897",20202190, 1,  1, 1, 1, true
+9,"ANDJIB","ADAM","10/01/2001","andj@gmail.com","NBE323890",20202209, 1,  1, 1, 1, true
+10,"ONEDAK","TOIHIR","14/02/2007","dak@gmail.com","NBE378999",20201987, 1,  1, 1, 1, true

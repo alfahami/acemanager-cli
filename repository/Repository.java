@@ -6,9 +6,6 @@ import java.util.LinkedHashMap;
 import pojo.Member;
 
 public class Repository {
-    /*
-     * This is the only class that will have acess to the datastore of our pojos, in a real-production world this would be a server or clouddatabase
-     */
 
     private LinkedHashMap<Integer, Member> mDatastore = new LinkedHashMap<>();
 

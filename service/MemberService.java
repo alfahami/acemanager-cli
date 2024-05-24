@@ -11,4 +11,5 @@ public interface MemberService {
     public void deleteMember(String passport);
     public Member retrievMember(String passport);
     public List<Member> getMembersArrays();
+    public int autoIncrementPK();
 } 

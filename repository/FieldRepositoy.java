@@ -2,6 +2,8 @@ package repository;
 
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import pojo.Field;
 
@@ -23,6 +25,12 @@ public class FieldRepositoy {
 
     public void removeField(int id) {
         this.datastore.remove(id);
+    }
+
+    public List<Field> getFieldList() {
+        return this.datastore.values().stream()
+                            .sorted((f1, f2) -> Integer.compare(f1.getId(), f2.getId()))
+                            .collect(Collectors.toList());
     }
 
     

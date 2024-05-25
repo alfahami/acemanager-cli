@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 import pojo.Field;
@@ -30,6 +31,7 @@ public class Main {
         Field f = repositoy.retrievField(2);
         f.setAbbr("CiEn");
         repositoy.updateField(f);
+        List<Field> fs = repositoy.getFieldList();
         repositoy.removeField(2);
 
         System.out.println();

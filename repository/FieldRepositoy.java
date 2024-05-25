@@ -21,5 +21,9 @@ public class FieldRepositoy {
         return this.datastore.put(field.getId(), new Field(field));
     }
 
+    public void removeField(int id) {
+        this.datastore.remove(id);
+    }
+
     
 }

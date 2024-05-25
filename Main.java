@@ -30,6 +30,7 @@ public class Main {
         Field f = repositoy.retrievField(2);
         f.setAbbr("CiEn");
         repositoy.updateField(f);
+        repositoy.removeField(2);
 
         System.out.println();
 

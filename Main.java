@@ -1,8 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import pojo.Member;
+import pojo.Field;
+import repository.FieldRepositoy;
 import repository.MemberRepository;
 import service.MemberService;
 import service.MemberServiceImpl;
@@ -13,36 +12,27 @@ public class Main {
     static MemberRepository mRepo = new MemberRepository();
     static MemberService mService = new MemberServiceImpl(mRepo);
 
+    static final FieldRepositoy repositoy = new FieldRepositoy();
+     
     public static void main(String[] args) {
-
-    
-        Member mbr0 = new Member(0, "TUPAC", "SHAKUR", "23/09/1992", "tup@gmail.com", "NBE456098", 20212332, 2, 2, 2, 2, true);
-
-        Member mbr1 = new Member(0, "AMED", "ALI SAID", "12/09/1989", "amed@gmail.com", "nbe388409", 20212345, 1,  1, 1, 1, true);
-
-        Member mbr2 = new Member(0, "HISSANE", "IRCHAD", "23/10/1990", "his@gmail.com", "nbe319590", 20212346, 2, 2, 2, 2, true);
-
-        Member mbr3 = new Member(0, "CHARKAOUI", "ISSA", "03/03/1993", "issa@gmail.com", "nbe509879", 20212347, 3, 3, 3, 3, true);
-
-        Member mbr4 = new Member(0, "MSA", "YOUSSOUF", "09/11/1990", "msa@gmail.com", "nbe388985", 20212345, 4, 4, 4, 4, true);
-
-        Member mbr5 = new Member(0, "ILYASS", "HAIDAR", "08/01/2000", "ilys@gmail.com", "nbe388789", 20212345, 5, 5, 5, 5, true);
         
-        mService.addMember(mbr0);
-        mService.addMember(mbr1);
-        mService.addMember(mbr2);
-        mService.addMember(mbr3);
-        mService.addMember(mbr4);
-        mService.addMember(mbr5);
 
-        Member retrieveMember = mService.retrievMember(mbr3.getPassport());
-        System.out.println(retrieveMember.toString());
+        Field dba = new Field(1, "DBA", "Database Administration", "LF", 3);
+        Field ce = new Field(2, "CE", "Civil Engineering", "LF", 3);
+        Field fbm = new Field(3, "FBM", "Financial Banking & Marketing", "LF", 3);
+        Field sen = new Field(4, "SEN", "Software Engineering and Networking", "LP", 3);
+        Field ewt = new Field(5, "EWT", "Environment Water & Techniques", "LP", 3);
 
-        mService.deleteMember(mbr5.getPassport());
-        List<Member> members = mService.getMembersArrays();
+        repositoy.createField(dba.getId(), dba);
+        repositoy.createField(ce.getId(), ce);
+        repositoy.createField(fbm.getId(), fbm);
 
-        System.out.println(members.toString());
-    
+        Field f = repositoy.retrievField(2);
+
+        System.out.println();
+
+        
+        
 
     }
 

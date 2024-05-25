@@ -17,5 +17,9 @@ public class FieldRepositoy {
         return new Field(this.datastore.get(id));
     }
 
+    public Field updateField(Field field) {
+        return this.datastore.put(field.getId(), new Field(field));
+    }
+
     
 }

@@ -28,6 +28,8 @@ public class Main {
         repositoy.createField(fbm.getId(), fbm);
 
         Field f = repositoy.retrievField(2);
+        f.setAbbr("CiEn");
+        repositoy.updateField(f);
 
         System.out.println();
 

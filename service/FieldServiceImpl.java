@@ -43,7 +43,7 @@ public class FieldServiceImpl implements FieldService {
 
     @Override
     public int autoIncrementPK() {
-        if(this.repository.getFieldList() != null && this.repository.getFieldList().size() >= 1) return this.repository.getFieldList().size() + 1;
+        if(this.repository.getFieldList() != null && this.repository.getFieldList().size() > 0) return this.repository.getFieldList().size() + 1;
         else return 1;
     }
 

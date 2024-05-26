@@ -21,4 +21,8 @@ public class FacultyRepository {
     public Faculty updateFaculty(Faculty newFaculty) {
         return this.datasource.put(newFaculty.getAbbr(), new Faculty(newFaculty));
     }
+
+    public void removeFaculty(String key) {
+       this.datasource.remove(key);
+    }
 }

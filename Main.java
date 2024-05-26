@@ -50,6 +50,7 @@ public class Main {
         Faculty fac = facRepo.retrieFaculty("FS");
         fac.setDesc("Faculté des Sciences");
         facRepo.updateFaculty(fac);
+        facRepo.removeFaculty("FSJES");
         System.out.println(fac.toString());
 
         System.out.println();

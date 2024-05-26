@@ -43,6 +43,13 @@ public class Main {
 
         facRepo.createFaculty(fs.getAbbr(), fs);
         facRepo.createFaculty(fsjes.getAbbr(), fsjes);
+        facRepo.createFaculty(fst.getAbbr(), fst);
+        facRepo.createFaculty(est.getAbbr(), est);
+        facRepo.createFaculty(ensa.getAbbr(), ensa);
+
+        Faculty fac = facRepo.retrieFaculty("FS");
+        System.out.println(fac.toString());
+
         System.out.println();
 
         

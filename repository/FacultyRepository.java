@@ -3,6 +3,8 @@ package repository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import pojo.Faculty;
 import pojo.Field;
@@ -24,5 +26,11 @@ public class FacultyRepository {
 
     public void removeFaculty(String key) {
        this.datasource.remove(key);
+    }
+
+    public List<Faculty> getFaucltyList() {
+        return this.datasource.values().stream()
+                        .sorted((fac1, fac2) -> Integer.compare(fac1.getId(), fac2.getId()))
+                        .collect(Collectors.toList());
     }
 }

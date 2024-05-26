@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 import static helpers.Helpers.*;
 import java.util.Objects;
 
+import constants.Role;
+
 public class Member {
 
     public Member() {
@@ -17,6 +19,7 @@ public class Member {
     private int idCity;
     private int idFaculty;
     private int idField;
+    private int idSession;
     private String passport; // NBE388510, MUST: 9 chars max
     private String firstName;
     private String lastName;
@@ -25,6 +28,7 @@ public class Member {
     private String email;
     private int matriculeAmci; // 20111473, MUST: 8 chars
     private boolean isMember;
+    private Role role;
 
     public Member(int id, String firstName, String lastName, String birthDate, String email, String passport,
             int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, boolean isMember) {
@@ -67,6 +71,22 @@ public class Member {
         if (id < 0)
             throw new IllegalArgumentException("Member ID must be greater than 0");
         this.id = id;
+    }
+
+    public int getIdSession() {
+        return this.idSession;
+    }
+
+    public void setIdSession(int idSession) {
+        this.idSession = idSession;
+    }
+
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getFirstName() {

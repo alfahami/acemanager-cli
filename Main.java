@@ -1,7 +1,10 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import pojo.Faculty;
 import pojo.Field;
+import repository.FacultyRepository;
 import repository.FieldRepositoy;
 import repository.MemberRepository;
 import service.MemberService;
@@ -14,6 +17,7 @@ public class Main {
     static MemberService mService = new MemberServiceImpl(mRepo);
 
     static final FieldRepositoy repositoy = new FieldRepositoy();
+    static final FacultyRepository facRepo = new FacultyRepository();
      
     public static void main(String[] args) {
         
@@ -24,16 +28,21 @@ public class Main {
         Field sen = new Field(4, "SEN", "Software Engineering and Networking", "LP", 3);
         Field ewt = new Field(5, "EWT", "Environment Water & Techniques", "LP", 3);
 
+        
         repositoy.createField(dba.getId(), dba);
         repositoy.createField(ce.getId(), ce);
         repositoy.createField(fbm.getId(), fbm);
 
-        Field f = repositoy.retrievField(2);
-        f.setAbbr("CiEn");
-        repositoy.updateField(f);
-        List<Field> fs = repositoy.getFieldList();
-        repositoy.removeField(2);
+        ArrayList<Field> fields = (ArrayList<Field> ) repositoy.getFieldList();
 
+        Faculty fs = new Faculty(1, "FS", "Faculty of Science", fields);
+        Faculty fsjes = new Faculty(2, "FSJES", "Faculty of Science and Juridical Science", fields);
+        Faculty fst = new Faculty(3, "FST", "Faculty of Science and Techniques", fields);
+        Faculty est = new Faculty(4, "EST", "Superior School for Technology", fields);
+        Faculty ensa = new Faculty(5, "ENSA", "Superior School for Technology", fields);
+
+        facRepo.createFaculty(fs.getAbbr(), fs);
+        facRepo.createFaculty(fsjes.getAbbr(), fsjes);
         System.out.println();
 
         

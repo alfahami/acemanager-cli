@@ -48,6 +48,8 @@ public class Main {
         facRepo.createFaculty(ensa.getAbbr(), ensa);
 
         Faculty fac = facRepo.retrieFaculty("FS");
+        fac.setDesc("Faculté des Sciences");
+        facRepo.updateFaculty(fac);
         System.out.println(fac.toString());
 
         System.out.println();

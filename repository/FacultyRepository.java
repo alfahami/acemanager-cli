@@ -17,4 +17,8 @@ public class FacultyRepository {
     public Faculty retrieFaculty(String key) {
         return new Faculty(this.datasource.get(key));
     }
+
+    public Faculty updateFaculty(Faculty newFaculty) {
+        return this.datasource.put(newFaculty.getAbbr(), new Faculty(newFaculty));
+    }
 }

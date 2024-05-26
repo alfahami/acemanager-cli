@@ -1,39 +1,40 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import pojo.Faculty;
 import pojo.Field;
-import repository.FacultyRepository;
-import repository.FieldRepositoy;
+import repository.FieldRepository;
 import repository.MemberRepository;
+import service.FieldService;
+import service.FieldServiceImpl;
 import service.MemberService;
 import service.MemberServiceImpl;
 
 public class Main {
 
     // FK's should be implemented here
-    static MemberRepository mRepo = new MemberRepository();
-    static MemberService mService = new MemberServiceImpl(mRepo);
+    static MemberRepository memberRepo = new MemberRepository();
+    static MemberService mService = new MemberServiceImpl(memberRepo);
 
-    static final FieldRepositoy repositoy = new FieldRepositoy();
-    static final FacultyRepository facRepo = new FacultyRepository();
+    static FieldRepository fieldRepository = new FieldRepository();
+    static FieldService fService = new FieldServiceImpl(fieldRepository);
+    
      
     public static void main(String[] args) {
         
 
-        Field dba = new Field(1, "DBA", "Database Administration", "LF", 3);
-        Field ce = new Field(2, "CE", "Civil Engineering", "LF", 3);
-        Field fbm = new Field(3, "FBM", "Financial Banking & Marketing", "LF", 3);
-        Field sen = new Field(4, "SEN", "Software Engineering and Networking", "LP", 3);
-        Field ewt = new Field(5, "EWT", "Environment Water & Techniques", "LP", 3);
+        Field dba = new Field(123, "DBA", "Database Administration", "LF", 3);
+        Field ce = new Field(234, "CE", "Civil Engineering", "LF", 3);
+        Field fbm = new Field(566, "FBM", "Financial Banking & Marketing", "LF", 3);
+        Field sen = new Field(4345, "SEN", "Software Engineering and Networking", "LP", 3);
+        Field ewt = new Field(345, "EWT", "Environment Water & Techniques", "LP", 3);
 
         
-        repositoy.createField(dba.getId(), dba);
-        repositoy.createField(ce.getId(), ce);
-        repositoy.createField(fbm.getId(), fbm);
+        fService.addField(dba);
+        fService.addField(ce);
+        fService.addField(fbm);
 
-        ArrayList<Field> fields = (ArrayList<Field> ) repositoy.getFieldList();
+        ArrayList<Field> fields = (ArrayList<Field> ) fService.getAllFields();
 
         Faculty fs = new Faculty(1, "FS", "Faculty of Science", fields);
         Faculty fsjes = new Faculty(2, "FSJES", "Faculty of Science and Juridical Science", fields);
@@ -41,17 +42,7 @@ public class Main {
         Faculty est = new Faculty(4, "EST", "Superior School for Technology", fields);
         Faculty ensa = new Faculty(5, "ENSA", "Superior School for Technology", fields);
 
-        facRepo.createFaculty(fs.getAbbr(), fs);
-        facRepo.createFaculty(fsjes.getAbbr(), fsjes);
-        facRepo.createFaculty(fst.getAbbr(), fst);
-        facRepo.createFaculty(est.getAbbr(), est);
-        facRepo.createFaculty(ensa.getAbbr(), ensa);
-
-        Faculty fac = facRepo.retrieFaculty("FS");
-        fac.setDesc("Faculté des Sciences");
-        facRepo.updateFaculty(fac);
-        List<Faculty> facs = facRepo.getFaucltyList();
-        System.out.println(fac.toString());
+       
 
         System.out.println();
 

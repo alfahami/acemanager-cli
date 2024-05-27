@@ -20,8 +20,7 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public void deleteSession(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteSession'");
+        this.repository.removeSession(id);
     }
 
     @Override

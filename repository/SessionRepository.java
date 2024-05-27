@@ -10,4 +10,8 @@ public class SessionRepository {
     public Session createSession(Session newSession) {
         return this.datasource.put(newSession.getId(), new Session(newSession));
     }
+
+    public Session retrieveSession(int id) {
+        return new Session(this.datasource.get(id));
+    }
 }

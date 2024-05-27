@@ -14,4 +14,10 @@ public class SessionRepository {
     public Session retrieveSession(int id) {
         return new Session(this.datasource.get(id));
     }
+
+    public void removeSession(int id) {
+        this.datasource.remove(id);
+    }
+
+    
 }

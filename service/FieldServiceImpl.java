@@ -23,7 +23,7 @@ public class FieldServiceImpl implements FieldService {
 
     @Override
     public Field retrieveField(int id) {
-        return new Field(this.repository.retrieveField(id));
+        return this.repository.retrieveField(id);
     }
 
     @Override

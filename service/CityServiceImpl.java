@@ -27,7 +27,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City retrieveCity(int id) {
-        return new City(this.repository.retrieveCity(id));
+        return this.repository.retrieveCity(id);
     }
 
     @Override

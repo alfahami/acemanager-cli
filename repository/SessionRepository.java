@@ -1,6 +1,8 @@
 package repository;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import pojo.Session;
 
@@ -19,5 +21,9 @@ public class SessionRepository {
         this.datasource.remove(id);
     }
 
-    
+    public List<Session> getSessionsList() {
+        return this.datasource.values().stream()
+                .sorted((session1, session2) -> Integer.compare(session1.getId(), session2.getId()))
+                .collect(Collectors.toList());
+    }
 }

@@ -114,10 +114,7 @@ public class Member {
     }
 
     public void setBirthDate(String birthDate) {
-        if (birthDate == null || birthDate.isBlank())
-            throw new IllegalArgumentException("Birth date cannot be null or blank. ");
-        if (!isValidDateFormat("dd/MM/yyyy", birthDate))
-            throw new IllegalArgumentException("Invalid date format: date format must strictly follow \"dd/MM/yyyy\"");
+        setDateException(birthDate);
         this.birthDate = birthDate;
 
     }

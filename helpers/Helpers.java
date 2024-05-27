@@ -25,4 +25,12 @@ public class Helpers {
         }
     }
 
+    // Crashing the app if the date is in the wrong format
+    public static void setDateException(String date) {
+        if (date == null || date.isBlank())
+            throw new IllegalArgumentException("Birth date cannot be null or blank. ");
+        if (!isValidDateFormat("dd/MM/yyyy", date))
+            throw new IllegalArgumentException("Invalid date format: date format must strictly follow \"dd/MM/yyyy\"");
+    }
+
 }

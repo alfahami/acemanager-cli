@@ -25,8 +25,7 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public Session retrieveSession(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'retrieveSession'");
+        return repository.retrieveSession(id);
     }
 
     @Override

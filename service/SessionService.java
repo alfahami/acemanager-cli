@@ -9,5 +9,5 @@ public interface SessionService {
     public void deleteSession(int id);
     public Session retrieveSession(int id);
     public List<Session> getSessionList();
-    public void autoIncrementPK();
+    public int autoIncrementPK();
 }

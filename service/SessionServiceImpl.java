@@ -15,6 +15,7 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public void addSession(Session newSession) {
+        newSession.setId(autoIncrementPK());
         this.repository.createSession(newSession);
     }
 
@@ -34,9 +35,13 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public void autoIncrementPK() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'autoIncrementPK'");
+    public int autoIncrementPK() {
+        // get the sorted list of the current repo
+        if (this.repository.getSessionsList() != null && this.repository.getSessionsList().size() > 0)
+            // return it size the next ID
+            return this.repository.getSessionsList().size() + 1;
+        else
+            return 1;
     }
     
 }

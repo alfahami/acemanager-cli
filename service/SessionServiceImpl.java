@@ -30,8 +30,7 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public List<Session> getSessionList() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSessionList'");
+        return this.repository.getSessionsList();
     }
 
     @Override

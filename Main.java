@@ -23,17 +23,30 @@ public class Main {
     static MemberRepository memberRepository = new MemberRepository();
     static MemberService memberService = new MemberServiceImpl(memberRepository);
 
+    static FieldRepository fieldRepository = new FieldRepository();
+    static FieldService fieldService = new FieldServiceImpl(fieldRepository);
+
     public static void main(String[] args) {
 
         try {
+            loadFields();
+            ArrayList<Field> fields = (ArrayList<Field>) fieldService.getAllFields();
+            System.out.println(fields.toString());
+
             loadMembers();
-            ArrayList<Member> members = (ArrayList<Member>) memberService.getMembersArrays();
-            System.out.println(members.toString());
+            
         } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
     }
 
+    public static void loadFields() throws IOException {
+        Files.lines(paths[0]).forEach(line -> {
+            String[] words = line.split(",");
+            fieldService.addField(new Field(Integer.valueOf(words[0]), words[1], words[2], words[3], Integer.valueOf(words[4])));
+            
+        });
+    }
     public static void loadMembers() throws IOException {
         Files.lines(paths[3]).forEach(line -> {
             String[] words = line.split(",");

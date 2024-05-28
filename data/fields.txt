@@ -1,0 +1,10 @@
+1,SMI,Mathematics Science & Computer Science,LF,3
+2,SMA,Applied Mathematics Science,LF,3
+3,SMP,Mathematics Science & Physics,LF,3
+4,MIP,Mathematics Computer Science & Physics,LF,3
+5,SMC,Mathematics Science & Chemistry,LF,3
+6,DBA,Database Administration,LF,3
+7,CE,Civil Engineering,LF,3
+8,FBM,Financial Banking & Marketing,LF,3
+9,SEN,Software Engineering and Networking,LP,3
+10,EWT,Environment Water & Techniques,LP,3

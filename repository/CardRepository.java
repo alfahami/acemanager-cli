@@ -14,4 +14,10 @@ public class CardRepository {
     public Card retrieveCard(String cin) {
         return new Card(this.datasource.get(cin));
     }
+
+    public void updateCard(Card newCard) {
+        this.datasource.put(newCard.getCin(), new Card(newCard));
+    }
+
+    
 }

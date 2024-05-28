@@ -1,0 +1,5 @@
+1,FS,Faculty of Science
+2,FSJES,Faculty of Science and Juridical Science
+3,FST,Faculty of Science and Techniques
+4,EST,Superior School for Technology
+5,ENSA,Superior School for Technology

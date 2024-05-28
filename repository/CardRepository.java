@@ -10,4 +10,8 @@ public class CardRepository {
     public Card createCard(Card newCard) {
         return this.datasource.put(newCard.getCin(), new Card(newCard));
     }
+
+    public Card retrieveCard(String cin) {
+        return new Card(this.datasource.get(cin));
+    }
 }

@@ -9,7 +9,7 @@ public class CardServiceImpl implements CardService {
 
     CardRepository repository = new CardRepository();
 
-    CardServiceImpl(CardRepository repository) {
+    public CardServiceImpl(CardRepository repository) {
         this.repository = repository;
     }
 

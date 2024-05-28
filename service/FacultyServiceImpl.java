@@ -21,7 +21,7 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
-    public Faculty retrieFaculty(String key) {
+    public Faculty retrieveFaculty(String key) {
         return this.repository.retrieFaculty(key);
     }
 

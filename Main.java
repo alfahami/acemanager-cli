@@ -3,13 +3,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import pojo.Faculty;
 import pojo.Field;
 import pojo.Member;
+import repository.FacultyRepository;
 import repository.FieldRepository;
 import repository.MemberRepository;
+import service.FacultyService;
+import service.FacultyServiceImpl;
 import service.FieldService;
 import service.FieldServiceImpl;
 import service.MemberService;
@@ -26,15 +30,19 @@ public class Main {
     static FieldRepository fieldRepository = new FieldRepository();
     static FieldService fieldService = new FieldServiceImpl(fieldRepository);
 
+    static FacultyRepository facultyRepository = new FacultyRepository();
+    static FacultyService facultyService = new FacultyServiceImpl(facultyRepository);
+
     public static void main(String[] args) {
 
         try {
             loadFields();
-            ArrayList<Field> fields = (ArrayList<Field>) fieldService.getAllFields();
+            loadFaculties();
+            List<Field> fields = facultyService.retrieveFaculty("FS").getFields();
             System.out.println(fields.toString());
 
             loadMembers();
-            
+
         } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
@@ -43,10 +51,20 @@ public class Main {
     public static void loadFields() throws IOException {
         Files.lines(paths[0]).forEach(line -> {
             String[] words = line.split(",");
-            fieldService.addField(new Field(Integer.valueOf(words[0]), words[1], words[2], words[3], Integer.valueOf(words[4])));
-            
+            fieldService.addField(
+                    new Field(Integer.valueOf(words[0]), words[1], words[2], words[3], Integer.valueOf(words[4])));
+
         });
     }
+
+    public static void loadFaculties() throws IOException {
+        Files.lines(paths[1]).forEach(line -> {
+            String[] words = line.split(",");
+            facultyService.addFaculty(new Faculty(Integer.valueOf(words[0]), words[1], words[2],
+                    (ArrayList<Field>) fieldService.getAllFields()));
+        });
+    }
+
     public static void loadMembers() throws IOException {
         Files.lines(paths[3]).forEach(line -> {
             String[] words = line.split(",");

@@ -6,7 +6,7 @@ import pojo.Faculty;
 
 public interface FacultyService {
     public void addFaculty(Faculty newFaculty);
-    public Faculty retrieFaculty(String key);
+    public Faculty retrieveFaculty(String key);
     public void updateFaculty(Faculty newFaculty);
     public void deleteFaculty(String key);
     public List<Faculty> getFacultyList();

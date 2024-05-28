@@ -19,5 +19,8 @@ public class CardRepository {
         this.datasource.put(newCard.getCin(), new Card(newCard));
     }
 
+    public void removeCard(String cin) {
+        this.datasource.remove(cin);
+    }
     
 }

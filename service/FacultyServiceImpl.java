@@ -37,7 +37,7 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public List<Faculty> getFacultyList() {
-        return this.getFacultyList();
+        return this.repository.getFaucltyList();
     }
 
     @Override

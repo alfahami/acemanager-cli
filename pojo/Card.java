@@ -12,7 +12,7 @@ public class Card {
     private String reason;
     private String obtentionDate;
     private String expirationDate;
-    private int pin; // used for numerical identity more info:
+    private String pin; // used for numerical identity more info:
                      // https://www.identitenumerique.ma/about.html
 
     public int getId() {
@@ -20,7 +20,7 @@ public class Card {
     }
 
     public Card(int id, int idMember, int idCity, String cin, String reason, String obtentionDate,
-            String expirationDate, int pin) {
+            String expirationDate, String pin) {
         setId(id);
         setIdMember(idMember);
         setIdCity(idCity);
@@ -110,12 +110,12 @@ public class Card {
             this.expirationDate = expirationDate;
     }
 
-    public int getPin() {
+    public String getPin() {
         return this.pin;
     }
 
-    public void setPin(int pin) {
-        if (pin <= 0 || (String.valueOf(pin).length() != 4))
+    public void setPin(String pin) {
+        if (Integer.parseInt(pin) <= 0 || pin.length() != 4)
             throw new IllegalArgumentException("Pin must have 4 digits");
         this.pin = pin;
     }

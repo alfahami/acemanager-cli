@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import constants.Role;
 import pojo.Card;
 import pojo.City;
 import pojo.Faculty;
@@ -27,7 +28,7 @@ import service.FieldServiceImpl;
 import service.MemberService;
 import service.MemberServiceImpl;
 
-public class Main {
+public class Application {
 
     static Path[] paths = new Path[] { Paths.get("data/fields.txt"), Paths.get("data/faculties.txt"),
             Paths.get("data/cities.txt"), Paths.get("data/members.txt"), Paths.get("data/cards.txt") };
@@ -49,15 +50,23 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // loading our datasources with existing members
         try {
             loadFields();
             loadFaculties();
             loadCities();
             loadMembers();
-           loadCards();
-           List<Card> cards = cardRepository.getCardList();
-            System.out.println("hello");
+            loadCards();
 
+
+            //moderator.addMember();
+            
+
+            
+        
+        
+           
+            System.out.println();
         } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }

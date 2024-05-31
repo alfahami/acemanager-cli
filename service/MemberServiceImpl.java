@@ -2,12 +2,18 @@ package service;
 
 import java.util.List;
 
+import constants.Role;
 import pojo.Member;
 import repository.MemberRepository;
 
 public class MemberServiceImpl implements MemberService {
 
     private MemberRepository repository = new MemberRepository();
+
+
+    public MemberServiceImpl() {
+        
+    }
 
     public MemberServiceImpl(MemberRepository repository) {
         this.repository = repository;
@@ -30,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member retrievMember(String passport) {
+    public Member retrieveMember(String passport) {
         return this.repository.retrievMember(passport);
     }
 

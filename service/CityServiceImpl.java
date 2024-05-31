@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import pojo.City;
+import pojo.Member;
 import repository.CityRepository;
 
 public class CityServiceImpl implements CityService {

@@ -48,6 +48,7 @@ public class Member {
         setIdFaculty(idFaculty);
         setIdField(idField);
         setIsMember(isMember);
+        setRole(Role.MEMBER);
     }
 
     public Member(Member source) {
@@ -64,6 +65,7 @@ public class Member {
         setIdFaculty(source.idFaculty);
         setIdField(source.idField);
         setIsMember(source.isMember);
+        setRole(source.role);
     }
 
     public int getId() {

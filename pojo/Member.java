@@ -8,11 +8,10 @@ import static helpers.Helpers.*;
 import java.util.Objects;
 
 import constants.Role;
+import repository.MemberRepository;
+import service.MemberServiceImpl;
 
 public class Member {
-
-    public Member() {
-    }
 
     private int id;
     private int idCard;
@@ -29,6 +28,10 @@ public class Member {
     private int matriculeAmci; // 20111473, MUST: 8 chars
     private boolean isMember;
     private Role role;
+
+    public Member() {
+
+    }
 
     public Member(int id, String firstName, String lastName, String birthDate, String email, String passport,
             int matriculeAmci, int idCard, int idCity, int idFaculty, int idField, boolean isMember) {

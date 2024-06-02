@@ -28,7 +28,7 @@ import service.FieldServiceImpl;
 import service.MemberService;
 import service.MemberServiceImpl;
 
-public class Application {
+public class Main {
 
     static Path[] paths = new Path[] { Paths.get("data/fields.txt"), Paths.get("data/faculties.txt"),
             Paths.get("data/cities.txt"), Paths.get("data/members.txt"), Paths.get("data/cards.txt") };
